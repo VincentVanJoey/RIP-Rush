@@ -48,7 +48,7 @@ namespace RIPRUSH {
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             var color = Color.White;
             if (isHovering) {
-                color = Color.Gray;
+                color = Color.OrangeRed;
             }
             spriteBatch.Draw(texture, Rectangle, color);
             

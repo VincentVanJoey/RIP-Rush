@@ -5,7 +5,6 @@ using RIPRUSH.Entities;
 using RIPRUSH.Sprites;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace RIPRUSH.States {
     public class MainMenuState : State {
@@ -27,7 +26,6 @@ namespace RIPRUSH.States {
         private Texture2D grave1_texture;
         private Texture2D grave2_texture;
 
-        
         private PumpkinSprite player;
 
         public MainMenuState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
@@ -54,17 +52,17 @@ namespace RIPRUSH.States {
             buttonTexture = content.Load<Texture2D>("Assets/Button2");
             buttonFont = content.Load<SpriteFont>("Fonts/coralines-cat");
 
-            var playButton = new Button(buttonTexture, buttonFont, Color.Orange) {
+            var playButton = new Button(buttonTexture, buttonFont, Color.Green) {
                 Position = new Vector2(25, 250),
                 Text = "Play",
             };
 
-            var somethingButton = new Button(buttonTexture, buttonFont, Color.Orange) {
+            var somethingButton = new Button(buttonTexture, buttonFont, Color.Green) {
                 Position = new Vector2(25, 330),
                 Text = "???",
             };
 
-            var quitButton = new Button(buttonTexture, buttonFont, Color.Orange) {
+            var quitButton = new Button(buttonTexture, buttonFont, Color.Green) {
                 Position = new Vector2(25, 410),
                 Text = "Quit",
             };
@@ -127,7 +125,7 @@ namespace RIPRUSH.States {
             spriteBatch.Draw(tree1_texture, new Vector2(-100, 50), Sprite64, Color.SaddleBrown, .3f, new Vector2(0, 0), 6f, SpriteEffects.None , 0);
             spriteBatch.Draw(tree2_texture, new Vector2(550, 100), Sprite64, Color.SaddleBrown, -.3f, new Vector2(0, 0), 6f, SpriteEffects.None , 0);
 
-            spriteBatch.DrawString(titleFont, "R.I.P", new Vector2(75, 25), Color.Green);
+            spriteBatch.DrawString(titleFont, "R.I.P", new Vector2(80, 25), Color.Green);
             spriteBatch.DrawString(titleFont2, "RUSH", new Vector2(50, 125), Color.OrangeRed);
 
             foreach (var component in components) {
