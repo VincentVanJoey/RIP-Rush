@@ -52,17 +52,17 @@ namespace RIPRUSH.States {
             buttonTexture = content.Load<Texture2D>("Assets/Button2");
             buttonFont = content.Load<SpriteFont>("Fonts/coralines-cat");
 
-            var playButton = new Button(buttonTexture, buttonFont, Color.Green) {
+            var playButton = new Button(buttonTexture, buttonFont, Color.Green, Color.OrangeRed) {
                 Position = new Vector2(25, 250),
                 Text = "Play",
             };
 
-            var somethingButton = new Button(buttonTexture, buttonFont, Color.Green) {
+            var somethingButton = new Button(buttonTexture, buttonFont, Color.Green, Color.OrangeRed) {
                 Position = new Vector2(25, 330),
                 Text = "???",
             };
 
-            var quitButton = new Button(buttonTexture, buttonFont, Color.Green) {
+            var quitButton = new Button(buttonTexture, buttonFont, Color.Green, Color.OrangeRed) {
                 Position = new Vector2(25, 410),
                 Text = "Quit",
             };

@@ -23,7 +23,10 @@ namespace RIPRUSH {
         public event EventHandler Click;
 
         public bool Clicked { get; private set; }
+
         public Color PenColor { get; set; }
+
+        public Color HoverColor { get; set; }
 
         public Vector2 Position { get; set; }
 
@@ -39,16 +42,17 @@ namespace RIPRUSH {
 
         #region methods
 
-        public Button(Texture2D texture, SpriteFont font, Color color) {
+        public Button(Texture2D texture, SpriteFont font, Color fontcolor, Color hovercolor) {
             this.texture = texture;
             this.font = font;
-            PenColor = color;
+            PenColor = fontcolor;
+            HoverColor = hovercolor;
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             var color = Color.White;
             if (isHovering) {
-                color = Color.OrangeRed;
+                color = HoverColor;
             }
             spriteBatch.Draw(texture, Rectangle, color);
             
