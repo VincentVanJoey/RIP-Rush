@@ -5,6 +5,7 @@ using RIPRUSH.Entities;
 using RIPRUSH.Sprites;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace RIPRUSH.States {
     public class MainMenuState : State {
@@ -18,11 +19,14 @@ namespace RIPRUSH.States {
         private SpriteFont titleFont2;
 
         private Texture2D moon_texture;
+        private Texture2D pumpkin_face_texture;
+        private Color pumpkin_face_color = Color.Black;
+
         private Texture2D tree1_texture;
         private Texture2D tree2_texture;
         private Texture2D grave1_texture;
         private Texture2D grave2_texture;
-        private Texture2D pumpkin_face_texture;
+
         
         private PumpkinSprite player;
 
@@ -33,7 +37,7 @@ namespace RIPRUSH.States {
             titleFont = content.Load<SpriteFont>("Fonts/raven-scream");
             titleFont2 = content.Load<SpriteFont>("Fonts/october-crow");
 
-            pumpkin_face_texture = content.Load<Texture2D>("Assets/face");
+            pumpkin_face_texture = content.Load<Texture2D>("Assets/face2");
             moon_texture = content.Load<Texture2D>("Assets/the moon");
 
             tree1_texture = content.Load<Texture2D>("Assets/tree1");
@@ -44,11 +48,6 @@ namespace RIPRUSH.States {
 
             #endregion
 
-            player = new PumpkinSprite(new Dictionary<string, Animation>() {
-                { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 6) },
-                { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 6) },
-            });
-            player.Position = new Vector2(335, 350);
 
             #region -- Menu Buttons --
 
@@ -76,6 +75,13 @@ namespace RIPRUSH.States {
 
             #endregion
 
+
+            player = new PumpkinSprite(new Dictionary<string, Animation>() {
+                { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 6) },
+                { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 6) },
+            });
+            player.Position = new Vector2(335, 350);
+
             components = new List<Component>(){
                 playButton,
                 somethingButton,
@@ -92,7 +98,9 @@ namespace RIPRUSH.States {
 
         private void SomethingButton_Click(object sender, System.EventArgs e) {
             var random = new Random();
-            game.backgroundColor = new Color(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+            Color randomColor = new Color(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+            game.backgroundColor = randomColor;
+            pumpkin_face_color = randomColor;
         }
 
         private void QuitButton_Click(object sender, System.EventArgs e) {
@@ -108,7 +116,7 @@ namespace RIPRUSH.States {
             Rectangle Sprite64 = new Rectangle(0, 0, 64, 64);
 
             spriteBatch.Draw(moon_texture, new Vector2(350, 50), Sprite32, Color.White, 0, new Vector2(0, 0), 6f, SpriteEffects.None , 0);
-            spriteBatch.Draw(pumpkin_face_texture, new Vector2(365, 0), Sprite32, Color.White, .2f, new Vector2(0, 0), 7f, SpriteEffects.None , 0);
+            spriteBatch.Draw(pumpkin_face_texture, new Vector2(365, 0), Sprite32, pumpkin_face_color, .2f, new Vector2(0, 0), 7f, SpriteEffects.None , 0);
             
             spriteBatch.Draw(grave1_texture, new Vector2(200, 400), Sprite32, Color.White, -.2f, new Vector2(0, 0), 4f, SpriteEffects.None , 0);
             spriteBatch.Draw(grave2_texture, new Vector2(100, 350), Sprite32, Color.White, .2f, new Vector2(0, 0), 4f, SpriteEffects.None , 0);
