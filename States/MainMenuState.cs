@@ -51,21 +51,21 @@ namespace RIPRUSH.States {
 
             #region -- Menu Buttons --
 
-            buttonTexture = content.Load<Texture2D>("Assets/Button");
+            buttonTexture = content.Load<Texture2D>("Assets/Button2");
             buttonFont = content.Load<SpriteFont>("Fonts/coralines-cat");
 
             var playButton = new Button(buttonTexture, buttonFont, Color.Orange) {
-                Position = new Vector2(50, 250),
+                Position = new Vector2(25, 250),
                 Text = "Play",
             };
 
             var somethingButton = new Button(buttonTexture, buttonFont, Color.Orange) {
-                Position = new Vector2(50, 300),
+                Position = new Vector2(25, 330),
                 Text = "???",
             };
 
             var quitButton = new Button(buttonTexture, buttonFont, Color.Orange) {
-                Position = new Vector2(50, 350),
+                Position = new Vector2(25, 410),
                 Text = "Quit",
             };
 
