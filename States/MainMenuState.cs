@@ -1,6 +1,4 @@
-﻿using FontStashSharp;
-using Microsoft.VisualBasic.ApplicationServices;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Myra;
@@ -8,7 +6,6 @@ using Myra.Graphics2D;
 using Myra.Graphics2D.UI;
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace RIPRUSH.States {
     public class MainMenuState : State {
@@ -17,67 +14,67 @@ namespace RIPRUSH.States {
         //private FontSystem ordinaryFontSystem;
 
         private List<Component> components;
+        
+        private Texture2D buttonTexture;
+        private SpriteFont buttonFont;
+
+        private SpriteFont titleFont;
+        private SpriteFont titleFont2;
+
+        private Texture2D moon_texture;
+        private Texture2D tree1_texture;
+        private Texture2D tree2_texture;
+        private Texture2D grave1_texture;
+        private Texture2D grave2_texture;
+        private Texture2D pumpkin_face_texture;
+        
 
         public MainMenuState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
 
-            #region -- Myra Testing --
+            titleFont = content.Load<SpriteFont>("Fonts/raven-scream");
+            titleFont2 = content.Load<SpriteFont>("Fonts/october-crow");
 
-            //MyraEnvironment.Game = game;
+            pumpkin_face_texture = content.Load<Texture2D>("Assets/face");
+            moon_texture = content.Load<Texture2D>("Assets/the moon");
 
+            tree1_texture = content.Load<Texture2D>("Assets/tree1");
+            tree2_texture = content.Load<Texture2D>("Assets/tree2");
 
-            //var label = new Label();
-            //label.Text = "Test";
-            //label.VerticalAlignment = VerticalAlignment.Center;
-            //label.HorizontalAlignment = HorizontalAlignment.Center;
+            grave1_texture = content.Load<Texture2D>("Assets/headstone");
+            grave2_texture = content.Load<Texture2D>("Assets/woodstone");
 
-            //byte[] ttfData = File.ReadAllBytes("Fonts/Coraline's Cat.ttf");
-            //ordinaryFontSystem = new FontSystem();
-            //ordinaryFontSystem.AddFont(ttfData);
-            //label.Font = ordinaryFontSystem.GetFont(25);
+            #region -- Menu Buttons --
 
-            //var button = new Myra.Graphics2D.UI.Button();
-            //button.Width = 125;
-            //button.Height = 30;
-            //button.HorizontalAlignment = HorizontalAlignment.Left;
-            //button.VerticalAlignment = VerticalAlignment.Center;
-            //button.Content = label;
-            //button.Click += SomethingButton_Click;
-
-            //desktop = new Desktop();
-            //desktop.Root = button;
-
-            #endregion
-
-            #region Monogame Menu Buttons
-            var buttonTexture = content.Load<Texture2D>("Assets/Button");
-            var buttonFont = content.Load<SpriteFont>("Fonts/coralines-cat");
+            buttonTexture = content.Load<Texture2D>("Assets/Button");
+            buttonFont = content.Load<SpriteFont>("Fonts/coralines-cat");
 
             var playButton = new Button(buttonTexture, buttonFont, Color.Orange) {
-                Position = new Vector2(50, 200),
+                Position = new Vector2(50, 250),
                 Text = "Play",
             };
 
             var somethingButton = new Button(buttonTexture, buttonFont, Color.Orange) {
-                Position = new Vector2(50, 250),
+                Position = new Vector2(50, 300),
                 Text = "???",
             };
 
             var quitButton = new Button(buttonTexture, buttonFont, Color.Orange) {
-                Position = new Vector2(50, 300),
+                Position = new Vector2(50, 350),
                 Text = "Quit",
             };
-
 
             playButton.Click += PlayButton_Click;
             somethingButton.Click += SomethingButton_Click;
             quitButton.Click += QuitButton_Click;
+
             #endregion
 
             components = new List<Component>(){
                 playButton,
                 somethingButton,
-                quitButton
+                quitButton,
             };
+
         }
 
         #region Button Click Events
@@ -96,13 +93,30 @@ namespace RIPRUSH.States {
         #endregion
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-            spriteBatch.Begin();
+
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+
+            Rectangle Sprite32 = new Rectangle(0, 0, 32, 32);
+            Rectangle Sprite64 = new Rectangle(0, 0, 64, 64);
+
+            spriteBatch.Draw(moon_texture, new Vector2(350, 50), Sprite32, Color.White, 0, new Vector2(0, 0), 6f, SpriteEffects.None , 0);
+            spriteBatch.Draw(pumpkin_face_texture, new Vector2(365, 0), Sprite32, Color.White, .2f, new Vector2(0, 0), 7f, SpriteEffects.None , 0);
+            
+            spriteBatch.Draw(grave1_texture, new Vector2(200, 400), Sprite32, Color.White, -.2f, new Vector2(0, 0), 4f, SpriteEffects.None , 0);
+            spriteBatch.Draw(grave2_texture, new Vector2(100, 350), Sprite32, Color.White, .2f, new Vector2(0, 0), 4f, SpriteEffects.None , 0);
+
+            spriteBatch.Draw(grave2_texture, new Vector2(650, 375), Sprite32, Color.White, -.2f, new Vector2(0, 0), 4f, SpriteEffects.None , 0);
+            spriteBatch.Draw(grave1_texture, new Vector2(550, 375), Sprite32, Color.White, .2f, new Vector2(0, 0), 4f, SpriteEffects.None , 0);
+            
+            spriteBatch.Draw(tree1_texture, new Vector2(-100, 50), Sprite64, Color.SaddleBrown, .3f, new Vector2(0, 0), 6f, SpriteEffects.None , 0);
+            spriteBatch.Draw(tree2_texture, new Vector2(550, 100), Sprite64, Color.SaddleBrown, -.3f, new Vector2(0, 0), 6f, SpriteEffects.None , 0);
+
+            spriteBatch.DrawString(titleFont, "R.I.P", new Vector2(75, 25), Color.Green);
+            spriteBatch.DrawString(titleFont2, "RUSH", new Vector2(50, 125), Color.OrangeRed);
 
             foreach (var component in components) {
                 component.Draw(gameTime, spriteBatch);
             }
-
-            //desktop.Render();
 
             spriteBatch.End();
         }
@@ -110,6 +124,9 @@ namespace RIPRUSH.States {
         public override void PostUpdate(GameTime gameTime) {}
 
         public override void Update(GameTime gameTime) {
+            
+
+
             foreach (var component in components) {
                 component.Update(gameTime);
             }
