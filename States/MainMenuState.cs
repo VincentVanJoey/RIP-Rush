@@ -1,17 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Myra;
-using Myra.Graphics2D;
-using Myra.Graphics2D.UI;
+using RIPRUSH.Entities;
+using RIPRUSH.Sprites;
 using System;
 using System.Collections.Generic;
 
 namespace RIPRUSH.States {
     public class MainMenuState : State {
-
-        //private Desktop desktop;
-        //private FontSystem ordinaryFontSystem;
 
         private List<Component> components;
         
@@ -28,8 +24,11 @@ namespace RIPRUSH.States {
         private Texture2D grave2_texture;
         private Texture2D pumpkin_face_texture;
         
+        private PumpkinSprite player;
 
         public MainMenuState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
+
+            #region -- Aesthetics --
 
             titleFont = content.Load<SpriteFont>("Fonts/raven-scream");
             titleFont2 = content.Load<SpriteFont>("Fonts/october-crow");
@@ -42,6 +41,14 @@ namespace RIPRUSH.States {
 
             grave1_texture = content.Load<Texture2D>("Assets/headstone");
             grave2_texture = content.Load<Texture2D>("Assets/woodstone");
+
+            #endregion
+
+            player = new PumpkinSprite(new Dictionary<string, Animation>() {
+                { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 6) },
+                { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 6) },
+            });
+            player.Position = new Vector2(335, 350);
 
             #region -- Menu Buttons --
 
@@ -73,6 +80,7 @@ namespace RIPRUSH.States {
                 playButton,
                 somethingButton,
                 quitButton,
+                player
             };
 
         }
@@ -125,8 +133,6 @@ namespace RIPRUSH.States {
 
         public override void Update(GameTime gameTime) {
             
-
-
             foreach (var component in components) {
                 component.Update(gameTime);
             }
