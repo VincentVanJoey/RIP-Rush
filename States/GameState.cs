@@ -6,36 +6,68 @@ using RIPRUSH.Sprites;
 using System.Collections.Generic;
 
 namespace RIPRUSH.States {
+
+    /// <summary>
+    /// A class representing the actual playable game state of the game
+    /// </summary>
     public class GameState : State {
 
-        private List<Component> components;
+        /// <summary>
+        /// The list of the game state's components to be drawn/updated/interacted with
+        /// </summary>
+        private List<Component> _components;
 
-        private PumpkinSprite player;
+        /// <summary>
+        /// the player's sprite
+        /// </summary>
+        private PumpkinSprite _player;
 
+        /// <summary>
+        /// The constructor for the game state
+        /// </summary>
+        /// <param name="content">The Content state's contentmanager</param>
+        /// <param name="game">The actual game base object</param>
+        /// <param name="graphicsDevice">The graphics device that handles the rendering</param>
         public GameState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
 
-            player = new PumpkinSprite(new Dictionary<string, Animation>() {
+            _player = new PumpkinSprite(new Dictionary<string, Animation>() {
                 { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 6) },
                 { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 6) },
             });
-            player.Position = new Vector2(300, 100);
+            _player.Position = new Vector2(300, 100);
 
-            components = new List<Component>(){
-                player
+            _components = new List<Component>(){
+                _player
             };
 
 
         }
+
+        /// <summary>
+        /// Draws the game state
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
+        /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-            foreach (var component in components) {
+            foreach (var component in _components) {
                 component.Draw(gameTime, spriteBatch);
             }
             spriteBatch.End();
         }
+
+        /// <summary>
+        /// post update logic for the game state, if any
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         public override void PostUpdate(GameTime gameTime) {}
+
+        /// <summary>
+        /// The actual playable game state's update logic
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         public override void Update(GameTime gameTime) {
-            foreach (var component in components) {
+            foreach (var component in _components) {
                 component.Update(gameTime);
             }
         }
