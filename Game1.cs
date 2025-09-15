@@ -1,6 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Gum.Forms.Controls;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGameGum;
+using MonoGameGum.Forms;
+using RIPRUSH.Screens;
 using RIPRUSH.States;
+using System;
 
 namespace RIPRUSH
 {
@@ -13,6 +18,11 @@ namespace RIPRUSH
         /// The graphics device manager, responsible for managing the graphics settings and device.
         /// </summary>
         private GraphicsDeviceManager _graphics;
+
+        /// <summary>
+        /// The Gum UI service, used for managing UI elements and interactions.
+        /// </summary>
+        GumService GumUI => GumService.Default;
 
         /// <summary>
         /// The sprite batch, used for drawing textures and sprites to the screen.
@@ -58,6 +68,9 @@ namespace RIPRUSH
         protected override void Initialize()
         {
             IsMouseVisible = true;
+            
+            GumUI.Initialize(this, "GumProject/RIPRUSH_GUIS.gumx");
+
             base.Initialize();
         }
 
@@ -77,16 +90,15 @@ namespace RIPRUSH
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         protected override void Update(GameTime gameTime)
-        {
+        {   
             if (_nextState != null) { 
                 _currentState = _nextState;
                 _nextState = null;
             }
 
             _currentState.Update(gameTime);
-
+            GumUI.Update(gameTime);
             _currentState.PostUpdate(gameTime);
-
             base.Update(gameTime);
         }
 
@@ -100,7 +112,7 @@ namespace RIPRUSH
             GraphicsDevice.Clear(backgroundColor);
 
             _currentState.Draw(gameTime, _spriteBatch);
-
+            GumUI.Draw();
             base.Draw(gameTime);
         }
     }

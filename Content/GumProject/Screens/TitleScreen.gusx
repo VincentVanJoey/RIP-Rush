@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ScreenSave xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>TitleScreen</Name>
+  <State>
+    <Name>Default</Name>
+    <Variable>
+      <Type>float</Type>
+      <Name>Title.Height</Name>
+      <Value xsi:type="xsd:float">227</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>Title.Width</Name>
+      <Value xsi:type="xsd:float">350</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+  </State>
+  <Instance>
+    <Name>Title</Name>
+    <BaseType>Joelements/TitleText</BaseType>
+    <DefinedByBase>false</DefinedByBase>
+    <Locked>true</Locked>
+  </Instance>
+  <Behaviors />
+</ScreenSave>

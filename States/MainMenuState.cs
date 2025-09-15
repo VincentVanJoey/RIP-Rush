@@ -2,9 +2,11 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using RIPRUSH.Entities;
-using RIPRUSH.Sprites;
+using RIPRUSH.Screens;
 using System;
 using System.Collections.Generic;
+using MonoGameGum;
+using MonoGameGum.Forms;
 
 namespace RIPRUSH.States {
 
@@ -18,6 +20,8 @@ namespace RIPRUSH.States {
         /// </summary>
         private List<Component> _components;
 
+        #region -- Aesthetic Fields --
+
         /// <summary>
         /// The texture for the buttons
         /// </summary>
@@ -27,17 +31,6 @@ namespace RIPRUSH.States {
         /// The text font for the buttons
         /// </summary>
         private SpriteFont _buttonFont;
-
-
-        /// <summary>
-        /// The font for "R.I.P" in the title
-        /// </summary>
-        private SpriteFont _titleFont;
-
-        /// <summary>
-        /// The Font for "Rush" in the title
-        /// </summary>
-        private SpriteFont _titleFont2;
 
         /// <summary>
         /// texture for the moon
@@ -73,6 +66,7 @@ namespace RIPRUSH.States {
         /// texture for grave 2
         /// </summary>
         private Texture2D _grave2_texture;
+        #endregion
 
         /// <summary>
         /// the player object
@@ -81,10 +75,10 @@ namespace RIPRUSH.States {
 
         public MainMenuState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
 
-            #region -- Aesthetics --
+            var screen = new TitleScreen();
+            screen.AddToRoot();
 
-            _titleFont = content.Load<SpriteFont>("Fonts/raven-scream");
-            _titleFont2 = content.Load<SpriteFont>("Fonts/october-crow");
+            #region -- Aesthetics --
 
             _pumpkinFaceTexture = content.Load<Texture2D>("Assets/face2");
             _moon_texture = content.Load<Texture2D>("Assets/the moon");
@@ -103,17 +97,17 @@ namespace RIPRUSH.States {
             _buttonTexture = content.Load<Texture2D>("Assets/Button2");
             _buttonFont = content.Load<SpriteFont>("Fonts/coralines-cat");
 
-            var playButton = new Button(_buttonTexture, _buttonFont, Color.Green, Color.OrangeRed) {
+            var playButton = new JoeyButton(_buttonTexture, _buttonFont, Color.Green, Color.OrangeRed) {
                 Position = new Vector2(25, 250),
                 Text = "Play",
             };
 
-            var somethingButton = new Button(_buttonTexture, _buttonFont, Color.Green, Color.OrangeRed) {
+            var somethingButton = new JoeyButton(_buttonTexture, _buttonFont, Color.Green, Color.OrangeRed) {
                 Position = new Vector2(25, 330),
                 Text = "???",
             };
 
-            var quitButton = new Button(_buttonTexture, _buttonFont, Color.Green, Color.OrangeRed) {
+            var quitButton = new JoeyButton(_buttonTexture, _buttonFont, Color.Green, Color.OrangeRed) {
                 Position = new Vector2(25, 410),
                 Text = "Quit",
             };
@@ -148,7 +142,9 @@ namespace RIPRUSH.States {
         /// <param name="sender">The object signaling the event</param>
         /// <param name="e">Information about the event</param>
         private void PlayButton_Click(object sender, System.EventArgs e) {
+            GumService.Default.Root.Children.Clear();
             _game.ChangeState(new GameState(_content, _game, _graphicsDevice));
+
         }
 
         /// <summary>
@@ -196,9 +192,6 @@ namespace RIPRUSH.States {
             
             spriteBatch.Draw(_tree1_texture, new Vector2(-100, 50), sprite64, Color.SaddleBrown, .3f, new Vector2(0, 0), 6f, SpriteEffects.None , 0);
             spriteBatch.Draw(_tree2_texture, new Vector2(550, 100), sprite64, Color.SaddleBrown, -.3f, new Vector2(0, 0), 6f, SpriteEffects.None , 0);
-
-            spriteBatch.DrawString(_titleFont, "R.I.P", new Vector2(80, 25), Color.Green);
-            spriteBatch.DrawString(_titleFont2, "RUSH", new Vector2(50, 125), Color.OrangeRed);
 
             foreach (var component in _components) {
                 component.Draw(gameTime, spriteBatch);

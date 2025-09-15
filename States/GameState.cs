@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using RIPRUSH.Entities;
-using RIPRUSH.Sprites;
 using System.Collections.Generic;
 
 namespace RIPRUSH.States {
@@ -31,15 +30,15 @@ namespace RIPRUSH.States {
         public GameState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
 
             _player = new PumpkinSprite(new Dictionary<string, Animation>() {
-                { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 6) },
-                { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 6) },
+                { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 2) },
+                { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 2) },
             });
-            _player.Position = new Vector2(300, 100);
+
+            _player.Position = new Vector2(100, 350);
 
             _components = new List<Component>(){
                 _player
             };
-
 
         }
 
