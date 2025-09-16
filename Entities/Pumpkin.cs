@@ -22,30 +22,8 @@ namespace RIPRUSH.Entities {
     /// <summary>
     /// A class representing the player pumpkin sprite in the game
     /// </summary>
-    public class Pumpkin : Component {
+    public class Pumpkin : Entity {
         #region Fields
-
-        /// <summary>
-        /// The pumpkin's position on screen
-        /// </summary>
-        protected Vector2 _position;
-
-        /// <summary>
-        /// The pumpkin's sprite texture
-        /// </summary>
-        /// <remarks>This protected field holds a reference to a <see cref="Texture2D"/> object, which can
-        /// be used  by derived classes to define or manipulate the visual appearance of the object.</remarks>
-        protected Texture2D _texture;
-
-        /// <summary>
-        /// The animation manager that handles the pumpkin's animations
-        /// </summary>
-        public AnimationManager animationManager;
-
-        /// <summary>
-        /// The dictionary that holds all the animations for the pumpkin
-        /// </summary>
-        public Dictionary<string, Animation> animations;
 
         /// <summary>
         /// The direction the pumpkin is moving
@@ -54,46 +32,34 @@ namespace RIPRUSH.Entities {
 
         #endregion
 
-        #region Properties
-
-        /// <summary>
-        /// Where the sprite is located on screen
-        /// </summary>
-        public Vector2 Position {
-            get { return _position; }
-            set {
-                _position = value;
-
-                if (animationManager != null)
-                    animationManager.Position = _position;
-            }
-        }
-
-        #endregion
-
         #region Methods
+        public Pumpkin(ContentManager content, bool isAnimated) {
+            animations = new Dictionary<string, Animation>();
 
-        public Pumpkin(Dictionary<string, Animation> animations) {
-            this.animations = animations;
-            animationManager = new AnimationManager(animations.First().Value);
-        }
+            // Set _isAnimated based on the constructor parameter
+            _isAnimated = isAnimated;
 
-        public Pumpkin(Texture2D texture) {
-            this._texture = texture;
-        }
-
-        public void LoadContent(ContentManager content) {
-            if (_texture != null) { //If the sprite is a static image
-                _texture = content.Load<Texture2D>("32x32-bat-sprite");
-                animationManager = null;
+            // Load specific animations if the sprite is animated
+            if (_isAnimated) {
+                LoadAnimations(content);
             }
-            else if (animationManager != null) { //else if it has an animations, draw those
-                this.animations = new Dictionary<string, Animation>() {
-                    { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 2) },
-                    { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 2) },
-                };
+            else {
+                // Load a static texture if not animated
+                _texture = content.Load<Texture2D>("Assets/face");
+            }
+
+            // Initialize the AnimationManager (it will be set to null if not animated)
+            if (_isAnimated && animations.Any()) {
                 animationManager = new AnimationManager(animations.First().Value);
             }
+        }
+
+        public void LoadAnimations(ContentManager content) {
+            Animation idleAnimation = new(content.Load<Texture2D>("Player/Idle"), 20, true, Color, Origin, Rotation, Scale);
+            Animation rollAntimation = new(content.Load<Texture2D>("Player/Roll"), 15, true, Color, Origin, Rotation, Scale);
+
+            animations.Add("Idle", idleAnimation);
+            animations.Add("Roll", rollAntimation);
         }
 
         /// <summary>
@@ -125,6 +91,10 @@ namespace RIPRUSH.Entities {
                 return;
             }
 
+            // Update animation properties to match the entity's current state
+            animationManager.animation.Scale = Scale;
+            // TODO: Might need to do this for Color, Rotation, SpriteEffect, etc if I ever change them too
+
             switch (Direction) {
                 case Direction.Up:
                     animationManager.Play(animations["Roll"]);
@@ -152,15 +122,11 @@ namespace RIPRUSH.Entities {
         /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
 
-            if (_texture != null) { //If the sprite is a static image
-                spriteBatch.Draw(_texture, Position, Color.White);
+            //any specific pumpkin draw logic here in the future?
+            // In case I ever let the play customize it in any way
+                // Color or hats or something
 
-            }
-            else if (animationManager != null) { //else if it has an animations, draw those
-                animationManager.Draw(spriteBatch);
-
-            }
-            else throw new Exception("This ain't right..!"); //else throw an exception
+            base.Draw(gameTime, spriteBatch);
         }
 
         /// <summary>
@@ -171,7 +137,7 @@ namespace RIPRUSH.Entities {
             Move(gameTime);
             SetAnimations();
 
-            animationManager.Update(gameTime);
+            base.Update(gameTime);
         }
 
         #endregion

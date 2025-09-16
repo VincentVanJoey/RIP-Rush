@@ -29,11 +29,8 @@ namespace RIPRUSH.States {
         /// <param name="graphicsDevice">The graphics device that handles the rendering</param>
         public GameState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
 
-            _player = new Pumpkin(new Dictionary<string, Animation>() {
-                { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 2) },
-                { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 2) },
-            });
-
+            _player = new Pumpkin(content, true);
+            _player.Scale = 2.0f;
             _player.Position = new Vector2(100, 350);
 
             _components = new List<Component>(){

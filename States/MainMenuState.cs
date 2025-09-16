@@ -118,10 +118,8 @@ namespace RIPRUSH.States {
             #endregion
 
 
-            _player = new Pumpkin(new Dictionary<string, Animation>() {
-                { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 6) },
-                { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 6) },
-            });
+            _player = new Pumpkin(content, true);
+            _player.Scale = 6;
             _player.Position = new Vector2(335, 350);
 
             _components = new List<Component>(){

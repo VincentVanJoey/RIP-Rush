@@ -5,14 +5,14 @@ using System.Collections.Generic;
 namespace RIPRUSH.Entities {
 
     public class Entity : Component {
-        
+
         #region Fields
 
-        protected Vector2 _position;
+        public Vector2 _position;
 
-        protected Texture2D _texture;
+        public Texture2D _texture;
 
-        private bool _isAnimated = false;
+        public bool _isAnimated = false;
 
         public AnimationManager animationManager;
 
