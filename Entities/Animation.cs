@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace RIPRUSH.Entities {
@@ -13,7 +12,6 @@ namespace RIPRUSH.Entities {
         /// The current frame of the animation being displayed.
         /// </summary>
         public int CurrentFrame { get; set; }
-
 
         /// <summary>
         /// The number of frames in the animation

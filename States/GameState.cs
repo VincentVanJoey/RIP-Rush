@@ -19,7 +19,7 @@ namespace RIPRUSH.States {
         /// <summary>
         /// the player's sprite
         /// </summary>
-        private PumpkinSprite _player;
+        private Pumpkin _player;
 
         /// <summary>
         /// The constructor for the game state
@@ -29,7 +29,7 @@ namespace RIPRUSH.States {
         /// <param name="graphicsDevice">The graphics device that handles the rendering</param>
         public GameState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
 
-            _player = new PumpkinSprite(new Dictionary<string, Animation>() {
+            _player = new Pumpkin(new Dictionary<string, Animation>() {
                 { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 2) },
                 { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 2) },
             });
@@ -55,11 +55,7 @@ namespace RIPRUSH.States {
             spriteBatch.End();
         }
 
-        /// <summary>
-        /// post update logic for the game state, if any
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
-        public override void PostUpdate(GameTime gameTime) {}
+
 
         /// <summary>
         /// The actual playable game state's update logic
@@ -70,5 +66,11 @@ namespace RIPRUSH.States {
                 component.Update(gameTime);
             }
         }
+
+        /// <summary>
+        /// post update logic for the game state, if any
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
+        public override void PostUpdate(GameTime gameTime) { }
     }
 }

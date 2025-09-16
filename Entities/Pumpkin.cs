@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -21,18 +22,8 @@ namespace RIPRUSH.Entities {
     /// <summary>
     /// A class representing the player pumpkin sprite in the game
     /// </summary>
-    public class PumpkinSprite: Component {
+    public class Pumpkin : Component {
         #region Fields
-
-        /// <summary>
-        /// The animation manager that handles the pumpkin's animations
-        /// </summary>
-        public AnimationManager animationManager;
-
-        /// <summary>
-        /// The dictionary that holds all the animations for the pumpkin
-        /// </summary>
-        public Dictionary<string, Animation> animations;
 
         /// <summary>
         /// The pumpkin's position on screen
@@ -45,6 +36,16 @@ namespace RIPRUSH.Entities {
         /// <remarks>This protected field holds a reference to a <see cref="Texture2D"/> object, which can
         /// be used  by derived classes to define or manipulate the visual appearance of the object.</remarks>
         protected Texture2D _texture;
+
+        /// <summary>
+        /// The animation manager that handles the pumpkin's animations
+        /// </summary>
+        public AnimationManager animationManager;
+
+        /// <summary>
+        /// The dictionary that holds all the animations for the pumpkin
+        /// </summary>
+        public Dictionary<string, Animation> animations;
 
         /// <summary>
         /// The direction the pumpkin is moving
@@ -72,13 +73,27 @@ namespace RIPRUSH.Entities {
 
         #region Methods
 
-        public PumpkinSprite(Dictionary<string, Animation> animations) {
+        public Pumpkin(Dictionary<string, Animation> animations) {
             this.animations = animations;
             animationManager = new AnimationManager(animations.First().Value);
         }
 
-        public PumpkinSprite(Texture2D texture) {
+        public Pumpkin(Texture2D texture) {
             this._texture = texture;
+        }
+
+        public void LoadContent(ContentManager content) {
+            if (_texture != null) { //If the sprite is a static image
+                _texture = content.Load<Texture2D>("32x32-bat-sprite");
+                animationManager = null;
+            }
+            else if (animationManager != null) { //else if it has an animations, draw those
+                this.animations = new Dictionary<string, Animation>() {
+                    { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 2) },
+                    { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 2) },
+                };
+                animationManager = new AnimationManager(animations.First().Value);
+            }
         }
 
         /// <summary>
@@ -136,11 +151,16 @@ namespace RIPRUSH.Entities {
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-            if (_texture != null)
+
+            if (_texture != null) { //If the sprite is a static image
                 spriteBatch.Draw(_texture, Position, Color.White);
-            else if (animationManager != null)
+
+            }
+            else if (animationManager != null) { //else if it has an animations, draw those
                 animationManager.Draw(spriteBatch);
-            else throw new Exception("This ain't right..!");
+
+            }
+            else throw new Exception("This ain't right..!"); //else throw an exception
         }
 
         /// <summary>
@@ -152,7 +172,6 @@ namespace RIPRUSH.Entities {
             SetAnimations();
 
             animationManager.Update(gameTime);
-
         }
 
         #endregion

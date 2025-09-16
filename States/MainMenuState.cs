@@ -6,7 +6,6 @@ using RIPRUSH.Screens;
 using System;
 using System.Collections.Generic;
 using MonoGameGum;
-using MonoGameGum.Forms;
 
 namespace RIPRUSH.States {
 
@@ -71,7 +70,7 @@ namespace RIPRUSH.States {
         /// <summary>
         /// the player object
         /// </summary>
-        private PumpkinSprite _player;
+        private Pumpkin _player;
 
         public MainMenuState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
 
@@ -119,7 +118,7 @@ namespace RIPRUSH.States {
             #endregion
 
 
-            _player = new PumpkinSprite(new Dictionary<string, Animation>() {
+            _player = new Pumpkin(new Dictionary<string, Animation>() {
                 { "Roll", new Animation(content.Load<Texture2D>("Player/Roll"), 15, true, Color.White, Vector2.Zero, 0, 6) },
                 { "Idle", new Animation(content.Load<Texture2D>("Player/Idle"), 20, true, Color.White, Vector2.Zero, 0, 6) },
             });
