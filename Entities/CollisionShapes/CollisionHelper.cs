@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace RIPRUSH.Entities.Collisions {
+namespace RIPRUSH.Entities.CollisionShapes {
     public static class CollisionHelper {
         /// <summary>
         /// Detects a collision between two BoundingCircles

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace RIPRUSH.Entities.Collisions {
+namespace RIPRUSH.Entities.CollisionShapes {
     public struct BoundingRectangle {
         public float X;
         public float Y;

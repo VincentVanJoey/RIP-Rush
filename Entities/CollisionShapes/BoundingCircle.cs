@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace RIPRUSH.Entities.Collisions {
+namespace RIPRUSH.Entities.CollisionShapes {
     /// <summary>
     /// A struct representing circular bounds
     /// </summary>

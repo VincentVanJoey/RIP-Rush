@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using RIPRUSH.Entities;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace RIPRUSH.States {
 
@@ -22,6 +23,11 @@ namespace RIPRUSH.States {
         private Pumpkin _player;
 
         /// <summary>
+        /// the not player's sprite
+        /// </summary>
+        private Pumpkin _notplayer;
+
+        /// <summary>
         /// The constructor for the game state
         /// </summary>
         /// <param name="content">The Content state's contentmanager</param>
@@ -33,8 +39,13 @@ namespace RIPRUSH.States {
             _player.Scale = 2.0f;
             _player.Position = new Vector2(100, 350);
 
+            _notplayer = new Pumpkin(content, false);
+            _notplayer.Scale = 2.0f;
+            _notplayer.Position = new Vector2(300, 350);
+
             _components = new List<Component>(){
-                _player
+                _player,
+                _notplayer
             };
 
         }
@@ -62,6 +73,12 @@ namespace RIPRUSH.States {
             foreach (var component in _components) {
                 component.Update(gameTime);
             }
+
+            if (_notplayer.Bounds.CollidesWith(_player.Bounds)) {
+                _components.Remove(_notplayer);
+                Debug.WriteLine("Collision detected!");
+            }
+
         }
 
         /// <summary>

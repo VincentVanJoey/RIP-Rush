@@ -9,8 +9,6 @@ namespace RIPRUSH.States {
     /// </summary>
     public abstract class State {
 
-        #region Fields
-
         /// <summary>
         /// The current state's contentmanager
         /// </summary>
@@ -25,10 +23,6 @@ namespace RIPRUSH.States {
         /// The graphics device that handles the rendering
         /// </summary>
         protected GraphicsDevice _graphicsDevice;
-
-        #endregion
-
-        #region Methods
 
         /// <summary>
         /// Draws the current state
@@ -54,8 +48,6 @@ namespace RIPRUSH.States {
             this._game = game;
             this._graphicsDevice = graphicsDevice;
         }
-
-        #endregion
 
     }
 }

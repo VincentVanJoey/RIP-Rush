@@ -87,7 +87,9 @@ namespace RIPRUSH.Entities {
         /// </summary>
         /// <param name="gameTime">the time state of the game</param>
         public override void Update(GameTime gameTime) {
-            animationManager.Update(gameTime);
+            if (_isAnimated) {
+                animationManager.Update(gameTime);
+            }
         }
 
         #endregion
