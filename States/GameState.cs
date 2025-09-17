@@ -17,14 +17,7 @@ namespace RIPRUSH.States {
         /// </summary>
         private List<Component> _components;
 
-        /// <summary>
-        /// the player's sprite
-        /// </summary>
         private Pumpkin _player;
-
-        /// <summary>
-        /// the not player's sprite
-        /// </summary>
         private Pumpkin _notplayer;
 
         /// <summary>
@@ -35,13 +28,8 @@ namespace RIPRUSH.States {
         /// <param name="graphicsDevice">The graphics device that handles the rendering</param>
         public GameState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
 
-            _player = new Pumpkin(content, true);
-            _player.Scale = 2.0f;
-            _player.Position = new Vector2(100, 350);
-
-            _notplayer = new Pumpkin(content, false);
-            _notplayer.Scale = 2.0f;
-            _notplayer.Position = new Vector2(300, 350);
+            _player = new Pumpkin(content, true, 2.0f) {Position = new Vector2(100, 350) };
+            _notplayer = new Pumpkin(content, false, 2.0f) { Position = new Vector2(400, 350) };
 
             _components = new List<Component>(){
                 _player,
@@ -75,7 +63,6 @@ namespace RIPRUSH.States {
             }
 
             if (_notplayer.Bounds.CollidesWith(_player.Bounds)) {
-                _components.Remove(_notplayer);
                 Debug.WriteLine("Collision detected!");
             }
 

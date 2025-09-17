@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using RIPRUSH.Entities.CollisionShapes;
-using SharpDX.Direct2D1.Effects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,37 +31,44 @@ namespace RIPRUSH.Entities {
 
         private BoundingCircle bounds;
 
-        //private Texture2D collisiontestshape;
+        private Texture2D collisiontestshape;
 
         /// <summary>
         /// The bounding volume of the sprite
         /// </summary>
         public BoundingCircle Bounds => bounds;
 
-        public Pumpkin(ContentManager content, bool isAnimated) {
+        public Pumpkin(ContentManager content, bool isAnimated, float scale) {
             animations = new Dictionary<string, Animation>();
+            Scale = scale;
 
             // Set _isAnimated based on the constructor parameter
             _isAnimated = isAnimated;
-            //collisiontestshape = content.Load<Texture2D>("Assets/face2");
+            collisiontestshape = content.Load<Texture2D>("Assets/test_shape");
 
             // Load specific animations if the sprite is animated
             if (_isAnimated) {
                 LoadAnimations(content);
+
+                // Initialize the AnimationManager (it will be set to null if not animated)
+                if (animations.Any()) {
+                    animationManager = new AnimationManager(animations.First().Value);
+                }
             }
             else {
                 // Load a static texture if not animated
-                _texture = content.Load<Texture2D>("Assets/face2");
-                var boundstart = Position - new Vector2(_texture.Width * Scale / 2, _texture.Height * Scale / 2);
-                bounds = new BoundingCircle(boundstart, (this._texture.Width * this.Scale));
+                _texture = content.Load<Texture2D>("Assets/test_shape");
             }
 
-            // Initialize the AnimationManager (it will be set to null if not animated)
-            if (_isAnimated && animations.Any()) {
-                animationManager = new AnimationManager(animations.First().Value);
-                var boundstart = Position - new Vector2(animationManager.animation.FrameWidth * Scale / 2, animationManager.animation.FrameHeight * Scale / 2);
-                bounds = new BoundingCircle(boundstart, (animationManager.animation.FrameWidth * animationManager.animation.Scale));
-            }
+            // Calculate the size of the bounding circle depending on whether it's animated or not
+            int boundswidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
+            int boundsheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
+
+            // Set bounds center position
+            Vector2 bound_center = Position + new Vector2((boundswidth * Scale) / 2, (boundsheight * Scale) / 2);
+
+            // Set bounds radius
+            bounds = new BoundingCircle(bound_center, (boundswidth * Scale) / 2);
 
         }
 
@@ -146,9 +152,9 @@ namespace RIPRUSH.Entities {
 
             base.Draw(gameTime, spriteBatch);
 
-            //To show collision bounds -- DEBUG ONLY
-            //var rect = new Rectangle((int)(bounds.Center.X - bounds.Radius), (int)(bounds.Center.Y - bounds.Radius), 2*(int)(bounds.Radius), 2*(int)(bounds.Radius));
-            //spriteBatch.Draw(collisiontestshape, rect, Color.Red);
+            //To show collision bounds --DEBUG ONLY
+            var rect = new Rectangle((int)(bounds.Center.X - bounds.Radius), (int)(bounds.Center.Y - bounds.Radius), 2 * (int)(bounds.Radius), 2 * (int)(bounds.Radius));
+            spriteBatch.Draw(collisiontestshape, rect, Color.DarkRed);
 
         }
 
@@ -157,16 +163,15 @@ namespace RIPRUSH.Entities {
         /// </summary>
         /// <param name="gameTime">the time state of the game</param>
         public override void Update(GameTime gameTime) {
+
             Move(gameTime);
+
             SetAnimations();
 
-            if (_isAnimated) {
-                bounds.Center = Position + new Vector2(((_isAnimated ? animationManager.animation.FrameWidth : _texture.Width) * Scale) / 2, ((_isAnimated ? animationManager.animation.FrameHeight : _texture.Height) * Scale) / 2);
-
-            }
-            else {
-                bounds.Center = Position + new Vector2((_texture.Width * Scale) / 2, (_texture.Height * Scale) / 2);
-            }
+            // Set bounds center position
+            int boundswidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
+            int boundsheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
+            bounds.Center = Position + new Vector2((boundswidth * Scale) / 2, (boundsheight * Scale) / 2);
 
             base.Update(gameTime);
         }
