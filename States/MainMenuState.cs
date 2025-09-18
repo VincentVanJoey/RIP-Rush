@@ -6,6 +6,7 @@ using RIPRUSH.Screens;
 using System;
 using System.Collections.Generic;
 using MonoGameGum;
+using RIPRUSH.Entities.Actors;
 
 namespace RIPRUSH.States {
 

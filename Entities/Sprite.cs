@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace RIPRUSH.Entities {
 
-    public class Entity : Component {
+    public class Sprite : Component {
 
         #region Fields
 
@@ -68,7 +68,7 @@ namespace RIPRUSH.Entities {
         #region Methods
 
         /// <summary>
-        /// Draws the entity
+        /// Draws the sprite
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>

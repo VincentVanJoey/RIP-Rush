@@ -3,11 +3,10 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using RIPRUSH.Entities.CollisionShapes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RIPRUSH.Entities {
+namespace RIPRUSH.Entities.Actors {
 
     /// <summary>
     /// An enumeration representing possible movement directions for the pumpkin sprite.
@@ -23,7 +22,15 @@ namespace RIPRUSH.Entities {
     /// <summary>
     /// A class representing the player pumpkin sprite in the game
     /// </summary>
-    public class Pumpkin : Entity {
+    public class Pumpkin : Sprite {
+
+        // Fields to avoid "magic numbers"
+        private const float SPEED = 100f;
+        private const float GRAVITY = 200f;
+        private const float JUMP = 200f;
+        public Vector2 _velocity;
+        public bool _onGround;
+
         /// <summary>
         /// The direction the pumpkin is moving
         /// </summary>
@@ -51,7 +58,7 @@ namespace RIPRUSH.Entities {
                 LoadAnimations(content);
 
                 // Initialize the AnimationManager (it will be set to null if not animated)
-                if (animations.Any()) {
+                if (animations.Count != 0) {
                     animationManager = new AnimationManager(animations.First().Value);
                 }
             }
@@ -65,10 +72,10 @@ namespace RIPRUSH.Entities {
             int boundsheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
 
             // Set bounds center position
-            Vector2 bound_center = Position + new Vector2((boundswidth * Scale) / 2, (boundsheight * Scale) / 2);
+            Vector2 bound_center = Position + new Vector2(boundswidth * Scale / 2, boundsheight * Scale / 2);
 
             // Set bounds radius
-            bounds = new BoundingCircle(bound_center, (boundswidth * Scale) / 2);
+            bounds = new BoundingCircle(bound_center, boundswidth * Scale / 2);
 
         }
 
@@ -81,36 +88,9 @@ namespace RIPRUSH.Entities {
         }
 
         /// <summary>
-        /// The method responsible for moving the pumpkin sprite
-        /// </summary>
-        /// <param name="gameTime">the time state of the game</param>
-        public virtual void Move(GameTime gameTime) {
-            var keyboardState = Keyboard.GetState();
-
-            if (keyboardState.IsKeyDown(Keys.Left) || keyboardState.IsKeyDown(Keys.A)) {
-
-                if (_isAnimated) {
-                    Position += new Vector2(-1, 0) * 100 * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    Direction = Direction.Left;
-                    animationManager.animation.SpriteEffect = SpriteEffects.FlipHorizontally;
-                }
-            }
-            else if (keyboardState.IsKeyDown(Keys.Right) || keyboardState.IsKeyDown(Keys.D)) {
-
-                if (_isAnimated) {
-                    Position += new Vector2(1, 0) * 100 * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    Direction = Direction.Right;
-                    animationManager.animation.SpriteEffect = SpriteEffects.None;
-                }
-            }
-            else Direction = Direction.Idle;
-
-        }
-
-        /// <summary>
         /// The method responsible for determining which animation to play
         /// </summary>
-        protected virtual void SetAnimations() {
+        public virtual void SetAnimations() {
             if (animationManager == null) {
                 return;
             }
@@ -140,6 +120,42 @@ namespace RIPRUSH.Entities {
         }
 
         /// <summary>
+        /// The method responsible for moving the pumpkin sprite
+        /// </summary>
+        /// <param name="gameTime">the time state of the game</param>
+        public virtual void Move(GameTime gameTime) {
+            if (!_isAnimated) {
+                return; // No movement if not animated 
+            }
+            else {
+                var keyboardState = Keyboard.GetState();
+
+                if (keyboardState.IsKeyDown(Keys.Left) || keyboardState.IsKeyDown(Keys.A)) {
+                    _velocity.X = -SPEED;
+                    Direction = Direction.Left;
+                    animationManager.animation.SpriteEffect = SpriteEffects.FlipHorizontally;
+                }
+                else if (keyboardState.IsKeyDown(Keys.Right) || keyboardState.IsKeyDown(Keys.D)) {
+                    _velocity.X = SPEED;
+                    Direction = Direction.Right;
+                    animationManager.animation.SpriteEffect = SpriteEffects.None;
+                }
+                else {
+                    Direction = Direction.Idle;
+                    _velocity.X = 0;
+                }
+                
+                _velocity.Y += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (keyboardState.IsKeyDown(Keys.Space) && _onGround) {
+                    _velocity.Y = -JUMP; // Moves the pumpkin "higher" on the level
+                    _onGround = false;
+                } 
+
+            }
+        }
+
+        /// <summary>
         /// Draws the pumpkin sprite
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
@@ -153,7 +169,7 @@ namespace RIPRUSH.Entities {
             base.Draw(gameTime, spriteBatch);
 
             //To show collision bounds --DEBUG ONLY
-            var rect = new Rectangle((int)(bounds.Center.X - bounds.Radius), (int)(bounds.Center.Y - bounds.Radius), 2 * (int)(bounds.Radius), 2 * (int)(bounds.Radius));
+            var rect = new Rectangle((int)(bounds.Center.X - bounds.Radius), (int)(bounds.Center.Y - bounds.Radius), 2 * (int)bounds.Radius, 2 * (int)bounds.Radius);
             spriteBatch.Draw(collisiontestshape, rect, Color.DarkRed);
 
         }
@@ -165,13 +181,13 @@ namespace RIPRUSH.Entities {
         public override void Update(GameTime gameTime) {
 
             Move(gameTime);
-
             SetAnimations();
+            Position += _velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Set bounds center position
             int boundswidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
             int boundsheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
-            bounds.Center = Position + new Vector2((boundswidth * Scale) / 2, (boundsheight * Scale) / 2);
+            bounds.Center = Position + new Vector2(boundswidth * Scale / 2, boundsheight * Scale / 2);
 
             base.Update(gameTime);
         }
