@@ -6,13 +6,14 @@ using MonoGameGum.Forms;
 using RIPRUSH.Screens;
 using RIPRUSH.States;
 using System;
+using MonoGameLibrary;
 
 namespace RIPRUSH
 {
     /// <summary>
     /// The main game class, responsible for initializing and running the game.
     /// </summary>
-    public class Game1 : Game
+    public class Game1 : Core
     {
         /// <summary>
         /// The graphics device manager, responsible for managing the graphics settings and device.
@@ -44,6 +45,7 @@ namespace RIPRUSH
         /// </summary>
         public Color backgroundColor;
 
+
         /// <summary>
         /// Changes the "state" or current screen of the game
         /// </summary>
@@ -53,8 +55,7 @@ namespace RIPRUSH
             _nextState = state;
         }
 
-        public Game1()
-        {
+        public Game1() : base("RIP RUSH", 800, 480, false) {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
@@ -83,6 +84,8 @@ namespace RIPRUSH
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _currentState = new MainMenuState(Content, this, _graphics.GraphicsDevice);
+
+            base.LoadContent();
         }
 
         /// <summary>

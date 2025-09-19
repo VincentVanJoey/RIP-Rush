@@ -1,4 +1,7 @@
-﻿-- Fonts --
+﻿-- Code --
+MonoGame Library and other Tutorials from Monogame Documentation (https://docs.monogame.net/)
+
+-- Fonts --
 
 Content/fonts/coraline-cat.spritefont - created by Sinister Fonts of 1001fonts.com (https://www.1001fonts.com/coralines-cat-font.html)
 Content/fonts/october-crow.spritefont - created by Sinister Fonts of 1001fonts.com (https://www.1001fonts.com/october-crow-font.html)
