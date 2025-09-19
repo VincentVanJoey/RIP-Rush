@@ -118,7 +118,7 @@ namespace RIPRUSH.States {
 
             #endregion
 
-            _player = new Pumpkin(content, true, 6) { Position = new Vector2(335, 350) };
+            _player = new Pumpkin(content, false, 6) { Position = new Vector2(335, 350) };
 
             _components = new List<Component>(){
                 playButton,

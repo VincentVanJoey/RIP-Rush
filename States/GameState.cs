@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using RIPRUSH.Entities;
 using RIPRUSH.Entities.Actors;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace RIPRUSH.States {
 
@@ -24,6 +25,14 @@ namespace RIPRUSH.States {
         private List<Platform> _platforms;
 
         private Pumpkin _player;
+        private UFO _ufo;
+        private WinFlag _winflag; 
+
+        private SpriteFont timerfont;
+        private TimeSpan timer = TimeSpan.Zero;
+        private bool timerActive = true;
+        private string timerText = "Get to the Flag!\n";
+        private string quitdirections = "";
 
         /// <summary>
         /// The constructor for the game state
@@ -33,24 +42,40 @@ namespace RIPRUSH.States {
         /// <param name="graphicsDevice">The graphics device that handles the rendering</param>
         public GameState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
 
-            game.backgroundColor = Color.MediumPurple;
+            game.backgroundColor = Color.Black;
+            timerfont = content.Load<SpriteFont>("Fonts/timer");
 
-            _player = new Pumpkin(content, true, 2.0f) {Position = new Vector2(100, 350) };
+            _player = new Pumpkin(content, true, 2.0f) {Position = new Vector2(65, 350) };
+            _ufo = new UFO(content, true, 3.0f, new Vector2(390, 250));
 
-            Platform _platform = new Platform(content, 2.0f) { Position = new Vector2(-50, 450) };
-            Platform _platform2 = new Platform(content, 2.0f) { Position = new Vector2(300, 250) };
+            Platform _platform = new Platform(content, 2.0f, new Vector2(-50, 450));
+            Platform _platform2 = new Platform(content, 1.0f, new Vector2(200, 350));
+            Platform _platform3 = new Platform(content, 1.0f, new Vector2(550, 350));
+            Platform _platform4 = new Platform(content, 1.0f, new Vector2(690, 150));
 
-            _components = new List<Component>(){
-                _player,
-                _platform,
-                _platform2
-            };
+            _winflag = new WinFlag(content, 2, new Vector2(700, 100));
+
+            _platform.Color = Color.DarkGreen;
+            _platform4.Color = Color.DarkGreen;
+            _platform3.moving = true;
+            _platform3.move_distance = 100;
 
             _platforms = new List<Platform>(){
                 _platform,
-                _platform2
+                _platform2,
+                _platform3,
+                _platform4
             };
 
+            _components = new List<Component>(){
+                _winflag,
+                _player,
+                _platform,
+                _platform2,
+                _ufo,
+                _platform3,
+                _platform4
+            };
 
         }
 
@@ -62,15 +87,15 @@ namespace RIPRUSH.States {
             var viewport = _graphicsDevice.Viewport;
 
             // Check if the pumpkin is off the left side of the screen
-            if (_player.Position.X < 0) {
+            if (_player.Position.X < 0 || _player.Position.X > _graphicsDevice.Viewport.Width) {
                 _player.Position = new Vector2(0, _player.Position.Y);
-                _player._velocity = Vector2.Zero;
+                _player.velocity.X = 0;
             }
 
             // Check if the pumpkin is falling below the bottom of the screen
             if ( _player.Position.Y > viewport.Height) {
                 _player.Position = new Vector2(100, 350);
-                _player._velocity = Vector2.Zero;
+                _player.velocity = Vector2.Zero;
             }
         }
 
@@ -84,6 +109,7 @@ namespace RIPRUSH.States {
             foreach (var component in _components) {
                 component.Draw(gameTime, spriteBatch);
             }
+            spriteBatch.DrawString(timerfont, $"{timerText}{timer:mm\\:ss}{quitdirections}", new Vector2(20, 20), Color.Gold);
             spriteBatch.End();
         }
 
@@ -92,30 +118,30 @@ namespace RIPRUSH.States {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         public override void Update(GameTime gameTime) {
-            foreach (var component in _components) {
-                component.Update(gameTime);
-            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                _game.Exit();
 
             CheckPumpkinOutOfBounds();
+            _player.CheckPumpkinPlatTouch(_platforms);
 
-            foreach (var platform in _platforms) {
-                if (platform.Bounds.CollidesWith(_player.Bounds)) {
-                    Vector2 newPos = _player.Position;
+            if (_ufo.Bounds.CollidesWith(_player.Bounds)) {
+                _player.Position = new Vector2(100, 350);
+                _player.velocity = Vector2.Zero;
+            }
 
-                    if (_player._velocity.Y > 0) { // Falling down
-                        newPos.Y = platform.Bounds.Top - _player.Bounds.Radius * 2; // Adjust to not get stuck
-                        _player._onGround = true;
-                        _player._velocity.Y = 0;
-                        _player.Position = newPos;
-                    }
-                    else if (_player._velocity.Y < 0) { // Going up (jumping)
-                        newPos.Y = platform.Bounds.Bottom; // Adjust to not get stuck
-                        _player._velocity.Y = 0;
-                        _player.Position = newPos;
-                    }
+            if (timerActive) {
+                timer += gameTime.ElapsedGameTime;
+
+                if (_winflag.Bounds.CollidesWith(_player.Bounds)){
+                    timerActive = false;
+                    timerText = "You Win!\nTime: ";
+                    quitdirections = "\nPress ESC to quit";
                 }
             }
 
+            foreach (var component in _components) {
+                component.Update(gameTime);
+            }
         }
 
         /// <summary>

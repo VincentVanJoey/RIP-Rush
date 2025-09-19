@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using RIPRUSH.Entities.CollisionShapes;
+using System;
 
 namespace RIPRUSH.Entities.Actors {
 
@@ -9,26 +10,27 @@ namespace RIPRUSH.Entities.Actors {
     /// A class representing a platform
     /// </summary>
     public class Platform : Sprite {
-        
-        /// <summary>
-        /// The direction the platform is moving
-        /// </summary>
-        public Direction Direction;
+
+        private const float SPEED = 1f;
+        private Vector2 _initialPosition;
+        private float moveProgress = 75f;
+        private bool movingUp = true;
+        public float move_distance = 0f;
+        public bool moving = false;
 
         private BoundingRectangle bounds;
-
-        //private Texture2D collisiontestshape;
 
         /// <summary>
         /// The bounding volume of the sprite
         /// </summary>
         public BoundingRectangle Bounds => bounds;
 
-        public Platform(ContentManager content, float scale) {
-            
+        public Platform(ContentManager content, float scale, Vector2 position) {
+
+            _initialPosition = position;
+            Position = position;
             Scale = scale;
-            //collisiontestshape = content.Load<Texture2D>("Assets/test_shape");
-            _texture = content.Load<Texture2D>("Assets/Button");
+            _texture = content.Load<Texture2D>("Assets/candycornplat");
 
             // Set bounds radius
             bounds = new BoundingRectangle(Position, _texture.Width * Scale, _texture.Height * Scale);
@@ -39,7 +41,25 @@ namespace RIPRUSH.Entities.Actors {
         /// The method responsible for moving
         /// </summary>
         /// <param name="gameTime">the time state of the game</param>
-        public virtual void Move(GameTime gameTime) { }
+        public void Move(GameTime gameTime) {
+            if (movingUp) {
+                moveProgress += SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (moveProgress >= 1f) {
+                    moveProgress = 1f;
+                    movingUp = false;
+                }
+            }
+            else {
+                moveProgress -= SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (moveProgress <= 0f) {
+                    moveProgress = 0f; 
+                    movingUp = true;
+                }
+            }
+
+            float offset = MathHelper.Lerp(0f, move_distance, moveProgress);
+            Position = new Vector2(_initialPosition.X, _initialPosition.Y - offset);
+        }
 
         /// <summary>
         /// Draws the sprite
@@ -50,14 +70,8 @@ namespace RIPRUSH.Entities.Actors {
 
             //any specific  draw logic here in the future?
             // In case I ever let the play customize it in any way
-            // Color or hats or something
 
             base.Draw(gameTime, spriteBatch);
-
-            //To show collision bounds --DEBUG ONLY
-            //var rect = new Rectangle((int)bounds.X, (int)bounds.Y, (int)bounds.Width, (int)bounds.Height);
-            //spriteBatch.Draw(collisiontestshape, rect, Color.DarkRed);
-
         }
 
         /// <summary>
@@ -65,8 +79,9 @@ namespace RIPRUSH.Entities.Actors {
         /// </summary>
         /// <param name="gameTime">the time state of the game</param>
         public override void Update(GameTime gameTime) {
-
-            Move(gameTime);
+            if (moving) {
+                Move(gameTime);
+            }
 
             bounds.X = Position.X;
             bounds.Y = Position.Y;

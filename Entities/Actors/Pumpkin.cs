@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using RIPRUSH.Entities.CollisionShapes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,11 +26,12 @@ namespace RIPRUSH.Entities.Actors {
     public class Pumpkin : Sprite {
 
         // Fields to avoid "magic numbers"
-        private const float SPEED = 100f;
+        private const float SPEED = 120f;
         private const float GRAVITY = 200f;
         private const float JUMP = 200f;
-        public Vector2 _velocity;
-        public bool _onGround;
+
+        public Vector2 velocity;
+        public bool onGround;
 
         /// <summary>
         /// The direction the pumpkin is moving
@@ -37,8 +39,6 @@ namespace RIPRUSH.Entities.Actors {
         public Direction Direction;
 
         private BoundingCircle bounds;
-
-        private Texture2D collisiontestshape;
 
         /// <summary>
         /// The bounding volume of the sprite
@@ -51,7 +51,6 @@ namespace RIPRUSH.Entities.Actors {
 
             // Set _isAnimated based on the constructor parameter
             _isAnimated = isAnimated;
-            collisiontestshape = content.Load<Texture2D>("Assets/test_shape");
 
             // Load specific animations if the sprite is animated
             if (_isAnimated) {
@@ -64,24 +63,63 @@ namespace RIPRUSH.Entities.Actors {
             }
             else {
                 // Load a static texture if not animated
-                _texture = content.Load<Texture2D>("Assets/test_shape");
+                _texture = content.Load<Texture2D>("Assets/Player/pumsit");
             }
 
-            // Calculate the size of the bounding circle depending on whether it's animated or not
-            int boundswidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
-            int boundsheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
+            int boundwidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
+            int boundheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
+            float radius = (boundwidth - 1 * Scale) / 2f;
+            Vector2 circleCenter = Position + new Vector2(boundwidth * Scale / 2f, boundheight * Scale / 2f);
 
-            // Set bounds center position
-            Vector2 bound_center = Position + new Vector2(boundswidth * Scale / 2, boundsheight * Scale / 2);
+            bounds = new BoundingCircle(circleCenter, radius);
 
-            // Set bounds radius
-            bounds = new BoundingCircle(bound_center, boundswidth * Scale / 2);
+        }
+
+        public void CheckPumpkinPlatTouch(List<Platform> _platforms) {
+            foreach (var platform in _platforms) {
+                if (platform.Bounds.CollidesWith(Bounds)) {
+                    Vector2 circleCenter = Bounds.Center;
+                    float radius = Bounds.Radius;
+
+                    // Find closest point on the platform rectangle to the circle center
+                    float closestX = MathHelper.Clamp(circleCenter.X, platform.Bounds.Left, platform.Bounds.Right);
+                    float closestY = MathHelper.Clamp(circleCenter.Y, platform.Bounds.Top, platform.Bounds.Bottom);
+                    Vector2 closestPoint = new Vector2(closestX, closestY);
+
+                    // Vector from closest point to circle center
+                    Vector2 delta = circleCenter - closestPoint;
+                    float distance = delta.Length();
+
+                    if (distance < radius) {
+                        float penetration = radius - distance;
+                        Vector2 pushDir = (distance == 0) ? Vector2.UnitY : Vector2.Normalize(delta);
+
+                        Position += pushDir * penetration;
+
+                        // Handle velocity depending on push direction
+                        if (Math.Abs(pushDir.X) > Math.Abs(pushDir.Y)) {
+                            velocity.X = 0; // Horizontal collision (sides)                            
+                        }
+                        else {
+                            velocity.Y = 0; // Vertical collision (top/bottom)
+
+                            if (pushDir.Y < 0) {
+                                onGround = true;
+                            }
+                        }
+                        // sync bounds
+                        int boundswidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
+                        int boundsheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
+                        bounds.Center = Position + new Vector2(boundswidth * Scale / 2, boundsheight * Scale / 2);
+                    }
+                }
+            }
 
         }
 
         public void LoadAnimations(ContentManager content) {
-            Animation idleAnimation = new(content.Load<Texture2D>("Player/Idle"), 20, true, Color, Origin, Rotation, Scale);
-            Animation rollAntimation = new(content.Load<Texture2D>("Player/Roll"), 15, true, Color, Origin, Rotation, Scale);
+            Animation idleAnimation = new(content.Load<Texture2D>("Assets/Player/Idle"), 20, true, Color, Origin, Rotation, Scale);
+            Animation rollAntimation = new(content.Load<Texture2D>("Assets/Player/Roll"), 15, true, Color, Origin, Rotation, Scale);
 
             animations.Add("Idle", idleAnimation);
             animations.Add("Roll", rollAntimation);
@@ -90,7 +128,7 @@ namespace RIPRUSH.Entities.Actors {
         /// <summary>
         /// The method responsible for determining which animation to play
         /// </summary>
-        public virtual void SetAnimations() {
+        public void SetAnimations() {
             if (animationManager == null) {
                 return;
             }
@@ -123,7 +161,7 @@ namespace RIPRUSH.Entities.Actors {
         /// The method responsible for moving the pumpkin sprite
         /// </summary>
         /// <param name="gameTime">the time state of the game</param>
-        public virtual void Move(GameTime gameTime) {
+        public void Move(GameTime gameTime) {
             if (!_isAnimated) {
                 return; // No movement if not animated 
             }
@@ -131,25 +169,25 @@ namespace RIPRUSH.Entities.Actors {
                 var keyboardState = Keyboard.GetState();
 
                 if (keyboardState.IsKeyDown(Keys.Left) || keyboardState.IsKeyDown(Keys.A)) {
-                    _velocity.X = -SPEED;
+                    velocity.X = -SPEED;
                     Direction = Direction.Left;
                     animationManager.animation.SpriteEffect = SpriteEffects.FlipHorizontally;
                 }
                 else if (keyboardState.IsKeyDown(Keys.Right) || keyboardState.IsKeyDown(Keys.D)) {
-                    _velocity.X = SPEED;
+                    velocity.X = SPEED;
                     Direction = Direction.Right;
                     animationManager.animation.SpriteEffect = SpriteEffects.None;
                 }
                 else {
                     Direction = Direction.Idle;
-                    _velocity.X = 0;
+                    velocity.X = 0;
                 }
                 
-                _velocity.Y += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                velocity.Y += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (keyboardState.IsKeyDown(Keys.Space) && _onGround) {
-                    _velocity.Y = -JUMP; // Moves the pumpkin "higher" on the level
-                    _onGround = false;
+                if (keyboardState.IsKeyDown(Keys.Space) && onGround) {
+                    velocity.Y = -JUMP; // Moves the pumpkin "higher" on the level
+                    onGround = false;
                 } 
 
             }
@@ -167,11 +205,6 @@ namespace RIPRUSH.Entities.Actors {
             // Color or hats or something
 
             base.Draw(gameTime, spriteBatch);
-
-            //To show collision bounds --DEBUG ONLY
-            var rect = new Rectangle((int)(bounds.Center.X - bounds.Radius), (int)(bounds.Center.Y - bounds.Radius), 2 * (int)bounds.Radius, 2 * (int)bounds.Radius);
-            spriteBatch.Draw(collisiontestshape, rect, Color.DarkRed);
-
         }
 
         /// <summary>
@@ -180,15 +213,16 @@ namespace RIPRUSH.Entities.Actors {
         /// <param name="gameTime">the time state of the game</param>
         public override void Update(GameTime gameTime) {
 
-            Move(gameTime);
-            SetAnimations();
-            Position += _velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (_isAnimated){
+                Move(gameTime);
+                SetAnimations();
+                Position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            // Set bounds center position
-            int boundswidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
-            int boundsheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
-            bounds.Center = Position + new Vector2(boundswidth * Scale / 2, boundsheight * Scale / 2);
-
+                int boundwidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
+                int boundheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
+                bounds.Center = Position + new Vector2(boundwidth * Scale / 2f, boundheight * Scale / 2f);
+                bounds.Radius = .8f * ((boundwidth * Scale) / 2f);
+            }
             base.Update(gameTime);
         }
 
