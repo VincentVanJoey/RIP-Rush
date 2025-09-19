@@ -1,5 +1,6 @@
 ﻿-- Code --
-MonoGame Library and other Tutorials from Monogame Documentation (https://docs.monogame.net/)
+
+MonoGameLibrary all relevant tutorial code from Monogame Documentation (https://docs.monogame.net/)
 
 -- Fonts --
 

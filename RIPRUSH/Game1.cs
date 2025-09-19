@@ -1,12 +1,16 @@
-﻿using Gum.Forms.Controls;
+﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGameGum;
-using MonoGameGum.Forms;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using MonoGameLibrary;
+using MonoGameLibrary.Input;
 using RIPRUSH.Screens;
 using RIPRUSH.States;
-using System;
-using MonoGameLibrary;
+using MonoGameGum;
+using MonoGameGum.Forms;
+using Gum.Forms.Controls;
 
 namespace RIPRUSH
 {
@@ -15,10 +19,11 @@ namespace RIPRUSH
     /// </summary>
     public class Game1 : Core
     {
+
         /// <summary>
-        /// The graphics device manager, responsible for managing the graphics settings and device.
+        /// The background color of the game window.
         /// </summary>
-        private GraphicsDeviceManager _graphics;
+        public Color backgroundColor;
 
         /// <summary>
         /// The Gum UI service, used for managing UI elements and interactions.
@@ -26,9 +31,15 @@ namespace RIPRUSH
         GumService GumUI => GumService.Default;
 
         /// <summary>
+        /// The graphics device manager, responsible for managing the graphics settings and device.
+        /// </summary>
+        private GraphicsDeviceManager _graphics;
+
+        /// <summary>
         /// The sprite batch, used for drawing textures and sprites to the screen.
         /// </summary>
         private SpriteBatch _spriteBatch;
+
 
         /// <summary>
         /// The current state of the game, representing the active screen or mode.
@@ -39,11 +50,6 @@ namespace RIPRUSH
         /// The next state of the game, used for transitioning between different screens or modes.
         /// </summary>
         private State _nextState;
-
-        /// <summary>
-        /// The background color of the game window.
-        /// </summary>
-        public Color backgroundColor;
 
 
         /// <summary>
@@ -56,7 +62,7 @@ namespace RIPRUSH
         }
 
         public Game1() : base("RIP RUSH", 800, 480, false) {
-            _graphics = new GraphicsDeviceManager(this);
+            _graphics = Graphics;
             Content.RootDirectory = "Content";
         }
 
@@ -81,8 +87,7 @@ namespace RIPRUSH
         /// </summary>
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            _spriteBatch = SpriteBatch;
             _currentState = new MainMenuState(Content, this, _graphics.GraphicsDevice);
 
             base.LoadContent();
