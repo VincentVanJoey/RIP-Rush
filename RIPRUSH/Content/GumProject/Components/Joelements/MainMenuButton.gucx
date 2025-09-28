@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ComponentSave xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Name>Joelements/MenuButton</Name>
+  <Name>Joelements/MainMenuButton</Name>
   <BaseType>Container</BaseType>
   <State>
     <Name>Default</Name>
@@ -97,8 +97,9 @@
     <Variable>
       <Type>int</Type>
       <Name>ButtonWords.Blue</Name>
+      <Value xsi:type="xsd:int">0</Value>
       <ExposedAsName>MenuButtonTextColorBlue</ExposedAsName>
-      <SetsValue>false</SetsValue>
+      <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <IsFont>true</IsFont>
@@ -117,8 +118,9 @@
     <Variable>
       <Type>int</Type>
       <Name>ButtonWords.Green</Name>
+      <Value xsi:type="xsd:int">185</Value>
       <ExposedAsName>MenuButtonTextColorGreen</ExposedAsName>
-      <SetsValue>false</SetsValue>
+      <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>float</Type>
@@ -135,8 +137,9 @@
     <Variable>
       <Type>int</Type>
       <Name>ButtonWords.Red</Name>
+      <Value xsi:type="xsd:int">5</Value>
       <ExposedAsName>MenuButtonTextColorRed</ExposedAsName>
-      <SetsValue>false</SetsValue>
+      <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>string</Type>
@@ -247,6 +250,24 @@
         <Value xsi:type="xsd:int">255</Value>
         <SetsValue>true</SetsValue>
       </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Blue</Name>
+        <ExposedAsName>MenuButtonTextColorBlue</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Green</Name>
+        <ExposedAsName>MenuButtonTextColorGreen</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Red</Name>
+        <ExposedAsName>MenuButtonTextColorRed</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
     </State>
     <State>
       <Name>Disabled</Name>
@@ -268,6 +289,24 @@
         <Value xsi:type="xsd:int">255</Value>
         <SetsValue>true</SetsValue>
       </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Blue</Name>
+        <ExposedAsName>MenuButtonTextColorBlue</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Green</Name>
+        <ExposedAsName>MenuButtonTextColorGreen</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Red</Name>
+        <ExposedAsName>MenuButtonTextColorRed</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
     </State>
     <State>
       <Name>Highlighted</Name>
@@ -280,13 +319,31 @@
       <Variable>
         <Type>int</Type>
         <Name>Background.Green</Name>
-        <Value xsi:type="xsd:int">175</Value>
+        <Value xsi:type="xsd:int">103</Value>
         <SetsValue>true</SetsValue>
       </Variable>
       <Variable>
         <Type>int</Type>
         <Name>Background.Red</Name>
         <Value xsi:type="xsd:int">255</Value>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Blue</Name>
+        <Value xsi:type="xsd:int">39</Value>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Green</Name>
+        <Value xsi:type="xsd:int">178</Value>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Red</Name>
+        <Value xsi:type="xsd:int">42</Value>
         <SetsValue>true</SetsValue>
       </Variable>
     </State>
@@ -310,6 +367,24 @@
         <Value xsi:type="xsd:int">255</Value>
         <SetsValue>true</SetsValue>
       </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Blue</Name>
+        <ExposedAsName>MenuButtonTextColorBlue</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Green</Name>
+        <ExposedAsName>MenuButtonTextColorGreen</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Red</Name>
+        <ExposedAsName>MenuButtonTextColorRed</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
     </State>
     <State>
       <Name>HighlightedFocused</Name>
@@ -329,6 +404,24 @@
         <Type>int</Type>
         <Name>Background.Red</Name>
         <Value xsi:type="xsd:int">255</Value>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Blue</Name>
+        <ExposedAsName>MenuButtonTextColorBlue</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Green</Name>
+        <ExposedAsName>MenuButtonTextColorGreen</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Red</Name>
+        <ExposedAsName>MenuButtonTextColorRed</ExposedAsName>
         <SetsValue>true</SetsValue>
       </Variable>
     </State>
@@ -352,6 +445,24 @@
         <Value xsi:type="xsd:int">255</Value>
         <SetsValue>true</SetsValue>
       </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Blue</Name>
+        <ExposedAsName>MenuButtonTextColorBlue</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Green</Name>
+        <ExposedAsName>MenuButtonTextColorGreen</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Red</Name>
+        <ExposedAsName>MenuButtonTextColorRed</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
     </State>
     <State>
       <Name>DisabledFocused</Name>
@@ -371,6 +482,24 @@
         <Type>int</Type>
         <Name>Background.Red</Name>
         <Value xsi:type="xsd:int">255</Value>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Blue</Name>
+        <ExposedAsName>MenuButtonTextColorBlue</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Green</Name>
+        <ExposedAsName>MenuButtonTextColorGreen</ExposedAsName>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>int</Type>
+        <Name>ButtonWords.Red</Name>
+        <ExposedAsName>MenuButtonTextColorRed</ExposedAsName>
         <SetsValue>true</SetsValue>
       </Variable>
     </State>

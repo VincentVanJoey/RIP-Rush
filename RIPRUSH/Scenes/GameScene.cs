@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameGum;
 using MonoGameLibrary;
 using MonoGameLibrary.Scenes;
 using RIPRUSH.Entities;
@@ -10,7 +11,7 @@ using RIPRUSH.Entities.Actors;
 using System;
 using System.Collections.Generic;
 
-namespace RIPRUSH.States {
+namespace RIPRUSH.Scenes {
 
     /// <summary>
     /// A class representing the actual playable game state of the game
@@ -77,6 +78,7 @@ namespace RIPRUSH.States {
                 _platform4
             };
 
+            GumService.Default.Root.Children.Clear();
         }
 
         public override void LoadContent() {

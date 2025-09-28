@@ -250,7 +250,7 @@
     <LinkType>ReferenceOriginal</LinkType>
   </ComponentReference>
   <ComponentReference>
-    <Name>Joelements/MenuButton</Name>
+    <Name>Joelements/MainMenuButton</Name>
     <ElementType>Component</ElementType>
     <LinkType>ReferenceOriginal</LinkType>
   </ComponentReference>

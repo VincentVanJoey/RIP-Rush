@@ -2,524 +2,6 @@
   "UserEvents": {
     "47fa8c23ea5040f2f8363d3515698abea2bfa58b5ae71a6912ff98f2ebcf547c": [
       {
-        "NewName": "MainMenu",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 0,
-        "TimestampUtc": "2025-09-13T22:48:22.0201705Z"
-      },
-      {
-        "NewName": "MainMenu.TextInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-13T22:49:13.5960308Z"
-      },
-      {
-        "NewName": "MainMenu.SpriteInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-13T22:53:40.1683707Z"
-      },
-      {
-        "NewName": "MainMenu.Title",
-        "OldName": "MainMenu.TextInstance",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-13T22:53:46.0496276Z"
-      },
-      {
-        "NewName": "Button",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 0,
-        "TimestampUtc": "2025-09-13T22:57:37.2245514Z"
-      },
-      {
-        "NewName": "Button (Container).ColoredRectangleInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-13T22:57:45.954522Z"
-      },
-      {
-        "NewName": "Button (Container).TextInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-13T22:57:51.7609731Z"
-      },
-      {
-        "NewName": "MainMenu.ButtonInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-13T23:05:31.5077468Z"
-      },
-      {
-        "NewName": "MainMenu.ButtonInstance1",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-13T23:07:28.3342092Z"
-      },
-      {
-        "NewName": "CategoryDemo",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 0,
-        "TimestampUtc": "2025-09-13T23:15:52.432197Z"
-      },
-      {
-        "NewName": "CategoryDemo (Container).ColoredRectangleInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-13T23:17:57.1496147Z"
-      },
-      {
-        "NewName": "CategoryDemo (Container).ColoredRectangleInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-13T23:18:11.1640304Z"
-      },
-      {
-        "NewName": "MainMenu.CategoryDemoInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-13T23:20:21.4728318Z"
-      },
-      {
-        "NewName": "MainMenu.SpriteInstance1",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T00:29:59.5745802Z"
-      },
-      {
-        "NewName": "erdfgdf",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 0,
-        "TimestampUtc": "2025-09-14T00:45:22.8303865Z"
-      },
-      {
-        "NewName": "erdfgdf (Container).SpriteInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T00:57:04.2527867Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "MainMenu.Sprite SpriteInstance in MainMenu",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T00:59:50.9275951Z"
-      },
-      {
-        "NewName": "MainMenu.erdfgdfInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T00:59:52.4737984Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "erdfgdf (Container).Sprite SpriteInstance in erdfgdf (Container)",
-        "ElementType": "Components",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T01:08:06.6492413Z"
-      },
-      {
-        "NewName": "erdfgdf (Container).TextInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T01:09:14.3242034Z"
-      },
-      {
-        "NewName": "erdfgdf (Container).TextInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T01:10:17.9166208Z"
-      },
-      {
-        "NewName": "MainMenu.erdfgdfInstance1",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T01:19:01.216843Z"
-      },
-      {
-        "NewName": "MainMenu.ButtonStandardIconInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T01:26:53.533007Z"
-      },
-      {
-        "NewName": "Main Menu",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 0,
-        "TimestampUtc": "2025-09-14T14:46:53.6657861Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "Main Menu",
-        "ElementType": "Screens",
-        "EventType": 1,
-        "TimestampUtc": "2025-09-14T14:47:05.713697Z"
-      },
-      {
-        "NewName": "TitleScreen",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 0,
-        "TimestampUtc": "2025-09-14T14:47:13.2250199Z"
-      },
-      {
-        "NewName": "TitleScreen.TextInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T14:47:37.5609102Z"
-      },
-      {
-        "NewName": "TitleScreen.ButtonStandardInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T14:49:45.7016766Z"
-      },
-      {
-        "NewName": "TitleScreen.Title",
-        "OldName": "TitleScreen.TextInstance",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T14:49:53.5825669Z"
-      },
-      {
-        "NewName": "TitleScreen.ButtonStart",
-        "OldName": "TitleScreen.ButtonStandardInstance",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T14:50:00.7081313Z"
-      },
-      {
-        "NewName": "TitleScreen.ButtonStandardInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T14:50:04.5454047Z"
-      },
-      {
-        "NewName": "TitleScreen.ButtonStandardInstance1",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T14:50:06.5020695Z"
-      },
-      {
-        "NewName": "TitleScreen.ButtonSettings",
-        "OldName": "TitleScreen.ButtonStandardInstance",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T14:50:11.2377067Z"
-      },
-      {
-        "NewName": "TitleScreen.StackPanelInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T14:50:21.7115269Z"
-      },
-      {
-        "NewName": "TitleScreen.MenuButtons",
-        "OldName": "TitleScreen.StackPanelInstance",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T14:50:34.5912338Z"
-      },
-      {
-        "NewName": "TitleScreen.Quit",
-        "OldName": "TitleScreen.ButtonStandardInstance1",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T14:53:52.1400012Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Controls/StackPanel MenuButtons in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:06:40.5719902Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Controls/ButtonStandard ButtonSettings in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:06:40.7057421Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Controls/ButtonStandard ButtonStart in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:06:40.7122873Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Controls/ButtonStandard Quit in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:06:40.7346754Z"
-      },
-      {
-        "NewName": "TitleScreen.RIP",
-        "OldName": "TitleScreen.Title",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T19:15:48.1451834Z"
-      },
-      {
-        "NewName": "TitleScreen.TextInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T19:16:02.2680447Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Controls/StackPanel MenuButtons in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:16:08.9527136Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Controls/ButtonStandard ButtonSettings in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:16:09.0270368Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Controls/ButtonStandard ButtonStart in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:16:09.031589Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Controls/ButtonStandard Quit in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:16:09.0482228Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Text TextInstance in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:16:13.988254Z"
-      },
-      {
-        "NewName": "TitleScreen.RIP1",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T19:16:19.9329299Z"
-      },
-      {
-        "NewName": "TitleScreen.RUSH",
-        "OldName": "TitleScreen.RIP1",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T19:16:27.0605343Z"
-      },
-      {
-        "NewName": "TitleScreen.SpriteInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T19:32:07.9894486Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Text RIP in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:32:39.560683Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Text RUSH in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:32:39.5631319Z"
-      },
-      {
-        "NewName": "TitleScreen.Title",
-        "OldName": "TitleScreen.SpriteInstance",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T19:35:04.7193577Z"
-      },
-      {
-        "NewName": "TitleScreen.SpriteInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T19:35:09.856408Z"
-      },
-      {
-        "NewName": "Controls/MenuButton",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 0,
-        "TimestampUtc": "2025-09-14T19:35:52.6107677Z"
-      },
-      {
-        "NewName": "MenuButton",
-        "OldName": "Controls/MenuButton",
-        "ElementType": "Components",
-        "EventType": 2,
-        "TimestampUtc": "2025-09-14T19:35:57.2935969Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "MenuButton (Container).NineSlice Background in MenuButton (Container)",
-        "ElementType": "Components",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:36:14.7495158Z"
-      },
-      {
-        "NewName": "MenuButton (Container).SpriteInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T19:36:24.5201618Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "MenuButton (Container).Text TextInstance in MenuButton (Container)",
-        "ElementType": "Components",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:38:52.1402558Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "MenuButton (Container).NineSlice FocusedIndicator in MenuButton (Container)",
-        "ElementType": "Components",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:39:27.7115194Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "MenuButton (Container).Sprite SpriteInstance in MenuButton (Container)",
-        "ElementType": "Components",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:39:38.7303575Z"
-      },
-      {
-        "NewName": "MenuButton (Container).RectangleInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T19:39:59.072623Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "MenuButton (Container).Rectangle RectangleInstance in MenuButton (Container)",
-        "ElementType": "Components",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T19:40:11.9552434Z"
-      },
-      {
-        "NewName": "MenuButton (Container).ColoredRectangleInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T19:40:17.1693275Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Sprite SpriteInstance in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T20:02:09.8307151Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "MenuButton (Container).ColoredRectangle ColoredRectangleInstance in MenuButton (Container)",
-        "ElementType": "Components",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T20:02:21.3398392Z"
-      },
-      {
-        "NewName": "MenuButton (Container).SpriteInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:02:33.1433918Z"
-      },
-      {
-        "NewName": "MenuButton (Container).TextInstance",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:03:10.9708749Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton",
-        "OldName": "MenuButton",
-        "ElementType": "Components",
-        "EventType": 2,
-        "TimestampUtc": "2025-09-14T20:07:11.9104347Z"
-      },
-      {
-        "NewName": "TitleText",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 0,
-        "TimestampUtc": "2025-09-14T20:07:27.7600292Z"
-      },
-      {
-        "NewName": "Joelements/TitleText",
-        "OldName": "TitleText",
-        "ElementType": "Components",
-        "EventType": 2,
-        "TimestampUtc": "2025-09-14T20:07:32.1397998Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Sprite Title in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T20:07:46.1497272Z"
-      },
-      {
-        "NewName": "TitleScreen.TitleTextInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:07:47.5307105Z"
-      },
-      {
-        "NewName": "TitleScreen.MenuButtonInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:08:23.8127993Z"
-      },
-      {
         "NewName": null,
         "OldName": "TitleScreen.Joelements/MenuButton MenuButtonInstance in TitleScreen",
         "ElementType": "Screens",
@@ -756,6 +238,90 @@
         "ElementType": "Screens",
         "EventType": 6,
         "TimestampUtc": "2025-09-14T21:04:16.787018Z"
+      },
+      {
+        "NewName": "TitleScreen.StackPanelInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-28T20:47:30.1631621Z"
+      },
+      {
+        "NewName": "TitleScreen.ButtonStackPanel",
+        "OldName": "TitleScreen.StackPanelInstance",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-28T20:47:38.1715714Z"
+      },
+      {
+        "NewName": "TitleScreen.MenuButtonInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-28T20:59:07.0763017Z"
+      },
+      {
+        "NewName": "TitleScreen.MenuButtonInstance1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-28T20:59:09.8565519Z"
+      },
+      {
+        "NewName": "TitleScreen.MenuButtonInstance2",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-28T20:59:12.3976806Z"
+      },
+      {
+        "NewName": "TitleScreen.Play",
+        "OldName": "TitleScreen.MenuButtonInstance",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-28T20:59:38.2603563Z"
+      },
+      {
+        "NewName": "TitleScreen.PlayButton",
+        "OldName": "TitleScreen.Play",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-28T20:59:41.6933348Z"
+      },
+      {
+        "NewName": "TitleScreen.Settings",
+        "OldName": "TitleScreen.MenuButtonInstance1",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-28T21:02:53.7545598Z"
+      },
+      {
+        "NewName": "TitleScreen.SettingsButton",
+        "OldName": "TitleScreen.Settings",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-28T21:02:57.5771185Z"
+      },
+      {
+        "NewName": "TitleScreen.QuitButton",
+        "OldName": "TitleScreen.MenuButtonInstance2",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-28T21:03:02.151357Z"
+      },
+      {
+        "NewName": "Joelements/TitleBUtton",
+        "OldName": "Joelements/MenuButton",
+        "ElementType": "Components",
+        "EventType": 2,
+        "TimestampUtc": "2025-09-28T21:03:14.7247261Z"
+      },
+      {
+        "NewName": "Joelements/MainMenuButton",
+        "OldName": "Joelements/TitleBUtton",
+        "ElementType": "Components",
+        "EventType": 2,
+        "TimestampUtc": "2025-09-28T21:03:28.6591366Z"
       }
     ]
   }

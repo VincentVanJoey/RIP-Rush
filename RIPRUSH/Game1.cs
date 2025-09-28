@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameGum;
 using MonoGameLibrary;
-using RIPRUSH.States;
+using RIPRUSH.Scenes;
 using Gum.Forms;
 using Gum.Forms.Controls;
 
@@ -14,11 +14,6 @@ namespace RIPRUSH
     /// </summary>
     public class Game1 : Core
     {
-
-        /// <summary>
-        /// The Gum UI service, used for managing UI elements and interactions.
-        /// </summary>
-        GumService GumUI => GumService.Default;
 
         public Game1() : base("RIP RUSH", 800, 480, false) {
             Content.RootDirectory = "Content";
@@ -71,7 +66,7 @@ namespace RIPRUSH
                 Audio.SoundEffectVolume -= 0.1f;
             }
 
-            GumUI.Update(gameTime);
+            GumService.Default.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -82,14 +77,14 @@ namespace RIPRUSH
         /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GumUI.Draw();
+            GraphicsDevice.Clear(Color.Black); //clears back buffer (?)
             base.Draw(gameTime);
+            GumService.Default.Draw();
         }
 
         private void InitializeGum() {
             // Initialize the Gum service. The second parameter specifies
-            // the version of the default visuals to use. V2 is the latest
-            // version.
+            // the the GUMUI forms file used
             GumService.Default.Initialize(this, "GumProject/RIPRUSH_GUIS.gumx");
 
             // Tell the Gum service which content manager to use.  We will tell it to

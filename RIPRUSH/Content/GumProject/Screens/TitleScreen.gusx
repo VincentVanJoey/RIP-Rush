@@ -5,6 +5,90 @@
     <Name>Default</Name>
     <Variable>
       <Type>float</Type>
+      <Name>ButtonStackPanel.Height</Name>
+      <Value xsi:type="xsd:float">248</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>DimensionUnitType</Type>
+      <Name>ButtonStackPanel.HeightUnits</Name>
+      <Value xsi:type="xsd:int">7</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>ButtonStackPanel.Width</Name>
+      <Value xsi:type="xsd:float">0</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>DimensionUnitType</Type>
+      <Name>ButtonStackPanel.WidthUnits</Name>
+      <Value xsi:type="xsd:int">4</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>ButtonStackPanel.X</Name>
+      <Value xsi:type="xsd:float">18.1666832</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>HorizontalAlignment</Type>
+      <Name>ButtonStackPanel.XOrigin</Name>
+      <Value xsi:type="xsd:int">1</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>PositionUnitType</Type>
+      <Name>ButtonStackPanel.XUnits</Name>
+      <Value xsi:type="xsd:int">2</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>ButtonStackPanel.Y</Name>
+      <Value xsi:type="xsd:float">225</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>string</Type>
+      <Name>PlayButton.buttonText</Name>
+      <Value xsi:type="xsd:string">Play</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>string</Type>
+      <Name>PlayButton.Parent</Name>
+      <Value xsi:type="xsd:string">ButtonStackPanel</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>string</Type>
+      <Name>QuitButton.buttonText</Name>
+      <Value xsi:type="xsd:string">Quit</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>string</Type>
+      <Name>QuitButton.Parent</Name>
+      <Value xsi:type="xsd:string">ButtonStackPanel</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>string</Type>
+      <Name>SettingsButton.buttonText</Name>
+      <Value xsi:type="xsd:string">???</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>string</Type>
+      <Name>SettingsButton.Parent</Name>
+      <Value xsi:type="xsd:string">ButtonStackPanel</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
       <Name>Title.Height</Name>
       <Value xsi:type="xsd:float">227</Value>
       <SetsValue>true</SetsValue>
@@ -21,6 +105,26 @@
     <BaseType>Joelements/TitleText</BaseType>
     <DefinedByBase>false</DefinedByBase>
     <Locked>true</Locked>
+  </Instance>
+  <Instance>
+    <Name>ButtonStackPanel</Name>
+    <BaseType>Controls/StackPanel</BaseType>
+    <DefinedByBase>false</DefinedByBase>
+  </Instance>
+  <Instance>
+    <Name>PlayButton</Name>
+    <BaseType>Joelements/MainMenuButton</BaseType>
+    <DefinedByBase>false</DefinedByBase>
+  </Instance>
+  <Instance>
+    <Name>SettingsButton</Name>
+    <BaseType>Joelements/MainMenuButton</BaseType>
+    <DefinedByBase>false</DefinedByBase>
+  </Instance>
+  <Instance>
+    <Name>QuitButton</Name>
+    <BaseType>Joelements/MainMenuButton</BaseType>
+    <DefinedByBase>false</DefinedByBase>
   </Instance>
   <Behaviors />
 </ScreenSave>

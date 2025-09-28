@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace RIPRUSH.States {
+namespace RIPRUSH.Scenes {
 
     /// <summary>
     /// A class representing the main menu state of the game
@@ -25,16 +25,6 @@ namespace RIPRUSH.States {
         private List<Component> _components;
 
         #region -- Aesthetic Fields --
-
-        /// <summary>
-        /// The texture for the buttons
-        /// </summary>
-        private Texture2D _buttonTexture;
-
-        /// <summary>
-        /// The text font for the buttons
-        /// </summary>
-        private SpriteFont _buttonFont;
 
         /// <summary>
         /// texture for the moon
@@ -89,31 +79,9 @@ namespace RIPRUSH.States {
             // can close the game by pressing the escape key.
             Core.ExitOnEscape = true;
 
-            var playButton = new JoeyButton(_buttonTexture, _buttonFont, Color.Green, Color.OrangeRed) {
-                Position = new Vector2(25, 250),
-                Text = "Play",
-            };
-
-            var somethingButton = new JoeyButton(_buttonTexture, _buttonFont, Color.Green, Color.OrangeRed) {
-                Position = new Vector2(25, 330),
-                Text = "???",
-            };
-
-            var quitButton = new JoeyButton(_buttonTexture, _buttonFont, Color.Green, Color.OrangeRed) {
-                Position = new Vector2(25, 410),
-                Text = "Quit",
-            };
-
-            playButton.Click += PlayButton_Click;
-            somethingButton.Click += SomethingButton_Click;
-            quitButton.Click += QuitButton_Click;
-
             _player = new Pumpkin(Core.Content, false, 6) { Position = new Vector2(335, 350) };
 
             _components = new List<Component>(){
-                playButton,
-                somethingButton,
-                quitButton,
                 _player
             };
         }
@@ -127,9 +95,6 @@ namespace RIPRUSH.States {
 
             _grave1_texture = Core.Content.Load<Texture2D>("Assets/headstone");
             _grave2_texture = Core.Content.Load<Texture2D>("Assets/woodstone");
-
-            _buttonTexture = Core.Content.Load<Texture2D>("Assets/Button2");
-            _buttonFont = Core.Content.Load<SpriteFont>("Fonts/coralines-cat");
         }
 
         /// <summary>
@@ -173,39 +138,6 @@ namespace RIPRUSH.States {
                 component.Update(gameTime);
             }
         }
-
-        #region Button Click Events
-
-        /// <summary>
-        /// The event handler for when the play button is clicked
-        /// </summary>
-        /// <param name="sender">The object signaling the event</param>
-        /// <param name="e">Information about the event</param>
-        private void PlayButton_Click(object sender, System.EventArgs e) {
-            //GumService.Default.Root.Children.Clear();
-            Core.GraphicsDevice.Clear(Color.Black);
-            Core.ChangeScene(new GameScene());
-
-        }
-
-        /// <summary>
-        /// The event handler for when the ??? button is clicked
-        /// </summary>
-        /// <param name="sender">The object signaling the event</param>
-        /// <param name="e">Information about the event</param>
-        private void SomethingButton_Click(object sender, System.EventArgs e) {
-            Console.WriteLine("something");
-        }
-
-        /// <summary>
-        /// The event handler for when the quit button is clicked
-        /// </summary>
-        /// <param name="sender">The object signaling the event</param>
-        /// <param name="e">Information about the event</param>
-        private void QuitButton_Click(object sender, System.EventArgs e) {
-            Core.Instance.Exit();
-        }
-        #endregion
 
     }
 }

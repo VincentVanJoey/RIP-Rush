@@ -4,6 +4,7 @@ using System.Linq;
 using MonoGameGum;
 using MonoGameGum.GueDeriving;
 using RIPRUSH.Components.Joelements;
+using RIPRUSH.Components.Controls;
 using Gum.Converters;
 using Gum.DataTypes;
 using Gum.Managers;
@@ -39,6 +40,10 @@ partial class TitleScreen : MonoGameGum.Forms.Controls.FrameworkElement
         });
     }
     public TitleText Title { get; protected set; }
+    public StackPanel ButtonStackPanel { get; protected set; }
+    public MainMenuButton PlayButton { get; protected set; }
+    public MainMenuButton SettingsButton { get; protected set; }
+    public MainMenuButton QuitButton { get; protected set; }
 
     public TitleScreen(InteractiveGue visual) : base(visual)
     {
@@ -53,6 +58,10 @@ partial class TitleScreen : MonoGameGum.Forms.Controls.FrameworkElement
     {
         base.ReactToVisualChanged();
         Title = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<TitleText>(this.Visual,"Title");
+        ButtonStackPanel = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<StackPanel>(this.Visual,"ButtonStackPanel");
+        PlayButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<MainMenuButton>(this.Visual,"PlayButton");
+        SettingsButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<MainMenuButton>(this.Visual,"SettingsButton");
+        QuitButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<MainMenuButton>(this.Visual,"QuitButton");
         CustomInitialize();
     }
     //Not assigning variables because Object Instantiation Type is set to By Name rather than Fully In Code
