@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameLibrary;
+using MonoGameLibrary.Scenes;
 using RIPRUSH.Entities;
 using RIPRUSH.Entities.Actors;
 using System;
@@ -12,7 +15,7 @@ namespace RIPRUSH.States {
     /// <summary>
     /// A class representing the actual playable game state of the game
     /// </summary>
-    public class GameState : State {
+    public class GameScene : Scene {
 
         /// <summary>
         /// The list of the game state's components to be drawn/updated/interacted with
@@ -34,26 +37,23 @@ namespace RIPRUSH.States {
         private string timerText = "Get to the Flag!\n";
         private string quitdirections = "";
 
-        /// <summary>
-        /// The constructor for the game state
-        /// </summary>
-        /// <param name="content">The Content state's contentmanager</param>
-        /// <param name="game">The actual game base object</param>
-        /// <param name="graphicsDevice">The graphics device that handles the rendering</param>
-        public GameState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(content, game, graphicsDevice) {
+        public override void Initialize() {
+            // LoadContent is called during base.Initialize().
+            base.Initialize();
 
-            game.backgroundColor = Color.Black;
-            timerfont = content.Load<SpriteFont>("Fonts/timer");
+            // During the game scene, we want to disable exit on escape. Instead,
+            // the escape key will be used to return back to the title screen
+            Core.ExitOnEscape = false;
 
-            _player = new Pumpkin(content, true, 2.0f) {Position = new Vector2(65, 350) };
-            _ufo = new UFO(content, true, 3.0f, new Vector2(390, 250));
+            _player = new Pumpkin(Core.Content, true, 2.0f) { Position = new Vector2(65, 350) };
+            _ufo = new UFO(Core.Content, true, 3.0f, new Vector2(390, 250));
 
-            Platform _platform = new Platform(content, 2.0f, new Vector2(-50, 450));
-            Platform _platform2 = new Platform(content, 1.0f, new Vector2(200, 350));
-            Platform _platform3 = new Platform(content, 1.0f, new Vector2(550, 350));
-            Platform _platform4 = new Platform(content, 1.0f, new Vector2(690, 150));
+            Platform _platform = new Platform(Core.Content, 2.0f, new Vector2(-50, 450));
+            Platform _platform2 = new Platform(Core.Content, 1.0f, new Vector2(200, 350));
+            Platform _platform3 = new Platform(Core.Content, 1.0f, new Vector2(550, 350));
+            Platform _platform4 = new Platform(Core.Content, 1.0f, new Vector2(690, 150));
 
-            _winflag = new WinFlag(content, 2, new Vector2(700, 100));
+            _winflag = new WinFlag(Core.Content, 2, new Vector2(700, 100));
 
             _platform.Color = Color.DarkGreen;
             _platform4.Color = Color.DarkGreen;
@@ -79,15 +79,20 @@ namespace RIPRUSH.States {
 
         }
 
+        public override void LoadContent() {
+            timerfont = Core.Content.Load<SpriteFont>("Fonts/timer");
+        }
+
+
         /// <summary>
         /// Checks if the pumpkin is out of the viewport and handles it accordingly.
         /// </summary>
         private void CheckPumpkinOutOfBounds() {
             // Get the viewport dimensions
-            var viewport = _graphicsDevice.Viewport;
+            var viewport = Core.GraphicsDevice.Viewport;
 
             // Check if the pumpkin is off the left side of the screen
-            if (_player.Position.X < 0 || _player.Position.X > _graphicsDevice.Viewport.Width) {
+            if (_player.Position.X < 0 || _player.Position.X > Core.GraphicsDevice.Viewport.Width) {
                 _player.Position = new Vector2(0, _player.Position.Y);
                 _player.velocity.X = 0;
             }
@@ -104,13 +109,15 @@ namespace RIPRUSH.States {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+        public override void Draw(GameTime gameTime) {
+            Core.GraphicsDevice.Clear(Color.Black);
+
+            Core.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
             foreach (var component in _components) {
-                component.Draw(gameTime, spriteBatch);
+                component.Draw(gameTime, Core.SpriteBatch);
             }
-            spriteBatch.DrawString(timerfont, $"{timerText}{timer:mm\\:ss}{quitdirections}", new Vector2(20, 20), Color.Gold);
-            spriteBatch.End();
+            Core.SpriteBatch.DrawString(timerfont, $"{timerText}{timer:mm\\:ss}{quitdirections}", new Vector2(20, 20), Color.Gold);
+            Core.SpriteBatch.End();
         }
 
         /// <summary>
@@ -118,8 +125,8 @@ namespace RIPRUSH.States {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         public override void Update(GameTime gameTime) {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                _game.Exit();
+            if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Escape))
+                Core.Instance.Exit();
 
             CheckPumpkinOutOfBounds();
             _player.CheckPumpkinPlatTouch(_platforms);
@@ -144,10 +151,5 @@ namespace RIPRUSH.States {
             }
         }
 
-        /// <summary>
-        /// post update logic for the game state, if any
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
-        public override void PostUpdate(GameTime gameTime) { }
     }
 }
