@@ -134,6 +134,7 @@ namespace RIPRUSH.States {
             if (_ufo.Bounds.CollidesWith(_player.Bounds)) {
                 _player.Position = new Vector2(100, 350);
                 _player.velocity = Vector2.Zero;
+                Core.Audio.PlaySoundEffect(_player._deathSound);
             }
 
             if (timerActive) {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -7,6 +8,7 @@ using RIPRUSH.Entities.CollisionShapes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 
 namespace RIPRUSH.Entities.Actors {
 
@@ -28,8 +30,8 @@ namespace RIPRUSH.Entities.Actors {
 
         // Fields to avoid "magic numbers"
         private const float SPEED = 120f;
-        private const float GRAVITY = 200f;
-        private const float JUMP = 200f;
+        private const float GRAVITY = 350f;
+        private const float JUMP = 300f;
 
         public Vector2 velocity;
         public bool onGround;
@@ -46,6 +48,10 @@ namespace RIPRUSH.Entities.Actors {
         /// </summary>
         public BoundingCircle Bounds => bounds;
 
+        public SoundEffect _jumpSound;
+        public SoundEffect _deathSound;
+
+
         public Pumpkin(ContentManager content, bool isAnimated, float scale) {
             animations = new Dictionary<string, Animation>();
             Scale = scale;
@@ -55,7 +61,7 @@ namespace RIPRUSH.Entities.Actors {
 
             // Load specific animations if the sprite is animated
             if (_isAnimated) {
-                LoadAnimations(content);
+                LoadActiveContent(content);
 
                 // Initialize the AnimationManager (it will be set to null if not animated)
                 if (animations.Count != 0) {
@@ -118,7 +124,13 @@ namespace RIPRUSH.Entities.Actors {
 
         }
 
-        public void LoadAnimations(ContentManager content) {
+        public void LoadActiveContent(ContentManager content) {
+            // SFX
+            _jumpSound = content.Load<SoundEffect>("Assets/Audio/Jump");
+            _deathSound = content.Load<SoundEffect>("Assets/Audio/Death");
+
+
+            // Animation data
             Animation idleAnimation = new(content.Load<Texture2D>("Assets/Player/Idle"), 20, true, Color, Origin, Rotation, Scale);
             Animation rollAntimation = new(content.Load<Texture2D>("Assets/Player/Roll"), 15, true, Color, Origin, Rotation, Scale);
 
@@ -185,9 +197,10 @@ namespace RIPRUSH.Entities.Actors {
                 
                 velocity.Y += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (Core.Input.Keyboard.IsKeyDown(Keys.Space) && onGround) {
+                if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Space) && onGround) {
                     velocity.Y = -JUMP; // Moves the pumpkin "higher" on the level
                     onGround = false;
+                    Core.Audio.PlaySoundEffect(_jumpSound);
                 } 
 
             }

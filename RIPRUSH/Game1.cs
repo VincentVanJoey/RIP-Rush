@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGameGum;
 using MonoGameLibrary;
-using RIPRUSH.Screens;
 using RIPRUSH.States;
+using Gum.Forms;
+using Gum.Forms.Controls;
 
 namespace RIPRUSH
 {
@@ -30,12 +32,10 @@ namespace RIPRUSH
         /// additional initialization logic specific to this game.</remarks>
         protected override void Initialize()
         {
-            IsMouseVisible = true;
-            
-            GumUI.Initialize(this, "GumProject/RIPRUSH_GUIS.gumx");
-
             base.Initialize();
+            InitializeGum();
 
+            IsMouseVisible = true;
             ChangeScene(new MainMenuScene());
         }
 
@@ -53,7 +53,24 @@ namespace RIPRUSH
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         protected override void Update(GameTime gameTime)
-        {   
+        {
+            // If the M key is pressed, toggle mute state for audio.
+            if (Input.Keyboard.WasKeyJustPressed(Keys.M)) {
+                Audio.ToggleMute();
+            }
+
+            // If the + button is pressed, increase the volume.
+            if (Input.Keyboard.WasKeyJustPressed(Keys.OemPlus)) {
+                Audio.SongVolume += 0.1f;
+                Audio.SoundEffectVolume += 0.1f;
+            }
+
+            // If the - button was pressed, decrease the volume.
+            if (Input.Keyboard.WasKeyJustPressed(Keys.OemMinus)) {
+                Audio.SongVolume -= 0.1f;
+                Audio.SoundEffectVolume -= 0.1f;
+            }
+
             GumUI.Update(gameTime);
             base.Update(gameTime);
         }
@@ -68,5 +85,33 @@ namespace RIPRUSH
             GumUI.Draw();
             base.Draw(gameTime);
         }
+
+        private void InitializeGum() {
+            // Initialize the Gum service. The second parameter specifies
+            // the version of the default visuals to use. V2 is the latest
+            // version.
+            GumService.Default.Initialize(this, "GumProject/RIPRUSH_GUIS.gumx");
+
+            // Tell the Gum service which content manager to use.  We will tell it to
+            // use the global content manager from our Core.
+            GumService.Default.ContentLoader.XnaContentManager = Core.Content;
+
+            // Register keyboard input for UI control.
+            FrameworkElement.KeyboardsForUiControl.Add(GumService.Default.Keyboard);
+
+            // Register gamepad input for Ui control.
+            FrameworkElement.GamePadsForUiControl.AddRange(GumService.Default.Gamepads);
+
+            // Customize the tab reverse UI navigation to also trigger when the keyboard
+            // Up arrow key is pushed.
+            FrameworkElement.TabReverseKeyCombos.Add(
+               new KeyCombo() { PushedKey = Microsoft.Xna.Framework.Input.Keys.Up });
+
+            // Customize the tab UI navigation to also trigger when the keyboard
+            // Down arrow key is pushed.
+            FrameworkElement.TabKeyCombos.Add(
+               new KeyCombo() { PushedKey = Microsoft.Xna.Framework.Input.Keys.Down });
+        }
+
     }
 }
