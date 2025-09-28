@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameLibrary;
 using RIPRUSH.Entities.CollisionShapes;
 using System;
 using System.Collections.Generic;
@@ -166,14 +167,13 @@ namespace RIPRUSH.Entities.Actors {
                 return; // No movement if not animated 
             }
             else {
-                var keyboardState = Keyboard.GetState();
 
-                if (keyboardState.IsKeyDown(Keys.Left) || keyboardState.IsKeyDown(Keys.A)) {
+                if (Core.Input.Keyboard.IsKeyDown(Keys.Left) || Core.Input.Keyboard.IsKeyDown(Keys.A)) {
                     velocity.X = -SPEED;
                     Direction = Direction.Left;
                     animationManager.animation.SpriteEffect = SpriteEffects.FlipHorizontally;
                 }
-                else if (keyboardState.IsKeyDown(Keys.Right) || keyboardState.IsKeyDown(Keys.D)) {
+                else if (Core.Input.Keyboard.IsKeyDown(Keys.Right) || Core.Input.Keyboard.IsKeyDown(Keys.D)) {
                     velocity.X = SPEED;
                     Direction = Direction.Right;
                     animationManager.animation.SpriteEffect = SpriteEffects.None;
@@ -185,7 +185,7 @@ namespace RIPRUSH.Entities.Actors {
                 
                 velocity.Y += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (keyboardState.IsKeyDown(Keys.Space) && onGround) {
+                if (Core.Input.Keyboard.IsKeyDown(Keys.Space) && onGround) {
                     velocity.Y = -JUMP; // Moves the pumpkin "higher" on the level
                     onGround = false;
                 } 
