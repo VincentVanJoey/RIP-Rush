@@ -88,6 +88,12 @@
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
+      <Type>ButtonCategory</Type>
+      <Name>ThumbInstance.ButtonCategoryState</Name>
+      <Value xsi:type="xsd:string">Enabled</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
       <Type>string</Type>
       <Name>ThumbInstance.ButtonDisplayText</Name>
       <Value xsi:type="xsd:string"></Value>

@@ -29,7 +29,7 @@ namespace RIPRUSH.Entities.Actors {
     public class Pumpkin : Sprite {
 
         // Fields to avoid "magic numbers"
-        private const float SPEED = 120f;
+        private const float SPEED = 140f;
         private const float GRAVITY = 350f;
         private const float JUMP = 300f;
 
@@ -50,6 +50,7 @@ namespace RIPRUSH.Entities.Actors {
 
         public SoundEffect _jumpSound;
         public SoundEffect _deathSound;
+        public SoundEffect _fallSound;
 
 
         public Pumpkin(ContentManager content, bool isAnimated, float scale) {
@@ -128,6 +129,7 @@ namespace RIPRUSH.Entities.Actors {
             // SFX
             _jumpSound = content.Load<SoundEffect>("Assets/Audio/Jump");
             _deathSound = content.Load<SoundEffect>("Assets/Audio/Death");
+            _fallSound = content.Load<SoundEffect>("Assets/Audio/Fall");
 
 
             // Animation data

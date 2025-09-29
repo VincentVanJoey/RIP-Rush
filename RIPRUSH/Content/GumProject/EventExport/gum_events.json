@@ -2,244 +2,6 @@
   "UserEvents": {
     "47fa8c23ea5040f2f8363d3515698abea2bfa58b5ae71a6912ff98f2ebcf547c": [
       {
-        "NewName": null,
-        "OldName": "TitleScreen.Joelements/MenuButton MenuButtonInstance in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T20:11:23.4634048Z"
-      },
-      {
-        "NewName": "TitleScreen.MenuButtonInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:11:25.9635412Z"
-      },
-      {
-        "NewName": "TitleScreen.MenuButtonInstance1",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:12:16.1084801Z"
-      },
-      {
-        "NewName": "TitleScreen.MenuButtonInstance2",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:12:19.6482035Z"
-      },
-      {
-        "NewName": "TitleScreen.SpriteInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:13:20.2756418Z"
-      },
-      {
-        "NewName": "TitleScreen.Grave1",
-        "OldName": "TitleScreen.SpriteInstance",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:34:47.7642166Z"
-      },
-      {
-        "NewName": "TitleScreen.Grave2",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:34:55.7460262Z"
-      },
-      {
-        "NewName": "TitleScreen.Grave3",
-        "OldName": "TitleScreen.Grave1",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:35:07.0733125Z"
-      },
-      {
-        "NewName": "TitleScreen.Grave1",
-        "OldName": "TitleScreen.Grave2",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:35:12.0151816Z"
-      },
-      {
-        "NewName": "TitleScreen.Grave2",
-        "OldName": "TitleScreen.Grave3",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:35:22.1827215Z"
-      },
-      {
-        "NewName": "TitleScreen.Title",
-        "OldName": "TitleScreen.TitleTextInstance",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:36:16.1230929Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).Background",
-        "OldName": "Joelements/MenuButton (Container).SpriteInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:34.8733383Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).Background",
-        "OldName": "Joelements/MenuButton (Container).SpriteInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:34.8755226Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).Background",
-        "OldName": "Joelements/MenuButton (Container).SpriteInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:34.8909224Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).Background",
-        "OldName": "Joelements/MenuButton (Container).SpriteInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:34.9239211Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).Background",
-        "OldName": "Joelements/MenuButton (Container).SpriteInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:34.9369153Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).Background",
-        "OldName": "Joelements/MenuButton (Container).SpriteInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:34.9467712Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).Background",
-        "OldName": "Joelements/MenuButton (Container).SpriteInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:34.9598735Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).Background",
-        "OldName": "Joelements/MenuButton (Container).SpriteInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:34.9753197Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).ButtonWords",
-        "OldName": "Joelements/MenuButton (Container).TextInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:51.3538694Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).ButtonWords",
-        "OldName": "Joelements/MenuButton (Container).TextInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:51.3560955Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).ButtonWords",
-        "OldName": "Joelements/MenuButton (Container).TextInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:51.3692635Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).ButtonWords",
-        "OldName": "Joelements/MenuButton (Container).TextInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:51.3799889Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).ButtonWords",
-        "OldName": "Joelements/MenuButton (Container).TextInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:51.3913302Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).ButtonWords",
-        "OldName": "Joelements/MenuButton (Container).TextInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:51.4018142Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).ButtonWords",
-        "OldName": "Joelements/MenuButton (Container).TextInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:51.4132228Z"
-      },
-      {
-        "NewName": "Joelements/MenuButton (Container).ButtonWords",
-        "OldName": "Joelements/MenuButton (Container).TextInstance",
-        "ElementType": "Components",
-        "EventType": 7,
-        "TimestampUtc": "2025-09-14T20:37:51.4231777Z"
-      },
-      {
-        "NewName": "Joelements/TitleText (Container).Grave2",
-        "OldName": null,
-        "ElementType": "Components",
-        "EventType": 5,
-        "TimestampUtc": "2025-09-14T20:38:24.7309398Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "DemoScreenGum",
-        "ElementType": "Screens",
-        "EventType": 1,
-        "TimestampUtc": "2025-09-14T20:39:29.2448911Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Joelements/MenuButton MenuButtonInstance in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T21:04:03.1186423Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Joelements/MenuButton MenuButtonInstance2 in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T21:04:08.5927049Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Joelements/MenuButton MenuButtonInstance1 in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T21:04:08.5927049Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Sprite Grave1 in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T21:04:16.7849994Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "TitleScreen.Sprite Grave2 in TitleScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-09-14T21:04:16.787018Z"
-      },
-      {
         "NewName": "TitleScreen.StackPanelInstance",
         "OldName": null,
         "ElementType": "Screens",
@@ -322,6 +84,447 @@
         "ElementType": "Components",
         "EventType": 2,
         "TimestampUtc": "2025-09-28T21:03:28.6591366Z"
+      },
+      {
+        "NewName": "SettingsScreen",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 0,
+        "TimestampUtc": "2025-09-28T22:10:26.6672132Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/DialogBox DialogBoxInstance in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:17:30.275891Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/ButtonStandard ShowToastButton in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:17:38.1884459Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/ButtonStandard ShowDialogButton in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:17:38.190459Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/WindowStandard WindowStandardInstance in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:17:47.601704Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/Label LabelInstance1 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:17:47.8197358Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/ButtonConfirm WindowOkButton in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:17:47.8561174Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.NineSlice DemoHud in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:17:54.4553418Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.NineSlice DemoHud in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.1644213Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/ButtonClose ButtonCloseInstance2 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.4650615Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/DividerHorizontal DividerInstance5 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.4925752Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Text TitleText2 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.529549Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Container MenuTitle2 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.5613786Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/PercentBar PercentBarInstance in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.6050377Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/PercentBar PercentBarInstance1 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.6225266Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/PercentBar PercentBarInstance2 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.6665716Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/PercentBar PercentBarInstance3 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.6888563Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/PercentBar PercentBarInstance4 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.7130342Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/PercentBarIcon PercentBarInstance5 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.7467493Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Container ContainerInstance in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.7634701Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/PercentBar HitpointsBar1 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.793262Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/PercentBar HitpointsBar2 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.8161601Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/PercentBar HitpointsBar3 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:18:04.8393085Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/TreeView TreeViewInstance in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:24:37.0951329Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Container ButtonContainer in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:25:01.2232727Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/ComboBox ComboBoxInstance in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:25:01.2232727Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/Label DifficultyLabel in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:25:01.2364105Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Elements/DividerHorizontal DividerInstance3 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:25:01.2473153Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/RadioButton RadioButtonInstance2 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:25:01.2589766Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/RadioButton RadioButtonInstance1 in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:25:01.2701018Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/RadioButton RadioButtonInstance in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:25:01.2810297Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/Label ControlLabel in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-28T22:25:01.292112Z"
+      },
+      {
+        "NewName": "Proj2SettingsScreen",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 0,
+        "TimestampUtc": "2025-09-29T02:00:24.4586726Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 1,
+        "TimestampUtc": "2025-09-29T02:00:34.3092672Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Controls/ButtonConfirm ButtonConfirmInstance in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:01:36.5675778Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Controls/ButtonDeny ButtonDenyInstance in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:01:36.5700587Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/ButtonConfirm ButtonConfirmInstance in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:09:52.4045592Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "DemoScreenGum.Controls/ButtonDeny ButtonDenyInstance in DemoScreenGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:09:52.4055664Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Container DemoDialog in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:03.67601Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.NineSlice Background1 in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:03.8296252Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Controls/Label LabelInstance in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:03.8433278Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Controls/ButtonClose ButtonCloseInstance1 in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:03.8787087Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Elements/DividerHorizontal DividerInstance4 in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:03.898941Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Text TitleText1 in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:03.9182177Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Container MenuTitle1 in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:03.9554931Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Controls/TextBox MultiLineTextBox in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:03.9732441Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Controls/TextBox TextBoxInstance in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:03.9955555Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Controls/PasswordBox TextBoxInstance1 in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:04.0168296Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Container MarginContainer in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:11:04.0358121Z"
+      },
+      {
+        "NewName": "Proj2SettingsScreen.MainMenuButtonInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-29T02:21:35.7523475Z"
+      },
+      {
+        "NewName": "Styles (Container).DarkBlue",
+        "OldName": "Styles (Container).PrimaryDark",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:32:24.7174949Z"
+      },
+      {
+        "NewName": "Styles (Container).PrimaryBlue",
+        "OldName": "Styles (Container).Primary",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:32:36.4302772Z"
+      },
+      {
+        "NewName": "Styles (Container).LightBlue",
+        "OldName": "Styles (Container).PrimaryLight",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:32:40.8810318Z"
+      },
+      {
+        "NewName": "Styles (Container).PrimaryGreen",
+        "OldName": "Styles (Container).Success",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:32:53.8286757Z"
+      },
+      {
+        "NewName": "Styles (Container).Orange",
+        "OldName": "Styles (Container).Warning",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:33:15.2980993Z"
+      },
+      {
+        "NewName": "Styles (Container).Primary",
+        "OldName": "Styles (Container).PrimaryBlue",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:33:32.2415727Z"
+      },
+      {
+        "NewName": "Styles (Container).DarkPrimary",
+        "OldName": "Styles (Container).DarkBlue",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:37:56.0638516Z"
+      },
+      {
+        "NewName": "Styles (Container).LightPrimary",
+        "OldName": "Styles (Container).LightBlue",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:38:00.2749455Z"
+      },
+      {
+        "NewName": "Styles (Container).PrimaryBlue",
+        "OldName": "Styles (Container).Orange",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:38:08.1365875Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Elements/DividerHorizontal DividerInstance2 in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T02:50:17.0198237Z"
+      },
+      {
+        "NewName": "Proj2SettingsScreen.SettingsMenuPanel",
+        "OldName": "Proj2SettingsScreen.DemoSettingsMenu",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:51:00.9547252Z"
+      },
+      {
+        "NewName": "Proj2SettingsScreen.TurnBackButton",
+        "OldName": "Proj2SettingsScreen.MainMenuButtonInstance",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-29T02:57:14.4359376Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Proj2SettingsScreen.Elements/DividerHorizontal DividerInstance in Proj2SettingsScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-29T03:02:59.1863207Z"
       }
     ]
   }

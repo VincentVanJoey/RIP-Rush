@@ -19,11 +19,23 @@
 /processorParam:Quality=Best
 /build:Assets/Audio/Death.wav
 
+#begin Assets/Audio/Fall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/Fall.wav
+
 #begin Assets/Audio/Jump.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Assets/Audio/Jump.wav
+
+#begin Assets/Audio/UI.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/UI.wav
 
 #begin Assets/Button.png
 /importer:TextureImporter

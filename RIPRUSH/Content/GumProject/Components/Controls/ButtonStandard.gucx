@@ -12,7 +12,7 @@
     <Variable>
       <Type>ColorCategory</Type>
       <Name>Background.ColorCategoryState</Name>
-      <Value xsi:type="xsd:string">PrimaryDark</Value>
+      <Value xsi:type="xsd:string">Primary</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -40,7 +40,7 @@
     <Variable>
       <Type>StyleCategory</Type>
       <Name>Background.StyleCategoryState</Name>
-      <Value xsi:type="xsd:string">CircleBordered</Value>
+      <Value xsi:type="xsd:string">Solid</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -94,7 +94,8 @@
     <Variable>
       <Type>ButtonCategory</Type>
       <Name>ButtonCategoryState</Name>
-      <SetsValue>false</SetsValue>
+      <Value xsi:type="xsd:string">Highlighted</Value>
+      <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>ColorCategory</Type>
@@ -190,14 +191,14 @@
       <IsFont>true</IsFont>
       <Type>string</Type>
       <Name>TextInstance.Font</Name>
-      <Value xsi:type="xsd:string">Coraline's Cat</Value>
+      <Value xsi:type="xsd:string">Arial</Value>
       <ExposedAsName>TextInstanceFont</ExposedAsName>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>int</Type>
       <Name>TextInstance.FontSize</Name>
-      <Value xsi:type="xsd:int">10</Value>
+      <Value xsi:type="xsd:int">14</Value>
       <ExposedAsName>TextInstanceFontSize</ExposedAsName>
       <SetsValue>true</SetsValue>
     </Variable>
@@ -262,6 +263,12 @@
         <SetsValue>true</SetsValue>
       </Variable>
       <Variable>
+        <Type>string</Type>
+        <Name>ContainedType</Name>
+        <Category>Children</Category>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
         <Type>bool</Type>
         <Name>FocusedIndicator.Visible</Name>
         <Value xsi:type="xsd:boolean">false</Value>
@@ -280,6 +287,12 @@
         <Type>ColorCategory</Type>
         <Name>Background.ColorCategoryState</Name>
         <Value xsi:type="xsd:string">DarkGray</Value>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>string</Type>
+        <Name>ContainedType</Name>
+        <Category>Children</Category>
         <SetsValue>true</SetsValue>
       </Variable>
       <Variable>
@@ -304,6 +317,12 @@
         <SetsValue>true</SetsValue>
       </Variable>
       <Variable>
+        <Type>string</Type>
+        <Name>ContainedType</Name>
+        <Value xsi:type="xsd:string"></Value>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
         <Type>bool</Type>
         <Name>FocusedIndicator.Visible</Name>
         <Value xsi:type="xsd:boolean">false</Value>
@@ -322,6 +341,12 @@
         <Type>ColorCategory</Type>
         <Name>Background.ColorCategoryState</Name>
         <Value xsi:type="xsd:string">PrimaryDark</Value>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>string</Type>
+        <Name>ContainedType</Name>
+        <Category>Children</Category>
         <SetsValue>true</SetsValue>
       </Variable>
       <Variable>
@@ -346,6 +371,12 @@
         <SetsValue>true</SetsValue>
       </Variable>
       <Variable>
+        <Type>string</Type>
+        <Name>ContainedType</Name>
+        <Category>Children</Category>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
         <Type>bool</Type>
         <Name>FocusedIndicator.Visible</Name>
         <Value xsi:type="xsd:boolean">true</Value>
@@ -367,6 +398,12 @@
         <SetsValue>true</SetsValue>
       </Variable>
       <Variable>
+        <Type>string</Type>
+        <Name>ContainedType</Name>
+        <Category>Children</Category>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
         <Type>bool</Type>
         <Name>FocusedIndicator.Visible</Name>
         <Value xsi:type="xsd:boolean">true</Value>
@@ -385,6 +422,12 @@
         <Type>ColorCategory</Type>
         <Name>Background.ColorCategoryState</Name>
         <Value xsi:type="xsd:string">DarkGray</Value>
+        <SetsValue>true</SetsValue>
+      </Variable>
+      <Variable>
+        <Type>string</Type>
+        <Name>ContainedType</Name>
+        <Category>Children</Category>
         <SetsValue>true</SetsValue>
       </Variable>
       <Variable>

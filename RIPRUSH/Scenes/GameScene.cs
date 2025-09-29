@@ -101,6 +101,7 @@ namespace RIPRUSH.Scenes {
 
             // Check if the pumpkin is falling below the bottom of the screen
             if ( _player.Position.Y > viewport.Height) {
+                Core.Audio.PlaySoundEffect(_player._fallSound);
                 _player.Position = new Vector2(100, 350);
                 _player.velocity = Vector2.Zero;
             }

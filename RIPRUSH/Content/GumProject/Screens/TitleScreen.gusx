@@ -4,15 +4,21 @@
   <State>
     <Name>Default</Name>
     <Variable>
+      <Type>bool</Type>
+      <Name>ButtonStackPanel.ClipsChildren</Name>
+      <Value xsi:type="xsd:boolean">false</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
       <Type>float</Type>
       <Name>ButtonStackPanel.Height</Name>
-      <Value xsi:type="xsd:float">248</Value>
+      <Value xsi:type="xsd:float">0</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>DimensionUnitType</Type>
       <Name>ButtonStackPanel.HeightUnits</Name>
-      <Value xsi:type="xsd:int">7</Value>
+      <Value xsi:type="xsd:int">4</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -78,7 +84,7 @@
     <Variable>
       <Type>string</Type>
       <Name>SettingsButton.buttonText</Name>
-      <Value xsi:type="xsd:string">???</Value>
+      <Value xsi:type="xsd:string">Settings</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
