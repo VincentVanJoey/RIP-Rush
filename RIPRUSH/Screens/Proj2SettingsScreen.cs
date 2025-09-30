@@ -19,6 +19,9 @@ namespace RIPRUSH.Screens
         {
             _uiSound = Core.Content.Load<SoundEffect>("Assets/Audio/UI");
 
+            MusicSlider.SliderPercent = Core.Audio.SongVolume * 100;
+            SoundSlider.SliderPercent = Core.Audio.SoundEffectVolume * 100;
+
             MusicSlider.ValueChanged += MusicSliderChanged;
             SoundSlider.ValueChanged += SoundSliderChanged;
             MusicSlider.ValueChangeCompleted += (_,_) => Core.Audio.PlaySoundEffect(_uiSound);

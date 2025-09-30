@@ -265,6 +265,11 @@
     <LinkType>ReferenceOriginal</LinkType>
   </ComponentReference>
   <ComponentReference>
+    <Name>Joelements/PauseMenu</Name>
+    <ElementType>Component</ElementType>
+    <LinkType>ReferenceOriginal</LinkType>
+  </ComponentReference>
+  <ComponentReference>
     <Name>Joelements/TitleText</Name>
     <ElementType>Component</ElementType>
     <LinkType>ReferenceOriginal</LinkType>

@@ -3,6 +3,7 @@ using Gum.DataTypes;
 using Gum.Managers;
 using Gum.Wireframe;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using MonoGameGum;
 using MonoGameLibrary;
 using RenderingLibrary.Graphics;
@@ -14,12 +15,21 @@ namespace RIPRUSH.Screens
     partial class TitleScreen
     {
         private SoundEffect _uiSound;
+        public Song MenuSong;
+
         partial void CustomInitialize()
         {
+
             _uiSound = Core.Content.Load<SoundEffect>("Assets/Audio/UI");
             PlayButton.Click += PlayButton_Click;
             SettingsButton.Click += SettingsButton_Click;
             QuitButton.Click += QuitButton_Click;
+
+            MenuSong = Core.Content.Load<Song>("Assets/Audio/Music/MenuMusic");
+            
+            if (MediaPlayer.State != MediaState.Playing)
+                Core.Audio.PlaySong(MenuSong);
+
         }
 
         #region Button Click Events

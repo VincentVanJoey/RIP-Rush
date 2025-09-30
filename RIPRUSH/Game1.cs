@@ -6,6 +6,7 @@ using MonoGameLibrary;
 using RIPRUSH.Scenes;
 using Gum.Forms;
 using Gum.Forms.Controls;
+using Microsoft.Xna.Framework.Media;
 
 namespace RIPRUSH
 {
@@ -14,6 +15,7 @@ namespace RIPRUSH
     /// </summary>
     public class Game1 : Core
     {
+        public Song GameSong;
 
         public Game1() : base("RIP RUSH", 800, 480, false) {
             Content.RootDirectory = "Content";
@@ -40,6 +42,7 @@ namespace RIPRUSH
         /// </summary>
         protected override void LoadContent()
         {
+            GameSong = Content.Load<Song>("Assets/Audio/Music/GameMusic");
             base.LoadContent();
         }
 

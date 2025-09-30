@@ -457,7 +457,7 @@
     <Variable>
       <Type>string</Type>
       <Name>TitleText.Text</Name>
-      <Value xsi:type="xsd:string">-- Settings --</Value>
+      <Value xsi:type="xsd:string">~ Settings ~</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>

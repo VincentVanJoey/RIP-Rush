@@ -31,11 +31,29 @@
 /processorParam:Quality=Best
 /build:Assets/Audio/Jump.wav
 
+#begin Assets/Audio/Music/GameMusic.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/Music/GameMusic.mp3
+
+#begin Assets/Audio/Music/MenuMusic.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/Music/MenuMusic.mp3
+
 #begin Assets/Audio/UI.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Assets/Audio/UI.wav
+
+#begin Assets/Audio/Win.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/Win.wav
 
 #begin Assets/Button.png
 /importer:TextureImporter

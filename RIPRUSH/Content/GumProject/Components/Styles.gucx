@@ -390,30 +390,6 @@
     </Variable>
     <Variable>
       <Type>int</Type>
-      <Name>PrimaryBlue.Blue</Name>
-      <Value xsi:type="xsd:int">235</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>int</Type>
-      <Name>PrimaryBlue.Green</Name>
-      <Value xsi:type="xsd:int">181</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>PrimaryBlue.Parent</Name>
-      <Value xsi:type="xsd:string">Colors</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>int</Type>
-      <Name>PrimaryBlue.Red</Name>
-      <Value xsi:type="xsd:int">34</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>int</Type>
       <Name>Primary.Blue</Name>
       <Value xsi:type="xsd:int">0</Value>
       <SetsValue>true</SetsValue>
@@ -434,6 +410,30 @@
       <Type>int</Type>
       <Name>Primary.Red</Name>
       <Value xsi:type="xsd:int">255</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>int</Type>
+      <Name>PrimaryBlue.Blue</Name>
+      <Value xsi:type="xsd:int">235</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>int</Type>
+      <Name>PrimaryBlue.Green</Name>
+      <Value xsi:type="xsd:int">181</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>string</Type>
+      <Name>PrimaryBlue.Parent</Name>
+      <Value xsi:type="xsd:string">Colors</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>int</Type>
+      <Name>PrimaryBlue.Red</Name>
+      <Value xsi:type="xsd:int">34</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>

@@ -525,6 +525,356 @@
         "ElementType": "Screens",
         "EventType": 6,
         "TimestampUtc": "2025-09-29T03:02:59.1863207Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-09-30T01:16:26.9469972Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).StackPanelInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:18:05.3644178Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).MainMenuButtonInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:18:16.3952905Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).MainMenuButtonInstance1",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:18:19.2439419Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).MainMenuButtonInstance2",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:18:20.9403366Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).LabelInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:18:52.9233614Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/PauseMenu (Container).Joelements/MainMenuButton MainMenuButtonInstance in Joelements/PauseMenu (Container)",
+        "ElementType": "Components",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-30T01:19:08.4485803Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/PauseMenu (Container).Joelements/MainMenuButton MainMenuButtonInstance1 in Joelements/PauseMenu (Container)",
+        "ElementType": "Components",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-30T01:19:08.4505771Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/PauseMenu (Container).Joelements/MainMenuButton MainMenuButtonInstance2 in Joelements/PauseMenu (Container)",
+        "ElementType": "Components",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-30T01:19:08.4680041Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).MainMenuButtonInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:19:11.1389095Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).MainMenuButtonInstance1",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:19:14.5961145Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).MainMenuButtonInstance2",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:19:19.7361913Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/PauseMenu (Controls/StackPanel).Controls/StackPanel StackPanelInstance in Joelements/PauseMenu (Controls/StackPanel)",
+        "ElementType": "Components",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-30T01:20:34.7235141Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Controls/StackPanel).Background",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:21:38.828956Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/PauseMenu (Controls/StackPanel).NineSlice Background in Joelements/PauseMenu (Controls/StackPanel)",
+        "ElementType": "Components",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-30T01:22:28.4686184Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Controls/StackPanel).Background",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:22:34.6811949Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/PauseMenu (Controls/StackPanel).Controls/Label LabelInstance in Joelements/PauseMenu (Controls/StackPanel)",
+        "ElementType": "Components",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-30T01:23:45.5830459Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/PauseMenu (Controls/StackPanel).Joelements/MainMenuButton MainMenuButtonInstance in Joelements/PauseMenu (Controls/StackPanel)",
+        "ElementType": "Components",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-30T01:23:45.5872734Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/PauseMenu (Controls/StackPanel).Joelements/MainMenuButton MainMenuButtonInstance1 in Joelements/PauseMenu (Controls/StackPanel)",
+        "ElementType": "Components",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-30T01:23:45.5997902Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/PauseMenu (Controls/StackPanel).Joelements/MainMenuButton MainMenuButtonInstance2 in Joelements/PauseMenu (Controls/StackPanel)",
+        "ElementType": "Components",
+        "EventType": 6,
+        "TimestampUtc": "2025-09-30T01:23:45.6106195Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Controls/StackPanel).LabelInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:23:56.9481268Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Controls/StackPanel).MainMenuButtonInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:24:01.8929761Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Controls/StackPanel).MainMenuButtonInstance1",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:24:03.0553789Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Controls/StackPanel).MainMenuButtonInstance2",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:24:04.007987Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).StackPanelInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T01:24:27.24445Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).PauseTitleButton",
+        "OldName": "Joelements/PauseMenu (Container).MainMenuButtonInstance2",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-30T01:37:33.1837949Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).PauseSettingsButton",
+        "OldName": "Joelements/PauseMenu (Container).MainMenuButtonInstance1",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-30T01:37:42.5730048Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).PauseResumeButton",
+        "OldName": "Joelements/PauseMenu (Container).MainMenuButtonInstance",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-30T01:37:58.6268556Z"
+      },
+      {
+        "NewName": "Joelements/PauseMenu (Container).PauseLabel",
+        "OldName": "Joelements/PauseMenu (Container).LabelInstance",
+        "ElementType": "Components",
+        "EventType": 7,
+        "TimestampUtc": "2025-09-30T01:38:13.3926325Z"
+      },
+      {
+        "NewName": "SettingsMenu",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-09-30T03:19:40.7584716Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "SettingsMenu",
+        "ElementType": "Components",
+        "EventType": 1,
+        "TimestampUtc": "2025-09-30T03:20:11.5255881Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-09-30T03:21:13.7303854Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).SettingsMenuPanel",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.1265304Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).Background",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.2050088Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).MenuTitle",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.2628053Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).MenuItems",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.3229295Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).TitleText",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.383799Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).ResolutionLabel",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.436594Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).ResolutionBox",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.486497Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).DetectResolutionsButton",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.5323537Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).FullScreenCheckbox",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.5792417Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).DividerInstance1",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.6323801Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).MusicLabel",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.6892913Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).MusicSlider",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.7515181Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).SoundLabel",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.8086438Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).SoundSlider",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.8595557Z"
+      },
+      {
+        "NewName": "Joelements/SettingsMenu (Container).TurnBackButton",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-09-30T03:21:33.9191675Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/SettingsMenu",
+        "ElementType": "Components",
+        "EventType": 1,
+        "TimestampUtc": "2025-09-30T03:37:49.4616817Z"
+      },
+      {
+        "NewName": "MainTitleButtonStack",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-09-30T03:39:09.8768106Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "MainTitleButtonStack",
+        "ElementType": "Components",
+        "EventType": 1,
+        "TimestampUtc": "2025-09-30T03:39:25.8453911Z"
       }
     ]
   }

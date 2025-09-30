@@ -72,9 +72,6 @@ namespace RIPRUSH.Scenes {
             // LoadContent is called during base.Initialize().
             base.Initialize();
 
-            var screen = new TitleScreen();
-            screen.AddToRoot();
-
             // While on the title screen, we can enable exit on escape so the player
             // can close the game by pressing the escape key.
             Core.ExitOnEscape = true;
@@ -84,6 +81,10 @@ namespace RIPRUSH.Scenes {
             _components = new List<Component>(){
                 _player
             };
+
+            GumService.Default.Root.Children.Clear();
+            var screen = new TitleScreen();
+            screen.AddToRoot();
         }
 
         public override void LoadContent() {

@@ -3,11 +3,14 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using MonoGameGum;
 using MonoGameLibrary;
 using MonoGameLibrary.Scenes;
+using RIPRUSH.Components.Joelements;
 using RIPRUSH.Entities;
 using RIPRUSH.Entities.Actors;
+using RIPRUSH.Screens;
 using System;
 using System.Collections.Generic;
 
@@ -28,6 +31,10 @@ namespace RIPRUSH.Scenes {
         /// </summary>
         private List<Platform> _platforms;
 
+        private Song GameSong; 
+        private SoundEffect WinSound; 
+        private PauseMenu _pauseMenu;
+
         private Pumpkin _player;
         private UFO _ufo;
         private WinFlag _winflag; 
@@ -41,6 +48,8 @@ namespace RIPRUSH.Scenes {
         public override void Initialize() {
             // LoadContent is called during base.Initialize().
             base.Initialize();
+
+            Core.Audio.PlaySong(GameSong);
 
             // During the game scene, we want to disable exit on escape. Instead,
             // the escape key will be used to return back to the title screen
@@ -79,9 +88,21 @@ namespace RIPRUSH.Scenes {
             };
 
             GumService.Default.Root.Children.Clear();
+            _pauseMenu = new PauseMenu();
+            _pauseMenu.AddToRoot();
+            _pauseMenu.IsVisible = false;
+
+            _pauseMenu.PauseResumeButton.Click += (s, e) => {
+                _pauseMenu.IsVisible = false;
+                timerActive = true;
+            };
+            _pauseMenu.PauseTitleButton.Click += (s, e) => Core.ChangeScene(new MainMenuScene());
+
         }
 
         public override void LoadContent() {
+            GameSong = Core.Content.Load<Song>("Assets/Audio/Music/GameMusic");
+            WinSound = Core.Content.Load<SoundEffect>("Assets/Audio/Win");
             timerfont = Core.Content.Load<SpriteFont>("Fonts/timer");
         }
 
@@ -128,8 +149,21 @@ namespace RIPRUSH.Scenes {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         public override void Update(GameTime gameTime) {
-            if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Escape))
-                Core.Instance.Exit();
+
+            if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Escape)) {
+                if (_pauseMenu.IsVisible) {
+                    _pauseMenu.IsVisible = false;  // hide panel
+                    timerActive = true;             // resume gameplay
+                }
+                else {
+                    _pauseMenu.IsVisible = true;         // show panel
+                    timerActive = false;            // pause gameplay
+                }
+            }
+
+            if (_pauseMenu.IsVisible) {
+                return;
+            }
 
             CheckPumpkinOutOfBounds();
             _player.CheckPumpkinPlatTouch(_platforms);
@@ -145,14 +179,17 @@ namespace RIPRUSH.Scenes {
 
                 if (_winflag.Bounds.CollidesWith(_player.Bounds)){
                     timerActive = false;
+                    Core.Audio.PauseAudio();
+                    Core.Audio.PlaySoundEffect(WinSound);
                     timerText = "You Win!\nTime: ";
-                    quitdirections = "\nPress ESC to quit";
+                    quitdirections = "\nPress ESC to Pause & Quit\n (or close game window)";
                 }
             }
 
             foreach (var component in _components) {
                 component.Update(gameTime);
             }
+            
         }
 
     }
