@@ -196,14 +196,22 @@ namespace RIPRUSH.Entities.Actors {
                     Direction = Direction.Idle;
                     velocity.X = 0;
                 }
-                
-                velocity.Y += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+                // Jump logic
                 if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Space) && onGround) {
                     velocity.Y = -JUMP; // Moves the pumpkin "higher" on the level
                     onGround = false;
                     Core.Audio.PlaySoundEffect(_jumpSound);
-                } 
+                }
+
+                // If player releases jump early while still going up, cut the jump short?
+                // should make it variable????
+                if (Core.Input.Keyboard.WasKeyJustReleased(Keys.Space) && velocity.Y < 0) {
+                    velocity.Y *= 0.5f; // TODO - play with value to see what feels best
+                }
+
+                // Apply gravity
+                velocity.Y += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             }
         }
