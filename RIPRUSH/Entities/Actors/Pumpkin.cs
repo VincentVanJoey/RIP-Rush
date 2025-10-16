@@ -5,23 +5,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
 using RIPRUSH.Entities.CollisionShapes;
+using RIPRUSH.Scenes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 
 namespace RIPRUSH.Entities.Actors {
-
-    /// <summary>
-    /// An enumeration representing possible movement directions for the pumpkin sprite.
-    /// </summary>
-    public enum Direction {
-        Idle = 0,
-        Down = 1,
-        Right = 2,
-        Up = 3,
-        Left = 4,
-    }
 
     /// <summary>
     /// A class representing the player pumpkin sprite in the game
@@ -29,17 +18,11 @@ namespace RIPRUSH.Entities.Actors {
     public class Pumpkin : Sprite {
 
         // Fields to avoid "magic numbers"
-        private const float SPEED = 140f;
-        private const float GRAVITY = 350f;
-        private const float JUMP = 300f;
+        private const float GRAVITY = 1000f;
+        private const float JUMP = 800f;
 
         public Vector2 velocity;
         public bool onGround;
-
-        /// <summary>
-        /// The direction the pumpkin is moving
-        /// </summary>
-        public Direction Direction;
 
         private BoundingCircle bounds;
 
@@ -51,6 +34,15 @@ namespace RIPRUSH.Entities.Actors {
         public SoundEffect _jumpSound;
         public SoundEffect _deathSound;
         public SoundEffect _fallSound;
+
+        public int Health { get; private set; } = 3;
+        public const int MaxHealth = 3;
+
+        private bool isInvincible = false;
+        private double invincibleTimer = 0;
+        private const double InvincibleDuration = 1.0; 
+        private double blinkTimer = 0;
+        private const double blinkSecondsInterval = 0.05; 
 
 
         public Pumpkin(ContentManager content, bool isAnimated, float scale) {
@@ -135,6 +127,7 @@ namespace RIPRUSH.Entities.Actors {
             // Animation data
             Animation idleAnimation = new(content.Load<Texture2D>("Assets/Player/Idle"), 20, true, Color, Origin, Rotation, Scale);
             Animation rollAntimation = new(content.Load<Texture2D>("Assets/Player/Roll"), 15, true, Color, Origin, Rotation, Scale);
+            rollAntimation.FrameSpeed = 0.05f;
 
             animations.Add("Idle", idleAnimation);
             animations.Add("Roll", rollAntimation);
@@ -152,23 +145,7 @@ namespace RIPRUSH.Entities.Actors {
             animationManager.animation.Scale = Scale;
             // TODO: Might need to do this for Color, Rotation, SpriteEffect, etc if I ever change them too
 
-            switch (Direction) {
-                case Direction.Up:
-                    animationManager.Play(animations["Roll"]);
-                    break;
-                case Direction.Down:
-                    animationManager.Play(animations["Roll"]);
-                    break;
-                case Direction.Left:
-                    animationManager.Play(animations["Roll"]);
-                    break;
-                case Direction.Right:
-                    animationManager.Play(animations["Roll"]);
-                    break;
-                default:
-                    animationManager.Play(animations["Idle"]);
-                    break;
-            }
+            animationManager.Play(animations["Roll"]);
 
         }
 
@@ -182,21 +159,6 @@ namespace RIPRUSH.Entities.Actors {
             }
             else {
 
-                if (Core.Input.Keyboard.IsKeyDown(Keys.Left) || Core.Input.Keyboard.IsKeyDown(Keys.A)) {
-                    velocity.X = -SPEED;
-                    Direction = Direction.Left;
-                    animationManager.animation.SpriteEffect = SpriteEffects.FlipHorizontally;
-                }
-                else if (Core.Input.Keyboard.IsKeyDown(Keys.Right) || Core.Input.Keyboard.IsKeyDown(Keys.D)) {
-                    velocity.X = SPEED;
-                    Direction = Direction.Right;
-                    animationManager.animation.SpriteEffect = SpriteEffects.None;
-                }
-                else {
-                    Direction = Direction.Idle;
-                    velocity.X = 0;
-                }
-
                 // Jump logic
                 if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Space) && onGround) {
                     velocity.Y = -JUMP; // Moves the pumpkin "higher" on the level
@@ -207,7 +169,7 @@ namespace RIPRUSH.Entities.Actors {
                 // If player releases jump early while still going up, cut the jump short?
                 // should make it variable????
                 if (Core.Input.Keyboard.WasKeyJustReleased(Keys.Space) && velocity.Y < 0) {
-                    velocity.Y *= 0.5f; // TODO - play with value to see what feels best
+                    velocity.Y *= 0.2f; // TODO - play with value to see what feels best
                 }
 
                 // Apply gravity
@@ -215,6 +177,30 @@ namespace RIPRUSH.Entities.Actors {
 
             }
         }
+
+        public void TakeDamage() {
+            if (isInvincible)
+                return;
+
+            Health--;
+
+            // Reset position and velocity
+            Position = new Vector2(100, 350);
+            velocity = Vector2.Zero;
+            onGround = false;
+
+            Core.Audio.PlaySoundEffect(_fallSound);
+
+            // Start invincibility phase
+            isInvincible = true;
+            invincibleTimer = InvincibleDuration;
+            blinkTimer = 0;
+
+            if (Health <= 0) {
+                Core.ChangeScene(new MainMenuScene());
+            }
+        }
+
 
         /// <summary>
         /// Draws the pumpkin sprite
@@ -236,16 +222,38 @@ namespace RIPRUSH.Entities.Actors {
         /// <param name="gameTime">the time state of the game</param>
         public override void Update(GameTime gameTime) {
 
-            if (_isAnimated){
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (_isAnimated) {
+                // Update invincibility timers
+                if (isInvincible) {
+                    invincibleTimer -= dt;
+                    blinkTimer -= dt;
+
+                    if (blinkTimer <= 0) {
+                        // Toggle tint between normal and semi-transparent red
+                        foreach (var animation in animations.Values) {
+                            animation.Color = (animation.Color == Color.White) ? Color.Red * 0.5f : Color.White;
+                        }
+                        blinkTimer = blinkSecondsInterval;
+                    }
+
+                    if (invincibleTimer <= 0) {
+                        isInvincible = false;
+                        foreach (var animation in animations.Values) { animation.Color = Color.White; }
+                    }
+                }
+
                 Move(gameTime);
                 SetAnimations();
-                Position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Position += velocity * dt;
 
                 int boundwidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
                 int boundheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
                 bounds.Center = Position + new Vector2(boundwidth * Scale / 2f, boundheight * Scale / 2f);
-                bounds.Radius = .8f * ((boundwidth * Scale) / 2f);
+                bounds.Radius = 0.8f * ((boundwidth * Scale) / 2f);
             }
+
             base.Update(gameTime);
         }
 

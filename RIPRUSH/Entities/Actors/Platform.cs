@@ -11,6 +11,8 @@ namespace RIPRUSH.Entities.Actors {
     /// </summary>
     public class Platform : Sprite {
 
+        public bool IsActive { get; set; } = true;
+
         private const float SPEED = 1f;
         private Vector2 _initialPosition;
         private float moveProgress = 75f;
@@ -61,6 +63,19 @@ namespace RIPRUSH.Entities.Actors {
             Position = new Vector2(_initialPosition.X, _initialPosition.Y - offset);
         }
 
+        public void SetBounds() {
+            if (IsActive) {
+                bounds.X = Position.X;
+                bounds.Y = Position.Y;
+                bounds.Width = _texture.Width * Scale;
+                bounds.Height = _texture.Height * Scale;
+            }
+            else {
+                bounds.Width = 0;  // No collision for inactive platform
+                bounds.Height = 0;
+            }
+        }
+
         /// <summary>
         /// Draws the sprite
         /// </summary>
@@ -70,8 +85,11 @@ namespace RIPRUSH.Entities.Actors {
 
             //any specific  draw logic here in the future?
             // In case I ever let the play customize it in any way
+            if (IsActive) {
+                base.Draw(gameTime, spriteBatch);
+            }
 
-            base.Draw(gameTime, spriteBatch);
+            
         }
 
         /// <summary>
@@ -83,8 +101,7 @@ namespace RIPRUSH.Entities.Actors {
                 Move(gameTime);
             }
 
-            bounds.X = Position.X;
-            bounds.Y = Position.Y;
+            SetBounds();
 
             base.Update(gameTime);
         }

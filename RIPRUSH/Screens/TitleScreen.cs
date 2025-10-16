@@ -24,7 +24,8 @@ namespace RIPRUSH.Screens
             PlayButton.Click += PlayButton_Click;
             SettingsButton.Click += SettingsButton_Click;
             QuitButton.Click += QuitButton_Click;
-
+            
+            Core.Audio.PauseAudio();
             MenuSong = Core.Content.Load<Song>("Assets/Audio/Music/MenuMusic");
             
             if (MediaPlayer.State != MediaState.Playing)

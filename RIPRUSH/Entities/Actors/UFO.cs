@@ -19,11 +19,6 @@ namespace RIPRUSH.Entities.Actors {
         public float move_distance = 75f;
         public Vector2 velocity;
 
-        /// <summary>
-        /// The direction the ufo is moving
-        /// </summary>
-        public Direction Direction;
-
         private BoundingRectangle bounds;
 
         /// <summary>
@@ -88,6 +83,16 @@ namespace RIPRUSH.Entities.Actors {
                 Position.X, 
                 _initialPosition.Y + (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds * SPEED) * move_distance
             );
+        }
+
+        public bool TouchingPumpkin(Pumpkin player) {
+            if (this.Bounds.CollidesWith(player.Bounds)) {
+                player.Position = new Vector2(100, 350);
+                player.velocity = Vector2.Zero;
+                return true;
+                
+            }
+            return false;
         }
 
         /// <summary>
