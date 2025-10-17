@@ -25,7 +25,6 @@ namespace RIPRUSH.Screens
             SettingsButton.Click += SettingsButton_Click;
             QuitButton.Click += QuitButton_Click;
             
-            Core.Audio.PauseAudio();
             MenuSong = Core.Content.Load<Song>("Assets/Audio/Music/MenuMusic");
             
             if (MediaPlayer.State != MediaState.Playing)
@@ -42,6 +41,7 @@ namespace RIPRUSH.Screens
         /// <param name="e">Information about the event</param>
         private void PlayButton_Click(object sender, System.EventArgs e) {
             Core.Audio.PlaySoundEffect(_uiSound);
+            Core.Audio.PauseAudio();
             Core.ChangeScene(new GameScene());
         }
 

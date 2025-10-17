@@ -25,6 +25,12 @@
 /processorParam:Quality=Best
 /build:Assets/Audio/Fall.wav
 
+#begin Assets/Audio/hurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/hurt.wav
+
 #begin Assets/Audio/Jump.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -90,6 +96,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Assets/candycornplat.png
+
+#begin Assets/circle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Assets/circle.png
 
 #begin Assets/Enemy/UFO.png
 /importer:TextureImporter

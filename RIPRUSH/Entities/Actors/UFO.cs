@@ -11,12 +11,14 @@ namespace RIPRUSH.Entities.Actors {
     /// <summary>
     /// A class representing the enemy ufo sprite in the game
     /// </summary>
-    public class UFO : Sprite {
+    public class UFO : Enemy {
 
         // Fields to avoid "magic numbers"
-        private const float SPEED = 1f;
+        private const float SPEED = 5f;
+        private const float HORIZONTAL_SPEED = 200f;
         private Vector2 _initialPosition;
         public float move_distance = 75f;
+        private float amplitude;
         public Vector2 velocity;
 
         private BoundingRectangle bounds;
@@ -47,13 +49,17 @@ namespace RIPRUSH.Entities.Actors {
                 _texture = content.Load<Texture2D>("Assets/face"); //placeholder, don't need a static ufo for right now
             }
 
-            int boundwidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
-            int boundheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
-
-            bounds = new BoundingRectangle(Position, (boundwidth - 4) * Scale, (boundheight - 4) * Scale);
 
             Position = position;
             _initialPosition = position;
+
+            int boundwidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
+            int boundheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
+
+            Random rng = new Random(); // You can make this static to avoid reseeding issues
+            amplitude = move_distance * (0.5f + (float)rng.NextDouble());
+
+            bounds = new BoundingRectangle(Position, (boundwidth - 4) * Scale, (boundheight - 4) * Scale);
         }
 
         public void LoadAnimations(ContentManager content) {
@@ -78,21 +84,26 @@ namespace RIPRUSH.Entities.Actors {
         /// The method responsible for moving the ufo sprite
         /// </summary>
         /// <param name="gameTime">the time state of the game</param>
-        public void Move(GameTime gameTime) {
+        public override void Move(GameTime gameTime) {
+
             Position = new Vector2(
-                Position.X, 
-                _initialPosition.Y + (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds * SPEED) * move_distance
+                Position.X - HORIZONTAL_SPEED * (float)(gameTime.ElapsedGameTime.TotalSeconds),
+                _initialPosition.Y + (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds * SPEED) * amplitude
             );
+            bounds.X = Position.X;
+            bounds.Y = Position.Y;
+
+            // Mark inactive if offscreen
+            if (Position.X + bounds.Width < 0) {
+                IsActive = false;
+            }
+
         }
 
-        public bool TouchingPumpkin(Pumpkin player) {
-            if (this.Bounds.CollidesWith(player.Bounds)) {
-                player.Position = new Vector2(100, 350);
-                player.velocity = Vector2.Zero;
-                return true;
-                
+        public override void CheckCollision(Pumpkin player) {
+            if (Bounds.CollidesWith(player.Bounds)) {
+                player.TakeDamage();
             }
-            return false;
         }
 
         /// <summary>
@@ -111,13 +122,10 @@ namespace RIPRUSH.Entities.Actors {
         /// <param name="gameTime">the time state of the game</param>
         public override void Update(GameTime gameTime) {
 
-            if (_isAnimated){
+            if (_isAnimated) {
                 Move(gameTime);
                 SetAnimations();
             }
-
-            bounds.X = Position.X;
-            bounds.Y = Position.Y;
 
             base.Update(gameTime);
         }

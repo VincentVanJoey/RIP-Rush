@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
 using RIPRUSH.Entities.CollisionShapes;
+using RIPRUSH.Entities.Particles;
 using RIPRUSH.Scenes;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,18 @@ namespace RIPRUSH.Entities.Actors {
         public SoundEffect _jumpSound;
         public SoundEffect _deathSound;
         public SoundEffect _fallSound;
+        public SoundEffect _hurtSound;
+
+        private SoundEffectInstance deathSoundInstance;
+
+        private PumpkinParticleSystem pumpkinParticles;
 
         public int Health { get; private set; } = 3;
         public const int MaxHealth = 3;
+
+        private bool isDead = false;
+        private double deathTimer = 0;
+        private bool deathParticlesSpawned = false;
 
         private bool isInvincible = false;
         private double invincibleTimer = 0;
@@ -122,7 +132,10 @@ namespace RIPRUSH.Entities.Actors {
             _jumpSound = content.Load<SoundEffect>("Assets/Audio/Jump");
             _deathSound = content.Load<SoundEffect>("Assets/Audio/Death");
             _fallSound = content.Load<SoundEffect>("Assets/Audio/Fall");
+            _hurtSound = content.Load<SoundEffect>("Assets/Audio/hurt");
 
+            pumpkinParticles = new PumpkinParticleSystem(Core.Instance, 100);
+            Core.Instance.Components.Add(pumpkinParticles);
 
             // Animation data
             Animation idleAnimation = new(content.Load<Texture2D>("Assets/Player/Idle"), 20, true, Color, Origin, Rotation, Scale);
@@ -179,25 +192,31 @@ namespace RIPRUSH.Entities.Actors {
         }
 
         public void TakeDamage() {
-            if (isInvincible)
+            if (isInvincible || isDead)
                 return;
 
             Health--;
 
-            // Reset position and velocity
-            Position = new Vector2(100, 350);
-            velocity = Vector2.Zero;
-            onGround = false;
-
-            Core.Audio.PlaySoundEffect(_fallSound);
-
-            // Start invincibility phase
-            isInvincible = true;
-            invincibleTimer = InvincibleDuration;
-            blinkTimer = 0;
-
             if (Health <= 0) {
-                Core.ChangeScene(new MainMenuScene());
+                // Mark as dead
+                isDead = true;
+
+                // Play death sound via instance
+                deathSoundInstance = _deathSound.CreateInstance();
+                deathSoundInstance.Play();
+
+                // Set timer to wait for sound length
+                deathTimer = _deathSound.Duration.TotalSeconds;
+
+                // Spawn particles in next Update (so scene and pumpkin are still active)
+                deathParticlesSpawned = false;
+            }
+            else {
+                // Normal hurt logic
+                isInvincible = true;
+                invincibleTimer = InvincibleDuration;
+                blinkTimer = 0;
+                Core.Audio.PlaySoundEffect(_hurtSound);
             }
         }
 
@@ -212,8 +231,9 @@ namespace RIPRUSH.Entities.Actors {
             //any specific pumpkin draw logic here in the future?
             // In case I ever let the play customize it in any way
             // Color or hats or something
-
-            base.Draw(gameTime, spriteBatch);
+            if (!isDead) {
+                base.Draw(gameTime, spriteBatch);
+            }
         }
 
         /// <summary>
@@ -221,38 +241,52 @@ namespace RIPRUSH.Entities.Actors {
         /// </summary>
         /// <param name="gameTime">the time state of the game</param>
         public override void Update(GameTime gameTime) {
-
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (_isAnimated) {
-                // Update invincibility timers
-                if (isInvincible) {
-                    invincibleTimer -= dt;
-                    blinkTimer -= dt;
-
-                    if (blinkTimer <= 0) {
-                        // Toggle tint between normal and semi-transparent red
-                        foreach (var animation in animations.Values) {
-                            animation.Color = (animation.Color == Color.White) ? Color.Red * 0.5f : Color.White;
-                        }
-                        blinkTimer = blinkSecondsInterval;
-                    }
-
-                    if (invincibleTimer <= 0) {
-                        isInvincible = false;
-                        foreach (var animation in animations.Values) { animation.Color = Color.White; }
-                    }
+            if (isDead) {
+                // Spawn particles once
+                if (!deathParticlesSpawned) {
+                    pumpkinParticles.Explode(Position + new Vector2(bounds.Radius, bounds.Radius));
+                    deathParticlesSpawned = true;
                 }
 
-                Move(gameTime);
-                SetAnimations();
-                Position += velocity * dt;
+                // Count down until we can change scene
+                deathTimer -= dt;
+                if (deathTimer <= 0 && deathSoundInstance.State == SoundState.Stopped) {
+                    Core.ChangeScene(new MainMenuScene());
+                }
 
-                int boundwidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
-                int boundheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
-                bounds.Center = Position + new Vector2(boundwidth * Scale / 2f, boundheight * Scale / 2f);
-                bounds.Radius = 0.8f * ((boundwidth * Scale) / 2f);
+                return; // Skip all
             }
+
+            // invincible logic
+            if (isInvincible) {
+                invincibleTimer -= dt;
+                blinkTimer -= dt;
+
+                if (blinkTimer <= 0) {
+                    foreach (var animation in animations.Values)
+                        animation.Color = (animation.Color == Color.White) ? Color.Red * 0.5f : Color.White;
+                    blinkTimer = blinkSecondsInterval;
+                }
+
+                if (invincibleTimer <= 0) {
+                    isInvincible = false;
+                    foreach (var animation in animations.Values)
+                        animation.Color = Color.White;
+                }
+            }
+
+            // standard update stuff
+            Move(gameTime);
+            SetAnimations();
+            Position += velocity * dt;
+
+            // Update bounds
+            int boundwidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
+            int boundheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
+            bounds.Center = Position + new Vector2(boundwidth * Scale / 2f, boundheight * Scale / 2f);
+            bounds.Radius = 0.8f * ((boundwidth * Scale) / 2f);
 
             base.Update(gameTime);
         }

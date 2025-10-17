@@ -25,9 +25,14 @@ namespace RIPRUSH.Scenes {
         /// <summary>
         /// The list of the game state's components to be drawn/updated/interacted with
         /// </summary>
+        
         private List<Component> _components;
 
-        private List<UFO> _ufos;
+        private List<Enemy> _enemies;
+        private float _enemySpawnTimer = 0f;
+        private float _enemySpawnInterval = 5f; // initial interval
+        private Random _rng = new Random();
+        private int _maxActiveEnemies = 5; // starting cap
 
         private Song GameSong;
         private SoundEffect WinSound;
@@ -44,6 +49,7 @@ namespace RIPRUSH.Scenes {
         private PauseMenu _pauseMenu;
 
         private WorldManager worldManager;
+
 
         public override void Initialize() {
 
@@ -63,10 +69,9 @@ namespace RIPRUSH.Scenes {
             worldManager.Initialize(Content, chunkCount: 6);
 
             _player = new Pumpkin(Core.Content, true, 1.75f) { Position = new Vector2(65, 350) };
-            UFO _ufo = new UFO(Core.Content, true, 3.0f, new Vector2(390, 250));
 
             _components = new List<Component>();
-            _ufos = new List<UFO>();
+            _enemies = new List<Enemy>();
             
             _components.Add(_player);
 
@@ -83,8 +88,8 @@ namespace RIPRUSH.Scenes {
             };
 
             _pauseMenu.PauseTitleButton.Click += (s, e) => {
-                Core.ChangeScene(new MainMenuScene());
                 Core.Audio.PauseAudio();
+                Core.ChangeScene(new MainMenuScene());
             };
 
             #endregion
@@ -94,6 +99,28 @@ namespace RIPRUSH.Scenes {
             GameSong = Core.Content.Load<Song>("Assets/Audio/Music/GameMusic");
             WinSound = Core.Content.Load<SoundEffect>("Assets/Audio/Win");
             timerfont = Core.Content.Load<SpriteFont>("Fonts/timer");
+        }
+
+        private void SpawnRandomEnemy() {
+            if (_enemies.Count >= _maxActiveEnemies) return;
+
+            float yPos = _rng.Next(150, 270);
+            // spawn slightly inside visible area while debugging
+            float xPos = Core.GraphicsDevice.Viewport.Width + 50;
+
+            Enemy enemy = new UFO(Core.Content, true, 3f, new Vector2(xPos, yPos));
+
+            _enemies.Add(enemy);
+            _components.Add(enemy);
+        }
+
+        private void UpdateEnemySpawnInterval() {
+            // Gradually decrease spawn interval from 5s -> 1s over 2 minutes
+            float difficultyFactor = MathHelper.Clamp((float)timer.TotalSeconds / 120f, 0, 1);
+            _enemySpawnInterval = MathHelper.Lerp(5f, 1f, difficultyFactor);
+
+            // Gradually increase max active enemies
+            _maxActiveEnemies = 5 + (int)(difficultyFactor * 10); // 5->15 enemies max
         }
 
 
@@ -167,21 +194,30 @@ namespace RIPRUSH.Scenes {
             worldManager.Update(gameTime);
 
 
-            if (_player.Health <= 0) {
-                Core.ChangeScene(new MainMenuScene());
-            }
-
             // Keeps pumpkin on left side of screen
             _player.Position = new Vector2(50, _player.Position.Y);
             CheckPumpkinOutOfBounds();
             _player.CheckPumpkinPlatTouch(worldManager.GetActivePlatforms());
 
-            foreach (var ufo in _ufos) {
-                if (ufo.TouchingPumpkin(_player)) {
-                    Core.Audio.PlaySoundEffect(_player._deathSound);
-                }
+            // Update difficulty scaling
+            UpdateEnemySpawnInterval();
+
+            // Countdown timer
+            _enemySpawnTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            
+            if (_enemySpawnTimer <= 0f) {
+                SpawnRandomEnemy();
+                _enemySpawnTimer = _enemySpawnInterval;
             }
-                
+
+            foreach (var enemy in _enemies.ToList()) {
+                if (!enemy.IsActive) {
+                    _enemies.Remove(enemy);
+                    _components.Remove(enemy);
+                }
+                else { enemy.CheckCollision(_player); }
+            }
+
             if (timerActive) {
                 timer += gameTime.ElapsedGameTime;
 
