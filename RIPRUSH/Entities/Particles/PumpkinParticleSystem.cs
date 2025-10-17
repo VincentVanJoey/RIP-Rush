@@ -4,7 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 namespace RIPRUSH.Entities.Particles {
     public class PumpkinParticleSystem : ParticleSystem {
         Color[] colors = {
+            Color.DarkOrange,
             Color.Orange,
+            Color.DarkGreen
         };
 
         Color color;

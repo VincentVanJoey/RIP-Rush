@@ -65,4 +65,9 @@ public class KeyboardInfo {
         return CurrentState.IsKeyUp(key) && PreviousState.IsKeyDown(key);
     }
 
+    public void ClearState() {
+        PreviousState = new KeyboardState();
+        CurrentState = new KeyboardState();
+    }
+
 }

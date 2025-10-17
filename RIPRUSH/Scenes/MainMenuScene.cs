@@ -10,6 +10,7 @@ using RIPRUSH.Entities.Actors;
 using RIPRUSH.Screens;
 using System;
 using System.Collections.Generic;
+using Gum.Forms.Controls;
 
 
 namespace RIPRUSH.Scenes {
@@ -67,10 +68,20 @@ namespace RIPRUSH.Scenes {
         /// </summary>
         private Pumpkin _player;
 
+
+        private TitleScreen titlescreen;
+        private Proj2SettingsScreen settingsScreen;
+
+        public bool titleFrameCheck = false;
+        private enum MenuState { Title, Settings }
+        private MenuState _currentMenuState;
+
         public override void Initialize() {
 
             // LoadContent is called during base.Initialize().
             base.Initialize();
+
+
 
             // While on the title screen, we can enable exit on escape so the player
             // can close the game by pressing the escape key.
@@ -82,9 +93,9 @@ namespace RIPRUSH.Scenes {
                 _player
             };
 
-            GumService.Default.Root.Children.Clear();
-            var screen = new TitleScreen();
-            screen.AddToRoot();
+            titlescreen = new TitleScreen();
+            settingsScreen = new Proj2SettingsScreen();
+            ShowTitleScreen();
         }
 
         public override void LoadContent() {
@@ -96,6 +107,25 @@ namespace RIPRUSH.Scenes {
 
             _grave1_texture = Core.Content.Load<Texture2D>("Assets/headstone");
             _grave2_texture = Core.Content.Load<Texture2D>("Assets/woodstone");
+        }
+
+        public void ShowTitleScreen() {
+            GumService.Default.Root.Children.Clear();
+
+            titlescreen.AddToRoot();
+            settingsScreen.RemoveFromRoot();
+
+            titlescreen.InitializeButtons(); // reset keyboard focus
+            _currentMenuState = MenuState.Title;
+        }
+
+        public void ShowSettingsScreen() {
+            GumService.Default.Root.Children.Clear();
+
+            settingsScreen.AddToRoot();
+            titlescreen.RemoveFromRoot();
+
+            _currentMenuState = MenuState.Settings;
         }
 
         /// <summary>
@@ -134,10 +164,26 @@ namespace RIPRUSH.Scenes {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         public override void Update(GameTime gameTime) {
-            
-            foreach (var component in _components) {
-                component.Update(gameTime);
+
+            // if returning to the title screen, skip the rest of this frame's update, or else we'll double press on a button 
+            if (titleFrameCheck) {
+                titleFrameCheck = false;
+                ShowTitleScreen();
+                return; // skip the rest of this frame
             }
+
+            switch (_currentMenuState) {
+                case MenuState.Title:
+                    titlescreen.UpdateInput();
+                    break;
+                case MenuState.Settings:
+                    settingsScreen.UpdateInput();
+                    break;
+            }
+
+            foreach (var component in _components) {
+                    component.Update(gameTime);
+                }
         }
 
     }

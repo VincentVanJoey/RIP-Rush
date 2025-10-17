@@ -247,17 +247,19 @@ namespace RIPRUSH.Entities.Actors {
                 // Spawn particles once
                 if (!deathParticlesSpawned) {
                     pumpkinParticles.Explode(Position + new Vector2(bounds.Radius, bounds.Radius));
+                    pumpkinParticles.Explode(Position + new Vector2(bounds.Radius, bounds.Radius));
+                    pumpkinParticles.Explode(Position + new Vector2(bounds.Radius, bounds.Radius));
                     deathParticlesSpawned = true;
                 }
 
-                // Count down until we can change scene
+                // Wait until sound is over to change so we can see the death happen (morbid, but we have to)
                 deathTimer -= dt;
                 if (deathTimer <= 0 && deathSoundInstance.State == SoundState.Stopped) {
                     Core.Audio.PauseAudio();
                     Core.ChangeScene(new MainMenuScene());
                 }
 
-                return; // Skip all
+                return;
             }
 
             // invincible logic

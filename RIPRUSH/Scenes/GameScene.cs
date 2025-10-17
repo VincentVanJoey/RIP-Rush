@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -10,13 +9,9 @@ using MonoGameLibrary.Scenes;
 using RIPRUSH.Components.Joelements;
 using RIPRUSH.Entities;
 using RIPRUSH.Entities.Actors;
-using RIPRUSH.Screens;
-using SharpDX.Direct2D1;
-using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace RIPRUSH.Scenes {
 
@@ -45,7 +40,7 @@ namespace RIPRUSH.Scenes {
 
         private SpriteFont timerfont;
         private TimeSpan timer = TimeSpan.Zero;
-        private bool timerActive = true;
+        public bool timerActive = true;
         private string timerText = "Time: ";
         private string quitdirections = "";
 
@@ -56,6 +51,9 @@ namespace RIPRUSH.Scenes {
         private Texture2D _midground;
         private Texture2D _background;
         private Color worldColor;
+
+        private bool _shaking;
+        private float _shakeTime;
 
 
         public override void Initialize() {
@@ -90,16 +88,6 @@ namespace RIPRUSH.Scenes {
             _pauseMenu = new PauseMenu();
             _pauseMenu.AddToRoot();
             _pauseMenu.IsVisible = false;
-
-            _pauseMenu.PauseResumeButton.Click += (s, e) => {
-                _pauseMenu.IsVisible = false;
-                timerActive = true;
-            };
-
-            _pauseMenu.PauseTitleButton.Click += (s, e) => {
-                Core.Audio.PauseAudio();
-                Core.ChangeScene(new MainMenuScene());
-            };
 
             #endregion
         }
@@ -167,7 +155,26 @@ namespace RIPRUSH.Scenes {
 
             float offsetX = worldManager.TotalScrollX; // full player movement
 
-            Core.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+            #region -- Screen Shake Effect --
+            Matrix shakeTransform = Matrix.Identity;
+            if (_shaking) {
+                _shakeTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                // Matrix shakeRotation = Matrix.CreateRotationZ(MathF.Cos(_shakeTime));
+                Matrix shakeTranslation = Matrix.CreateTranslation(10 * MathF.Sin(_shakeTime), 10 * MathF.Cos(_shakeTime), 0);
+                shakeTransform = shakeTranslation;
+                if (_shakeTime > 3000) _shaking = false;
+            }
+            #endregion
+
+            Core.SpriteBatch.Begin(
+                SpriteSortMode.Deferred,
+                BlendState.AlphaBlend,
+                SamplerState.PointClamp,
+                DepthStencilState.None,
+                RasterizerState.CullNone,
+                null,
+                shakeTransform
+            );
 
             #region -- Parallax Scrolling Background --
             // === 1. Background (does not move) ===
@@ -187,6 +194,7 @@ namespace RIPRUSH.Scenes {
             Core.SpriteBatch.Draw(_midground, new Vector2(modX, 50), worldColor);
             Core.SpriteBatch.Draw(_midground, new Vector2(modX + textureWidth, 50), worldColor);
             #endregion
+
 
             worldManager.Draw(gameTime, Core.SpriteBatch);
 
@@ -220,12 +228,17 @@ namespace RIPRUSH.Scenes {
             }
 
             if (_pauseMenu.IsVisible) {
+                _pauseMenu.UpdateInput();
                 return;
             }
             #endregion
 
             worldManager.Update(gameTime);
 
+            if (_player.Health <= 0 && !_shaking) {
+                _shakeTime = 0f;
+                _shaking = true;
+            }
 
             // Keeps pumpkin on left side of screen
             _player.Position = new Vector2(50, _player.Position.Y);

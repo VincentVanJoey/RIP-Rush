@@ -110,6 +110,5 @@ namespace RIPRUSH
             FrameworkElement.TabKeyCombos.Add(
                new KeyCombo() { PushedKey = Microsoft.Xna.Framework.Input.Keys.Down });
         }
-
     }
 }

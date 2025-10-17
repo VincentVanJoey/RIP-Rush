@@ -160,6 +160,10 @@ public class Core : Game {
         base.Draw(gameTime);
     }
 
+    public static Scene GetActiveScene() {
+        return s_activeScene;
+    }
+
     public static void ChangeScene(Scene next) {
         // Only set the next scene value if it is not the same
         // instance as the currently active scene.
