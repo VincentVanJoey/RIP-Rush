@@ -256,7 +256,12 @@ namespace RIPRUSH.Entities.Actors {
                 deathTimer -= dt;
                 if (deathTimer <= 0 && deathSoundInstance.State == SoundState.Stopped) {
                     Core.Audio.PauseAudio();
-                    Core.ChangeScene(new MainMenuScene());
+
+                    GameScene game = Core.GetActiveScene() as GameScene;
+                    ResultsScene resultsScene = new ResultsScene();
+                    resultsScene._finaltime = game.timer;
+
+                    Core.ChangeScene(resultsScene);
                 }
 
                 return;

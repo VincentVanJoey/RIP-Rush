@@ -23,6 +23,8 @@ namespace RIPRUSH.Entities.Actors {
 
         private BoundingRectangle bounds;
 
+        public bool isFrozen = false;
+
         /// <summary>
         /// The bounding volume of the sprite
         /// </summary>
@@ -35,26 +37,19 @@ namespace RIPRUSH.Entities.Actors {
             // Set _isAnimated based on the constructor parameter
             _isAnimated = isAnimated;
 
-            // Load specific animations if the sprite is animated
-            if (_isAnimated) {
-                LoadAnimations(content);
+            LoadAnimations(content);
 
-                // Initialize the AnimationManager (it will be set to null if not animated)
-                if (animations.Count != 0) {
-                    animationManager = new AnimationManager(animations.First().Value);
-                }
+            // Initialize the AnimationManager (it will be set to null if not animated)
+            if (animations.Count != 0) {
+                animationManager = new AnimationManager(animations.First().Value);
             }
-            else {
-                // Load a static texture if not animated
-                _texture = content.Load<Texture2D>("Assets/face"); //placeholder, don't need a static ufo for right now
-            }
-
 
             Position = position;
             _initialPosition = position;
 
-            int boundwidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
-            int boundheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
+            int boundwidth = animationManager.animation.FrameWidth;
+            int boundheight = animationManager.animation.FrameHeight;
+            Origin = new Vector2(boundwidth / 2f, boundheight / 2f);
 
             Random rng = new Random(); // You can make this static to avoid reseeding issues
             amplitude = move_distance * (0.5f + (float)rng.NextDouble());
@@ -76,6 +71,8 @@ namespace RIPRUSH.Entities.Actors {
             }
             // Update animation properties to match the entity's current state
             animationManager.animation.Scale = Scale;
+            animationManager.animation.Rotation = Rotation;
+            animationManager.animation.Origin = Origin;
             // TODO: Might need to do this for Color, Rotation, SpriteEffect, etc if I ever change them too
 
         }
@@ -122,10 +119,10 @@ namespace RIPRUSH.Entities.Actors {
         /// <param name="gameTime">the time state of the game</param>
         public override void Update(GameTime gameTime) {
 
-            if (_isAnimated) {
-                Move(gameTime);
-                SetAnimations();
+            if (!isFrozen) {
+                Move(gameTime);   
             }
+            SetAnimations();
 
             base.Update(gameTime);
         }

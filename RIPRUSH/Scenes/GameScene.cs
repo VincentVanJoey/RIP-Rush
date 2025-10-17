@@ -39,7 +39,7 @@ namespace RIPRUSH.Scenes {
         //private WinFlag _winflag;
 
         private SpriteFont timerfont;
-        private TimeSpan timer = TimeSpan.Zero;
+        public TimeSpan timer = TimeSpan.Zero;
         public bool timerActive = true;
         private string timerText = "Time: ";
         private string quitdirections = "";
@@ -101,6 +101,7 @@ namespace RIPRUSH.Scenes {
         }
 
         private void SpawnRandomEnemy() {
+            // we only have one enemy rn, but hypotetically we could rng switch many
             if (_enemies.Count >= _maxActiveEnemies) return;
 
             float yPos = _rng.Next(150, 270);
@@ -159,13 +160,13 @@ namespace RIPRUSH.Scenes {
             Matrix shakeTransform = Matrix.Identity;
             if (_shaking) {
                 _shakeTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-                // Matrix shakeRotation = Matrix.CreateRotationZ(MathF.Cos(_shakeTime));
                 Matrix shakeTranslation = Matrix.CreateTranslation(10 * MathF.Sin(_shakeTime), 10 * MathF.Cos(_shakeTime), 0);
                 shakeTransform = shakeTranslation;
                 if (_shakeTime > 3000) _shaking = false;
             }
             #endregion
 
+            // Although I don't want it, I have to use this long begin to apply the matrix??? TODO:find work around
             Core.SpriteBatch.Begin(
                 SpriteSortMode.Deferred,
                 BlendState.AlphaBlend,
@@ -198,7 +199,7 @@ namespace RIPRUSH.Scenes {
 
             worldManager.Draw(gameTime, Core.SpriteBatch);
 
-            Core.SpriteBatch.DrawString(timerfont, $"HP: {_player.Health}/{3}", new Vector2(600, 20), Color.Gold);
+            Core.SpriteBatch.DrawString(timerfont, $"HP: {_player.Health}/{3}", new Vector2(650, 20), Color.Gold);
 
             foreach (var component in _components) {
                 component.Draw(gameTime, Core.SpriteBatch);
