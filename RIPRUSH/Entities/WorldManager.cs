@@ -18,6 +18,7 @@ namespace RIPRUSH.Entities {
         private const float OverlapFix = 1f;
 
         private float _scrollSpeed = 400f;
+        public float TotalScrollX { get; private set; } = 0f;
         private float _timeElapsed = 0f;
 
         private float _screenWidth;
@@ -109,6 +110,9 @@ namespace RIPRUSH.Entities {
             _timeElapsed += dt;
 
             UpdateGapChance();
+
+            // accumulate how much the world moved this frame
+            TotalScrollX += _scrollSpeed * dt;
 
             foreach (var chunk in _chunks) {
                 MoveChunk(chunk, dt);

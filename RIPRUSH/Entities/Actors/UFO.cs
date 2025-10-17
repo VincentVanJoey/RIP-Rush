@@ -15,7 +15,7 @@ namespace RIPRUSH.Entities.Actors {
 
         // Fields to avoid "magic numbers"
         private const float SPEED = 5f;
-        private const float HORIZONTAL_SPEED = 200f;
+        private const float HORIZONTAL_SPEED = 400f;
         private Vector2 _initialPosition;
         public float move_distance = 75f;
         private float amplitude;

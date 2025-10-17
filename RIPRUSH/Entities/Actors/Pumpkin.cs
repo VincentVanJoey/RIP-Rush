@@ -220,7 +220,6 @@ namespace RIPRUSH.Entities.Actors {
             }
         }
 
-
         /// <summary>
         /// Draws the pumpkin sprite
         /// </summary>
@@ -228,9 +227,10 @@ namespace RIPRUSH.Entities.Actors {
         /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
 
-            //any specific pumpkin draw logic here in the future?
+            // any specific pumpkin draw logic here in the future?
             // In case I ever let the play customize it in any way
             // Color or hats or something
+
             if (!isDead) {
                 base.Draw(gameTime, spriteBatch);
             }
@@ -253,6 +253,7 @@ namespace RIPRUSH.Entities.Actors {
                 // Count down until we can change scene
                 deathTimer -= dt;
                 if (deathTimer <= 0 && deathSoundInstance.State == SoundState.Stopped) {
+                    Core.Audio.PauseAudio();
                     Core.ChangeScene(new MainMenuScene());
                 }
 

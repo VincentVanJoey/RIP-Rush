@@ -11,9 +11,12 @@ using RIPRUSH.Components.Joelements;
 using RIPRUSH.Entities;
 using RIPRUSH.Entities.Actors;
 using RIPRUSH.Screens;
+using SharpDX.Direct2D1;
+using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace RIPRUSH.Scenes {
 
@@ -50,6 +53,10 @@ namespace RIPRUSH.Scenes {
 
         private WorldManager worldManager;
 
+        private Texture2D _midground;
+        private Texture2D _background;
+        private Color worldColor;
+
 
         public override void Initialize() {
 
@@ -64,6 +71,8 @@ namespace RIPRUSH.Scenes {
             // the escape key will be used to return back to the title screen
             Core.ExitOnEscape = false;
             #endregion
+
+            worldColor = Color.OrangeRed;
 
             worldManager = new WorldManager(baseY: 450f, Core.GraphicsDevice);
             worldManager.Initialize(Content, chunkCount: 6);
@@ -99,13 +108,14 @@ namespace RIPRUSH.Scenes {
             GameSong = Core.Content.Load<Song>("Assets/Audio/Music/GameMusic");
             WinSound = Core.Content.Load<SoundEffect>("Assets/Audio/Win");
             timerfont = Core.Content.Load<SpriteFont>("Fonts/timer");
+            _background = Content.Load<Texture2D>("Assets/background");
+            _midground = Content.Load<Texture2D>("Assets/midground");
         }
 
         private void SpawnRandomEnemy() {
             if (_enemies.Count >= _maxActiveEnemies) return;
 
             float yPos = _rng.Next(150, 270);
-            // spawn slightly inside visible area while debugging
             float xPos = Core.GraphicsDevice.Viewport.Width + 50;
 
             Enemy enemy = new UFO(Core.Content, true, 3f, new Vector2(xPos, yPos));
@@ -152,12 +162,35 @@ namespace RIPRUSH.Scenes {
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>
         public override void Draw(GameTime gameTime) {
+
             Core.GraphicsDevice.Clear(Color.Black);
 
+            float offsetX = worldManager.TotalScrollX; // full player movement
+
+
             Core.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+
+            // === 1. Background (does not move) ===
+            Core.SpriteBatch.Draw(_background, Vector2.Zero, worldColor);
+
+            // === 2. Midground (repeats) ===
+            float scrollSpeed = 0.5f; // slower than player movement
+            float scrollPosition = -offsetX * scrollSpeed; // parallax movement
+
+            // Wrap using modulo
+            int textureWidth = _midground.Width;
+            float modX = scrollPosition % textureWidth;
+            if (modX > 0)
+                modX -= textureWidth; // ensure seamless leftward wrapping
+
+            // Draw two copies side-by-side to cover screen width
+            Core.SpriteBatch.Draw(_midground, new Vector2(modX, 0), worldColor);
+            Core.SpriteBatch.Draw(_midground, new Vector2(modX + textureWidth, 0), worldColor);
+
+
             worldManager.Draw(gameTime, Core.SpriteBatch);
 
-            Core.SpriteBatch.DrawString(timerfont, $"HP: {_player.Health}/{3}", new Vector2(600, 20), Color.Red);
+            Core.SpriteBatch.DrawString(timerfont, $"HP: {_player.Health}/{3}", new Vector2(600, 20), Color.Gold);
 
             foreach (var component in _components) {
                 component.Draw(gameTime, Core.SpriteBatch);
