@@ -167,9 +167,9 @@ namespace RIPRUSH.Scenes {
 
             float offsetX = worldManager.TotalScrollX; // full player movement
 
-
             Core.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
+            #region -- Parallax Scrolling Background --
             // === 1. Background (does not move) ===
             Core.SpriteBatch.Draw(_background, Vector2.Zero, worldColor);
 
@@ -184,9 +184,9 @@ namespace RIPRUSH.Scenes {
                 modX -= textureWidth; // ensure seamless leftward wrapping
 
             // Draw two copies side-by-side to cover screen width
-            Core.SpriteBatch.Draw(_midground, new Vector2(modX, 0), worldColor);
-            Core.SpriteBatch.Draw(_midground, new Vector2(modX + textureWidth, 0), worldColor);
-
+            Core.SpriteBatch.Draw(_midground, new Vector2(modX, 50), worldColor);
+            Core.SpriteBatch.Draw(_midground, new Vector2(modX + textureWidth, 50), worldColor);
+            #endregion
 
             worldManager.Draw(gameTime, Core.SpriteBatch);
 
