@@ -21,20 +21,18 @@ namespace RIPRUSH.Entities.Actors {
         private float amplitude;
         public Vector2 velocity;
 
-        private BoundingRectangle bounds;
+        private BoundingCircle bounds;
 
         public bool isFrozen = false;
 
         /// <summary>
         /// The bounding volume of the sprite
         /// </summary>
-        public BoundingRectangle Bounds => bounds;
+        public BoundingCircle Bounds => bounds;
 
         public UFO(ContentManager content, bool isAnimated, float scale, Vector2 position) {
             animations = new Dictionary<string, Animation>();
             Scale = scale;
-
-            // Set _isAnimated based on the constructor parameter
             _isAnimated = isAnimated;
 
             LoadAnimations(content);
@@ -47,14 +45,17 @@ namespace RIPRUSH.Entities.Actors {
             Position = position;
             _initialPosition = position;
 
-            int boundwidth = animationManager.animation.FrameWidth;
-            int boundheight = animationManager.animation.FrameHeight;
-            Origin = new Vector2(boundwidth / 2f, boundheight / 2f);
+            int boundWidth = animationManager.animation.FrameWidth;
+            int boundHeight =  animationManager.animation.FrameHeight;
+
+            Origin = new Vector2(boundWidth / 2f, boundHeight / 2f); // Make sure Origin is the center
+            bounds.Center = Position;  // Bounding circle always at visual center
+            bounds.Radius = 0.8f * (boundWidth / 2f * Scale); // Radius scales with the sprite
+            Vector2 circleCenter = Position + new Vector2(boundWidth * Scale / 2f, boundHeight * Scale / 2f);
+            bounds = new BoundingCircle(circleCenter, bounds.Radius);
 
             Random rng = new Random(); // You can make this static to avoid reseeding issues
             amplitude = move_distance * (0.5f + (float)rng.NextDouble());
-
-            bounds = new BoundingRectangle(Position, (boundwidth - 4) * Scale, (boundheight - 4) * Scale);
         }
 
         public void LoadAnimations(ContentManager content) {
@@ -87,11 +88,15 @@ namespace RIPRUSH.Entities.Actors {
                 Position.X - HORIZONTAL_SPEED * (float)(gameTime.ElapsedGameTime.TotalSeconds),
                 _initialPosition.Y + (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds * SPEED) * amplitude
             );
-            bounds.X = Position.X;
-            bounds.Y = Position.Y;
+
+            int boundWidth = animationManager.animation.FrameWidth;
+            int boundHeight = animationManager.animation.FrameHeight;
+            Origin = new Vector2(boundWidth / 2f, boundHeight / 2f); // Make sure Origin is the center
+            bounds.Center = Position;  // Bounding circle always at visual center
+            bounds.Radius = 0.8f * (boundWidth / 2f * Scale); // Radius scales with the sprite
 
             // Mark inactive if offscreen
-            if (Position.X + bounds.Width < 0) {
+            if (Position.X + boundWidth < 0) {
                 IsActive = false;
             }
 
@@ -109,7 +114,6 @@ namespace RIPRUSH.Entities.Actors {
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-
             base.Draw(gameTime, spriteBatch);
         }
 
@@ -123,6 +127,13 @@ namespace RIPRUSH.Entities.Actors {
                 Move(gameTime);   
             }
             SetAnimations();
+
+
+            int boundWidth = animationManager.animation.FrameWidth;
+            int boundHeight = animationManager.animation.FrameHeight;
+            Origin = new Vector2(boundWidth / 2f, boundHeight / 2f); // Make sure Origin is the center
+            bounds.Center = Position;  // Bounding circle always at visual center
+            bounds.Radius = 0.8f * (boundWidth / 2f * Scale); // Radius scales with the sprite
 
             base.Update(gameTime);
         }

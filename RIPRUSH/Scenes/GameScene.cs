@@ -154,7 +154,7 @@ namespace RIPRUSH.Scenes {
 
             Core.GraphicsDevice.Clear(Color.Black);
 
-            float offsetX = worldManager.TotalScrollX; // full player movement
+            float offsetX = worldManager.TotalScrollX;
 
             #region -- Screen Shake Effect --
             Matrix shakeTransform = Matrix.Identity;
