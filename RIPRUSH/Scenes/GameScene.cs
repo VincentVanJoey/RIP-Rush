@@ -19,12 +19,26 @@ namespace RIPRUSH.Scenes {
     /// A class representing the actual playable game state of the game
     /// </summary>
     public class GameScene : Scene {
-
-        /// <summary>
-        /// The list of the game state's components to be drawn/updated/interacted with
-        /// </summary>
         
-        private List<Component> _components;
+        private Song GameSong;
+
+        private SpriteFont timerfont;
+        public float _currentScore;
+        public float _highScore;
+        public bool _newHighScore;
+        public bool GameActive = true;
+
+        private PauseMenu _pauseMenu;
+
+        private WorldManager worldManager;
+        private Texture2D _midground;
+        private Texture2D _background;
+        private Color worldColor;
+
+        private bool _shaking;
+        private float _shakeTime;
+
+        private Pumpkin _player;
 
         private List<Enemy> _enemies;
         private float _enemySpawnTimer = 0f;
@@ -32,28 +46,11 @@ namespace RIPRUSH.Scenes {
         private Random _rng = new Random();
         private int _maxActiveEnemies = 5; // starting cap
 
-        private Song GameSong;
-        private SoundEffect WinSound;
 
-        private Pumpkin _player;
+        //private SoundEffect WinSound;
         //private WinFlag _winflag;
 
-        private SpriteFont timerfont;
-        public TimeSpan timer = TimeSpan.Zero;
-        public bool timerActive = true;
-        private string timerText = "Time: ";
-        private string quitdirections = "";
-
-        private PauseMenu _pauseMenu;
-
-        private WorldManager worldManager;
-
-        private Texture2D _midground;
-        private Texture2D _background;
-        private Color worldColor;
-
-        private bool _shaking;
-        private float _shakeTime;
+        private List<Component> _components;
 
 
         public override void Initialize() {
@@ -64,6 +61,10 @@ namespace RIPRUSH.Scenes {
 
             Core.Audio.PauseAudio();
             Core.Audio.PlaySong(GameSong);
+
+            _highScore = SaveFileManager.Data.HighScore;
+            _currentScore = 0f;
+            _newHighScore = false;
 
             // During the game scene, we want to disable exit on escape. Instead,
             // the escape key will be used to return back to the title screen
@@ -94,7 +95,7 @@ namespace RIPRUSH.Scenes {
 
         public override void LoadContent() {
             GameSong = Core.Content.Load<Song>("Assets/Audio/Music/GameMusic");
-            WinSound = Core.Content.Load<SoundEffect>("Assets/Audio/Win");
+            //WinSound = Core.Content.Load<SoundEffect>("Assets/Audio/Win");
             timerfont = Core.Content.Load<SpriteFont>("Fonts/timer");
             _background = Content.Load<Texture2D>("Assets/background");
             _midground = Content.Load<Texture2D>("Assets/midground");
@@ -114,14 +115,13 @@ namespace RIPRUSH.Scenes {
         }
 
         private void UpdateEnemySpawnInterval() {
-            // Gradually decrease spawn interval from 5s -> 1s over 2 minutes
-            float difficultyFactor = MathHelper.Clamp((float)timer.TotalSeconds / 120f, 0, 1);
+            float difficultyFactor = MathHelper.Clamp((_currentScore / 3000f), 0, 1);
+            difficultyFactor = difficultyFactor * difficultyFactor; // slows early growth, ramps faster later
             _enemySpawnInterval = MathHelper.Lerp(5f, 1f, difficultyFactor);
 
             // Gradually increase max active enemies
-            _maxActiveEnemies = 5 + (int)(difficultyFactor * 10); // 5->15 enemies max
+            _maxActiveEnemies = 5 + (int)(difficultyFactor * 10); // 5->15 enemies max???? (re-do this logic later)
         }
-
 
         /// <summary>
         /// Checks if the pumpkin is out of the viewport and handles it accordingly.
@@ -204,8 +204,9 @@ namespace RIPRUSH.Scenes {
             foreach (var component in _components) {
                 component.Draw(gameTime, Core.SpriteBatch);
             }
-            Core.SpriteBatch.DrawString(timerfont, $"{timerText}{timer:mm\\:ss}{quitdirections}", new Vector2(20, 20), Color.Gold);
-            
+            Core.SpriteBatch.DrawString(timerfont, $"Distance: {_currentScore:F0}m", new Vector2(20, 20), Color.Gold);
+            Core.SpriteBatch.DrawString(timerfont, $"High Score: {_highScore:F0}m", new Vector2(20, 50), Color.Gold);
+
             Core.SpriteBatch.End();
         }
 
@@ -220,11 +221,11 @@ namespace RIPRUSH.Scenes {
             if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Escape)) {
                 if (_pauseMenu.IsVisible) {
                     _pauseMenu.IsVisible = false;  // hide panel
-                    timerActive = true;             // resume gameplay
+                    GameActive = true;             // resume gameplay
                 }
                 else {
                     _pauseMenu.IsVisible = true;         // show panel
-                    timerActive = false;            // pause gameplay
+                    GameActive = false;            // pause gameplay
                 }
             }
 
@@ -265,8 +266,16 @@ namespace RIPRUSH.Scenes {
                 else { enemy.CheckCollision(_player); }
             }
 
-            if (timerActive) {
-                timer += gameTime.ElapsedGameTime;
+            if (GameActive) { 
+                // Use world scroll delta to calculate score
+                _currentScore = worldManager.TotalScrollX / 10;
+
+                // Check if new high score
+                if (_currentScore > _highScore) {
+                    _highScore = _currentScore;
+                    _newHighScore = true;
+                    SaveFileManager.SetHighScore(_highScore);
+                }
 
                 //if (_winflag.Bounds.CollidesWith(_player.Bounds)) {
                 //    timerActive = false;

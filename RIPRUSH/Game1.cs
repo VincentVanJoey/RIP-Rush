@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using MonoGameGum;
 using MonoGameLibrary;
+using RIPRUSH.Entities;
 using RIPRUSH.Scenes;
 using System;
 
@@ -32,9 +33,9 @@ namespace RIPRUSH
         {
             base.Initialize();
             InitializeGum();
-
             IsMouseVisible = true;
             ChangeScene(new MainMenuScene());
+            SaveFileManager.Initialize();
         }
 
         /// <summary>

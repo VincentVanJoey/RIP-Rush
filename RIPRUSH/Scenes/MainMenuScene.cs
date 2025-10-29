@@ -93,7 +93,6 @@ namespace RIPRUSH.Scenes {
                 _player
             };
 
-            titlescreen = new TitleScreen();
             settingsScreen = new Proj2SettingsScreen();
             ShowTitleScreen();
         }
@@ -107,6 +106,10 @@ namespace RIPRUSH.Scenes {
 
             _grave1_texture = Core.Content.Load<Texture2D>("Assets/headstone");
             _grave2_texture = Core.Content.Load<Texture2D>("Assets/woodstone");
+
+            // recreate titlescreen
+            titlescreen = new TitleScreen();
+            titlescreen.LoadContentSongs(); // now this will play immediately
         }
 
         public void ShowTitleScreen() {

@@ -32,11 +32,22 @@ namespace RIPRUSH.Screens
             SettingsButton.Click += SettingsButton_Click;
             QuitButton.Click += QuitButton_Click;
             
-            MenuSong = Core.Content.Load<Song>("Assets/Audio/Music/MenuMusic");
+            //MenuSong = Core.Content.Load<Song>("Assets/Audio/Music/MenuMusic");
             
-            if (MediaPlayer.State != MediaState.Playing) Core.Audio.PlaySong(MenuSong);
+            //if (MediaPlayer.State != MediaState.Playing) Core.Audio.PlaySong(MenuSong);
             
             InitializeButtons();
+        }
+
+        public void LoadContentSongs() {
+            // Load menu music in LoadContent(), not Initialize()
+            MenuSong = Core.Content.Load<Song>("Assets/Audio/Music/MenuMusic");
+
+            // Play immediately if not already playing
+            if (MediaPlayer.State != MediaState.Playing) {
+                Core.Audio.PlaySong(MenuSong);
+                MediaPlayer.Volume = 1f; // optional: fade in later
+            }
         }
 
         public void InitializeButtons() {

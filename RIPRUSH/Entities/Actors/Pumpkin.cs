@@ -259,7 +259,8 @@ namespace RIPRUSH.Entities.Actors {
 
                     GameScene game = Core.GetActiveScene() as GameScene;
                     ResultsScene resultsScene = new ResultsScene();
-                    resultsScene._finaltime = game.timer;
+                    resultsScene._finalDistance = game._currentScore;
+                    resultsScene._wasNewHighScore = game._newHighScore;
 
                     Core.ChangeScene(resultsScene);
                 }

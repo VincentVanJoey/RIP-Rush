@@ -65,7 +65,7 @@ namespace RIPRUSH.Components.Joelements
             IsVisible = false;
             GameScene gameplay = Core.GetActiveScene() as GameScene;
             if (gameplay != null) {
-                gameplay.timerActive = true;
+                gameplay.GameActive = true;
             }
         }
 

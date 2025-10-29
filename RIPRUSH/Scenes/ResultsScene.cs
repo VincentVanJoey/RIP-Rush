@@ -1,19 +1,13 @@
-﻿using Gum.Forms.Controls;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MonoGameGum;
 using MonoGameLibrary;
 using MonoGameLibrary.Scenes;
 using RIPRUSH.Components.Joelements;
 using RIPRUSH.Entities;
 using RIPRUSH.Entities.Actors;
-using RIPRUSH.Screens;
-using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 namespace RIPRUSH.Scenes {
 
     public class ResultsScene : Scene {
@@ -27,7 +21,11 @@ namespace RIPRUSH.Scenes {
         private SpriteFont _youdied;
         private SpriteFont _subdied;
 
-        public TimeSpan _finaltime;
+        public float _finalDistance;      // final distance traveled in the current run
+        public bool _wasNewHighScore;     // whether or not it was a new high score
+
+        private float _blinkTimer = 0f;
+        private Color _blinkColor = Color.White;
 
 
         private List<Component> _components;
@@ -40,7 +38,6 @@ namespace RIPRUSH.Scenes {
 
             Core.ExitOnEscape = true;
 
-            // 1x2 texture for gradient background??? (tweak)
             _gradientTexture = new Texture2D(Core.GraphicsDevice, 1, 2);
 
             _ufo_left = new UFO(Core.Content, true, 3f, new Vector2(100, 250));
@@ -74,12 +71,14 @@ namespace RIPRUSH.Scenes {
             // Draw everything else on the screen
             Core.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
-            Vector2 mainSize = _youdied.MeasureString("YOU DIED");
-            Vector2 subSize = _subdied.MeasureString($"You Survived: {_finaltime:mm\\:ss}");
+            string mainwords = ("YOU DIED");
+            string scorewords = _wasNewHighScore ? $"NEW HIGH SCORE RUSH: {_finalDistance:F0}m !" : $"You Rushed: {_finalDistance:F0}m";
+            Vector2 mainSize = _youdied.MeasureString(mainwords);
+            Vector2 subSize = _subdied.MeasureString(scorewords);
 
 
-            Core.SpriteBatch.DrawString(_youdied, "YOU DIED", new Vector2((Core.GraphicsDevice.Viewport.Width - mainSize.X) / 2f - 20, (Core.GraphicsDevice.Viewport.Height - mainSize.Y) / 2f - 100), Color.White);
-            Core.SpriteBatch.DrawString(_subdied, $"You Survived: {_finaltime:mm\\:ss}", new Vector2((Core.GraphicsDevice.Viewport.Width - subSize.X) / 2f, (Core.GraphicsDevice.Viewport.Height - mainSize.Y) / 2f), Color.White);
+            Core.SpriteBatch.DrawString(_youdied, mainwords, new Vector2((Core.GraphicsDevice.Viewport.Width - mainSize.X) / 2f - 20, (Core.GraphicsDevice.Viewport.Height - mainSize.Y) / 2f - 100), Color.White);
+            Core.SpriteBatch.DrawString(_subdied, scorewords, new Vector2((Core.GraphicsDevice.Viewport.Width - subSize.X) / 2f, (Core.GraphicsDevice.Viewport.Height - mainSize.Y) / 2f), _blinkColor);
 
             foreach (var component in _components) {
                 component.Draw(gameTime, Core.SpriteBatch);
@@ -102,6 +101,17 @@ namespace RIPRUSH.Scenes {
             _rotation += 2f * (float)gameTime.ElapsedGameTime.TotalSeconds;
             _ufo_right.Rotation = -_rotation;
             _ufo_left.Rotation = _rotation;
+
+            if (_wasNewHighScore) {
+                _blinkTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (_blinkTimer >= 0.3f) {
+                    _blinkColor = (_blinkColor == Color.White) ? Color.LightSkyBlue : Color.White;
+                    _blinkTimer = 0f;
+                }
+            }
+            else {
+                _blinkColor = Color.White; // normal color if not high score
+            }
 
             foreach (var component in _components) {
                 component.Update(gameTime);
