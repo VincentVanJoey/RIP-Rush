@@ -45,6 +45,7 @@ partial class Proj2SettingsScreen : MonoGameGum.Forms.Controls.FrameworkElement
     public ContainerRuntime MenuTitle { get; protected set; }
     public ContainerRuntime MenuItems { get; protected set; }
     public TextRuntime TitleText { get; protected set; }
+    public TextRuntime TitleText1 { get; protected set; }
     public Label ResolutionLabel { get; protected set; }
     public ListBox ResolutionBox { get; protected set; }
     public ButtonStandard DetectResolutionsButton { get; protected set; }
@@ -73,6 +74,7 @@ partial class Proj2SettingsScreen : MonoGameGum.Forms.Controls.FrameworkElement
         MenuTitle = this.Visual?.GetGraphicalUiElementByName("MenuTitle") as global::MonoGameGum.GueDeriving.ContainerRuntime;
         MenuItems = this.Visual?.GetGraphicalUiElementByName("MenuItems") as global::MonoGameGum.GueDeriving.ContainerRuntime;
         TitleText = this.Visual?.GetGraphicalUiElementByName("TitleText") as global::MonoGameGum.GueDeriving.TextRuntime;
+        TitleText1 = this.Visual?.GetGraphicalUiElementByName("TitleText1") as global::MonoGameGum.GueDeriving.TextRuntime;
         ResolutionLabel = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<Label>(this.Visual,"ResolutionLabel");
         ResolutionBox = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<ListBox>(this.Visual,"ResolutionBox");
         DetectResolutionsButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<ButtonStandard>(this.Visual,"DetectResolutionsButton");

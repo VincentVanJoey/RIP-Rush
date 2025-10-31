@@ -35,6 +35,13 @@
         "ElementType": "Components",
         "EventType": 7,
         "TimestampUtc": "2025-10-17T19:13:17.0201649Z"
+      },
+      {
+        "NewName": "Proj2SettingsScreen.TitleText1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-10-31T05:41:59.6169715Z"
       }
     ]
   }

@@ -14,7 +14,7 @@ If you are feeling magnanimous, send me a copy of the book, DVD, video game or w
 -- Art/ Textures --
 
 All Sprites/Visual Components utilized created by me using Aseprite (https://www.aseprite.org/) and are not for commercial use.
-Exception: Tilemap standin by Rotting Pixels on itchio (https://rottingpixels.itch.io/nature-platformer-tileset)
+Exception: Tilemap standin by Rotting Pixels on itchio (https://rottingpixels.itch.io/nature-platformer-tileset) -- good for free usage
 
 -- Sounds/Music --
 
