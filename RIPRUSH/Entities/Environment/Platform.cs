@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGameLibrary;
 using RIPRUSH.Entities.CollisionShapes;
 using System;
 
@@ -34,13 +35,25 @@ namespace RIPRUSH.Entities.Environment {
             Scale = scale;
             _texture = content.Load<Texture2D>("Assets/candycornplat");
 
-            // Set bounds radius
             bounds = new BoundingRectangle(Position, _texture.Width * Scale, _texture.Height * Scale);
 
         }
 
+        // Made this when transitioning from platform to tilemap, now it's a wrapper I guess
+        // I can't get rid of this cleanly and I am lazy, so this is only really meant to wrap the collisionRect I use
+        public Platform(float x, float y, float width, float height) {
+            Position = new Vector2(x, y);
+            _initialPosition = Position;
+            IsActive = true;
+
+            bounds = new BoundingRectangle(Position, width, height);
+            _texture = new Texture2D(Core.GraphicsDevice, 1, 1);
+            _texture.SetData(new[] { Color.White });
+            Scale = 1f;
+        }
+
         /// <summary>
-        /// The method responsible for moving
+        /// The method responsible for moving up and down (needs fixing)
         /// </summary>
         /// <param name="gameTime">the time state of the game</param>
         public void Move(GameTime gameTime) {

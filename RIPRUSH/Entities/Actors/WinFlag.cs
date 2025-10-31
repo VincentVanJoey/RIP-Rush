@@ -6,7 +6,7 @@ using RIPRUSH.Entities.CollisionShapes;
 namespace RIPRUSH.Entities.Actors {
 
     /// <summary>
-    /// A class representing a platform
+    /// A class representing a win flag 
     /// </summary>
     public class WinFlag : Sprite {
 

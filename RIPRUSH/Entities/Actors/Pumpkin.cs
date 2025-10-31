@@ -55,7 +55,6 @@ namespace RIPRUSH.Entities.Actors {
         private double blinkTimer = 0;
         private const double blinkSecondsInterval = 0.05; 
 
-
         public Pumpkin(ContentManager content, bool isAnimated, float scale) {
             animations = new Dictionary<string, Animation>();
             Scale = scale;
@@ -86,18 +85,18 @@ namespace RIPRUSH.Entities.Actors {
 
         }
 
+
         public void CheckPumpkinPlatTouch(List<Platform> _platforms) {
             foreach (var platform in _platforms) {
-                if (platform.Bounds.CollidesWith(Bounds)) {
+                if (platform.Bounds.CollidesWith(Bounds)) {   // Bounds = pumpkin circle
                     Vector2 circleCenter = Bounds.Center;
                     float radius = Bounds.Radius;
 
-                    // Find closest point on the platform rectangle to the circle center
-                    float closestX = MathHelper.Clamp(circleCenter.X, platform.Bounds.Left, platform.Bounds.Right);
-                    float closestY = MathHelper.Clamp(circleCenter.Y, platform.Bounds.Top, platform.Bounds.Bottom);
+                    // Closest point on RectData
+                    float closestX = MathHelper.Clamp(circleCenter.X, platform.Bounds.X, platform.Bounds.X + platform.Bounds.Width);
+                    float closestY = MathHelper.Clamp(circleCenter.Y, platform.Bounds.Y, platform.Bounds.Y + platform.Bounds.Height);
                     Vector2 closestPoint = new Vector2(closestX, closestY);
 
-                    // Vector from closest point to circle center
                     Vector2 delta = circleCenter - closestPoint;
                     float distance = delta.Length();
 
@@ -107,25 +106,20 @@ namespace RIPRUSH.Entities.Actors {
 
                         Position += pushDir * penetration;
 
-                        // Handle velocity depending on push direction
                         if (Math.Abs(pushDir.X) > Math.Abs(pushDir.Y)) {
-                            velocity.X = 0; // Horizontal collision (sides)                            
+                            velocity.X = 0;
                         }
                         else {
-                            velocity.Y = 0; // Vertical collision (top/bottom)
-
-                            if (pushDir.Y < 0) {
-                                onGround = true;
-                            }
+                            velocity.Y = 0;
+                            if (pushDir.Y < 0) onGround = true;
                         }
-                        // sync bounds
+
                         int boundswidth = _isAnimated ? animationManager.animation.FrameWidth : _texture.Width;
                         int boundsheight = _isAnimated ? animationManager.animation.FrameHeight : _texture.Height;
                         bounds.Center = Position + new Vector2(boundswidth * Scale / 2, boundsheight * Scale / 2);
                     }
                 }
             }
-
         }
 
         public void LoadActiveContent(ContentManager content) {

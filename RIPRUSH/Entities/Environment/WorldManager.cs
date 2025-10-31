@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CustomTilemapPipeline;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using RIPRUSH.Entities.Actors;
@@ -9,7 +11,6 @@ using System.Linq;
 namespace RIPRUSH.Entities.Environment {
     public class WorldManager {
 
-        private List<Platform> _chunks = new();
         private Random _rng = new();
 
         private float _baseY;
@@ -24,11 +25,14 @@ namespace RIPRUSH.Entities.Environment {
         private float _screenWidth;
         private float _chunkWidth;
 
-        private const float MinGapWidth = 100f;
-        private const float MaxGapWidth = 300f;
-        private int _maxConsecutiveGaps = 2;
+        private const float MinGapWidth = 0f;
+        private const float MaxGapWidth = 200f;
+        private int _maxConsecutiveGaps = 1;
         private int _consecutiveGaps = 0;
-        private float _gapChance = 0.25f;
+        private float _gapChance = 0.35f;
+
+        public List<TilemapChunk> _chunks = new();
+        private Texture2D _tileset;
 
 
         public WorldManager(float baseY, GraphicsDevice graphics) {
@@ -36,29 +40,12 @@ namespace RIPRUSH.Entities.Environment {
             _screenWidth = graphics.Viewport.Width;
         }
 
-        public List<Platform> GetActivePlatforms() =>
-            _chunks.Where(c => c.IsActive).ToList();
-
-        private bool IsOffscreen(Platform chunk) {
-            return chunk.Position.X + chunk.Bounds.Width < 0;
-        }
-
-        private float GetRightmostX() {
-            return _chunks.Max(c => c.Position.X + c.Bounds.Width);
-        }
-
-        private void MoveChunk(Platform chunk, float dt) {
-            chunk._position.X -= _scrollSpeed * dt;
-        }
-
-        private void RecycleChunk(Platform chunk, float rightMostX) {
-            bool makeGap = ShouldMakeGap();
-
-            float gapWidth = makeGap ? _rng.Next((int)MinGapWidth, (int)MaxGapWidth) : 0f;
-            float spawnX = Math.Max(rightMostX, _screenWidth) + gapWidth - OverlapFix;
-
-            chunk._position.X = spawnX;
-            chunk.IsActive = !makeGap;
+        public List<Platform> GetActivePlatforms() {
+            var platforms = new List<Platform>();
+            foreach (var chunk in _chunks) {
+                platforms.AddRange(chunk.GetCollisionPlatforms());
+            }
+            return platforms;
         }
 
         private bool ShouldMakeGap() {
@@ -73,36 +60,28 @@ namespace RIPRUSH.Entities.Environment {
         }
 
         private void UpdateGapChance() {
-            // Increases over time, capped at 80%
-            _gapChance = MathHelper.Clamp(0.4f + _timeElapsed * 0.01f, 0.4f, 0.8f);
-        }
-
-        private Platform CreatePlatform(ContentManager content, float x) {
-            var platform = new Platform(content, InitialScale, new Vector2(x, _baseY)) {
-                Color = Color.DarkGreen,
-                IsActive = true
-            };
-            platform.SetBounds();
-            return platform;
+            // Every 20,000 pixels scrolled increases gap chance by 1%.
+            _gapChance = MathHelper.Clamp(0.35f + TotalScrollX / 20000f, 0.35f, 0.8f);
         }
 
 
-        public void Initialize(ContentManager content, int chunkCount) {
-            // Create initial continuous platform sequence
+        public void Initialize(ContentManager content, string tilemapAsset, int chunkCount) {
+            _tileset = content.Load<Texture2D>("Assets/World/nature-paltformer-tileset-16x16");
+
+            TilemapData tilemapData = content.Load<TilemapData>(tilemapAsset);
+            float chunkWidth = tilemapData.Width * tilemapData.TileWidth;
+
             for (int i = 0; i < chunkCount; i++) {
-                var platform = CreatePlatform(content, i * _chunkWidth);
-                if (i == 0) {
-                    platform.SetBounds();
-                    _chunkWidth = platform.Bounds.Width;
-                }
-                _chunks.Add(platform);
+                Vector2 pos = new Vector2(i * chunkWidth, _baseY - tilemapData.Height * tilemapData.TileHeight);
+                _chunks.Add(new TilemapChunk(tilemapData, pos));
             }
         }
+
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             foreach (var chunk in _chunks) {
                 if (chunk.IsActive)
-                    chunk.Draw(gameTime, spriteBatch);
+                    chunk.Draw(spriteBatch, _tileset);
             }
         }
 
@@ -111,21 +90,26 @@ namespace RIPRUSH.Entities.Environment {
             _timeElapsed += dt;
 
             UpdateGapChance();
-
-            // accumulate how much the world moved this frame
             TotalScrollX += _scrollSpeed * dt;
 
             foreach (var chunk in _chunks) {
-                MoveChunk(chunk, dt);
+                chunk.Position.X -= _scrollSpeed * dt;
 
-                if (IsOffscreen(chunk)) {
-                    float rightMostX = GetRightmostX();
-                    RecycleChunk(chunk, rightMostX);
+                if (chunk.Position.X + chunk.Data.Width * chunk.Data.TileWidth < 0) {
+                    float rightMostX = _chunks.Max(c => c.Position.X + c.Data.Width * c.Data.TileWidth);
+
+                    bool makeGap = ShouldMakeGap();
+                    float gapWidth = makeGap ? _rng.Next((int)MinGapWidth, (int)MaxGapWidth) : 0f;
+
+                    chunk.Position.X = rightMostX + gapWidth;
+                    chunk.IsActive = !makeGap;
                 }
 
-                chunk.SetBounds();
+                chunk.UpdateCollisionPositions();
             }
+
         }
+
 
     }
 }

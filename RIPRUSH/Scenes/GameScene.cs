@@ -74,10 +74,10 @@ namespace RIPRUSH.Scenes {
 
             worldColor = Color.OrangeRed;
 
-            worldManager = new WorldManager(baseY: 450f, Core.GraphicsDevice);
-            worldManager.Initialize(Content, chunkCount: 6);
+            worldManager = new WorldManager(baseY: 550f, Core.GraphicsDevice);
+            worldManager.Initialize(Content, "Assets/World/TestTiled", chunkCount: 6);
 
-            _player = new Pumpkin(Core.Content, true, 1.75f) { Position = new Vector2(65, 350) };
+            _player = new Pumpkin(Core.Content, true, 1.75f) { Position = new Vector2(65, 0) };
 
             _components = new List<Component>();
             _enemies = new List<Enemy>();
@@ -246,7 +246,13 @@ namespace RIPRUSH.Scenes {
             // Keeps pumpkin on left side of screen
             _player.Position = new Vector2(50, _player.Position.Y);
             CheckPumpkinOutOfBounds();
-            _player.CheckPumpkinPlatTouch(worldManager.GetActivePlatforms());
+
+            foreach (var chunk in worldManager._chunks) {
+                if (!chunk.IsActive) continue;
+
+                var platforms = chunk.GetCollisionPlatforms();  // returns list with your single RectData
+                _player.CheckPumpkinPlatTouch(platforms);
+            }
 
             // Update difficulty scaling
             UpdateEnemySpawnInterval();

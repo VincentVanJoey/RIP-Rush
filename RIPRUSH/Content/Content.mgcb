@@ -10,6 +10,7 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\CustomTilemapPipeline\bin\Debug\net6.0\CustomTilemapPipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -288,6 +289,23 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Assets/woodstone.png
+
+#begin Assets/World/nature-paltformer-tileset-16x16.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Assets/World/nature-paltformer-tileset-16x16.png;Assets/World/nature-paltformer-tileset-16x16
+
+#begin Assets/World/TestTiled.json
+/importer:TiledJsonImporter
+/processor:TiledMapProcessor
+/build:Assets/World/TestTiled.json
 
 #begin Fonts/coralines-cat.spritefont
 /importer:FontDescriptionImporter
