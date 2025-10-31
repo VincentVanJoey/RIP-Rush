@@ -8,6 +8,7 @@ using MonoGameLibrary;
 using MonoGameLibrary.Scenes;
 using RIPRUSH.Components.Joelements;
 using RIPRUSH.Entities;
+using RIPRUSH.Entities.Environment;
 using RIPRUSH.Entities.Actors;
 using System;
 using System.Collections.Generic;

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
 using RIPRUSH.Entities.CollisionShapes;
 using RIPRUSH.Entities.Particles;
+using RIPRUSH.Entities.Environment;
 using RIPRUSH.Scenes;
 using System;
 using System.Collections.Generic;

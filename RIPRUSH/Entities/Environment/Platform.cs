@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using RIPRUSH.Entities.CollisionShapes;
 using System;
 
-namespace RIPRUSH.Entities.Actors {
+namespace RIPRUSH.Entities.Environment {
 
     /// <summary>
     /// A class representing a platform
@@ -54,7 +54,7 @@ namespace RIPRUSH.Entities.Actors {
             else {
                 moveProgress -= SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (moveProgress <= 0f) {
-                    moveProgress = 0f; 
+                    moveProgress = 0f;
                     movingUp = true;
                 }
             }
@@ -89,7 +89,7 @@ namespace RIPRUSH.Entities.Actors {
                 base.Draw(gameTime, spriteBatch);
             }
 
-            
+
         }
 
         /// <summary>

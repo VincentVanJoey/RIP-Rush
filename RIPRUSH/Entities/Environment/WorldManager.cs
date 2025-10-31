@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RIPRUSH.Entities {
+namespace RIPRUSH.Entities.Environment {
     public class WorldManager {
 
         private List<Platform> _chunks = new();
@@ -85,6 +85,7 @@ namespace RIPRUSH.Entities {
             platform.SetBounds();
             return platform;
         }
+
 
         public void Initialize(ContentManager content, int chunkCount) {
             // Create initial continuous platform sequence
