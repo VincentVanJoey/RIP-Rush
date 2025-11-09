@@ -122,6 +122,29 @@ namespace RIPRUSH.Entities.Actors {
             }
         }
 
+        public void CheckPickupCollision(IEnumerable<CandyPickup> pickups) {
+            foreach (var pickup in pickups) {
+                if (!pickup.Collected && Bounds.Intersects(pickup.Bounds)) {
+                    pickup.Collected = true;
+
+                    Core.Audio.PlaySoundEffect(pickup.PickupSound);
+
+                    switch (pickup.Type) {
+                        case CandyType.Lollipop: 
+                            // heal 1 health
+                            Health = Math.Min(MaxHealth, Health + 1);
+                            break;
+                        case CandyType.Chocobar:
+                            // The basic type I think, will probably not serve any purpose besides point accumultion at the end
+                            break;
+                        case CandyType.ZapCandy:
+                            // It's the mario star; temp invincibility
+                            break;
+                    }
+                }
+            }
+        }
+
         public void LoadActiveContent(ContentManager content) {
             // SFX
             _jumpSound = content.Load<SoundEffect>("Assets/Audio/Jump");

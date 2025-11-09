@@ -1,9 +1,8 @@
 ﻿using CustomTilemapPipeline;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using RIPRUSH.Entities.Actors;
+using MonoGameLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +33,7 @@ namespace RIPRUSH.Entities.Environment {
         public List<TilemapChunk> _chunks = new();
         private Texture2D _tileset;
 
+        public PickupManager _pickupManager;
 
         public WorldManager(float baseY, GraphicsDevice graphics) {
             _baseY = baseY;
@@ -75,8 +75,10 @@ namespace RIPRUSH.Entities.Environment {
                 Vector2 pos = new Vector2(i * chunkWidth, _baseY - tilemapData.Height * tilemapData.TileHeight);
                 _chunks.Add(new TilemapChunk(tilemapData, pos));
             }
-        }
 
+            _pickupManager = new PickupManager(Core.GraphicsDevice, _scrollSpeed);
+            _pickupManager.LoadContent(content);
+        }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             foreach (var chunk in _chunks) {
@@ -108,6 +110,7 @@ namespace RIPRUSH.Entities.Environment {
                 chunk.UpdateCollisionPositions();
             }
 
+            _pickupManager.Update(gameTime);
         }
 
 

@@ -209,6 +209,19 @@ namespace RIPRUSH.Scenes {
             Core.SpriteBatch.DrawString(timerfont, $"High Score: {_highScore:F0}m", new Vector2(20, 50), Color.Gold);
 
             Core.SpriteBatch.End();
+
+            // Draw candy pickups
+            Matrix view = Matrix.CreateLookAt(new Vector3(0, 0, 500),   // Camera
+                                              new Vector3(0, 0, 0),     // Look at origin
+                                              Vector3.Up);
+
+            Matrix projection = Matrix.CreateOrthographicOffCenter(
+                0, Core.GraphicsDevice.Viewport.Width,
+                Core.GraphicsDevice.Viewport.Height, 0,
+                0.1f, 1000f
+            );
+
+            worldManager._pickupManager.Draw(view, projection);
         }
 
         /// <summary>
@@ -253,6 +266,9 @@ namespace RIPRUSH.Scenes {
                 var platforms = chunk.GetCollisionPlatforms();  // returns list with your single RectData
                 _player.CheckPumpkinPlatTouch(platforms);
             }
+
+            //another basic collision check here but for the powerup candies
+            _player.CheckPickupCollision(worldManager._pickupManager.GetPickups());
 
             // Update difficulty scaling
             UpdateEnemySpawnInterval();
