@@ -31,6 +31,10 @@ namespace RIPRUSH.Entities.Environment {
             _scrollSpeed = scrollSpeed;
         }
 
+        public IEnumerable<CandyPickup> GetPickups() => _pickups;
+
+        public void SetScrollSpeed(float newSpeed) => _scrollSpeed = newSpeed;
+
         public void LoadContent(ContentManager content) {
             basicCandySound = content.Load<SoundEffect>("Assets/Audio/Candy");
             healCandySound = content.Load<SoundEffect>("Assets/Audio/HealCandy");
@@ -48,8 +52,9 @@ namespace RIPRUSH.Entities.Environment {
             );
 
             // Scroll all pickups left
-            foreach (var p in _pickups)
+            foreach (var p in _pickups) {
                 p.Position.X -= _scrollSpeed * dt;
+            }
 
             // Remove offscreen or collected pickups
             _pickups.RemoveAll(p => p.Position.X < -200f || p.Collected);
@@ -60,8 +65,10 @@ namespace RIPRUSH.Entities.Environment {
                 _timeSinceLastSpawn = 0f;
             }
 
-            foreach (var p in _pickups)
-                p.Update(gameTime);
+            foreach (var p in _pickups) { 
+                p.Update(gameTime); 
+            }
+                
         }
 
         private void SpawnPickup() {
@@ -69,12 +76,15 @@ namespace RIPRUSH.Entities.Environment {
             CandyType type;
             float roll = _rng.NextSingle();
 
-            if (roll < 0.5f)
-                type = CandyType.Chocobar;    
-            else if (roll < 0.8f)
+            if (roll < 0.5f) {
+                type = CandyType.Chocobar;
+            }
+            else if (roll < 0.8f) {
                 type = CandyType.Lollipop;
-            else
+            }
+            else {
                 type = CandyType.ZapCandy;
+            }
 
             float viewportWidth = Core.GraphicsDevice.Viewport.Width;
             float x = viewportWidth + _spawnXOffset + (float)(_rng.NextDouble() * 200);
@@ -100,12 +110,10 @@ namespace RIPRUSH.Entities.Environment {
 
         public void Draw(Matrix view, Matrix projection) {
             _graphics.RasterizerState = new RasterizerState { CullMode = CullMode.None };
-            foreach (var p in _pickups)
+            foreach (var p in _pickups) {
                 p.Draw(view, projection);
+            }
         }
 
-        public IEnumerable<CandyPickup> GetPickups() => _pickups;
-
-        public void SetScrollSpeed(float newSpeed) => _scrollSpeed = newSpeed;
     }
 }
