@@ -12,12 +12,12 @@ namespace RIPRUSH.Entities.Environment {
         private readonly Random _rng = new();
         private readonly List<CandyPickup> _pickups = new();
 
-        private float _baseSpawnInterval = 8f; // seconds(?)
+        private float _baseSpawnInterval = 5f; // seconds(?)
         private float _timeSinceLastSpawn = 0f;
         private float _scrollSpeed;
 
         // Spawn position range
-        private readonly float _minY = 220f;
+        private readonly float _minY = 100f;
         private readonly float _maxY = 420f;
         private readonly float _spawnXOffset = 250f;
 
@@ -47,8 +47,8 @@ namespace RIPRUSH.Entities.Environment {
 
             // Adjust spawn interval based on scroll speed (faster = slightly quicker spawns)
             float adjustedSpawnInterval = MathHelper.Clamp(
-                _baseSpawnInterval * (60f / (_scrollSpeed + 1f)),
-                15f, 40f
+                _baseSpawnInterval * (20f / (_scrollSpeed + 1f)),
+                4f, 8f
             );
 
             // Scroll all pickups left
@@ -76,10 +76,10 @@ namespace RIPRUSH.Entities.Environment {
             CandyType type;
             float roll = _rng.NextSingle();
 
-            if (roll < 0.5f) {
+            if (roll < 0.7f) {
                 type = CandyType.Chocobar;
             }
-            else if (roll < 0.8f) {
+            else if (roll < 0.9f) {
                 type = CandyType.Lollipop;
             }
             else {

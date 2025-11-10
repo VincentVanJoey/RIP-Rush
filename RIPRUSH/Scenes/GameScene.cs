@@ -31,7 +31,7 @@ namespace RIPRUSH.Scenes {
 
         private PauseMenu _pauseMenu;
 
-        private WorldManager worldManager;
+        public WorldManager worldManager;
         private Texture2D _midground;
         private Texture2D _background;
         private Color worldColor;
@@ -311,6 +311,10 @@ namespace RIPRUSH.Scenes {
 
             foreach (var component in _components) {
                 component.Update(gameTime);
+            }
+
+            if (GameActive) {
+                Console.WriteLine($"Enemies: {_enemies.Count}, Components: {_components.Count}, TotalScrollX: {worldManager.TotalScrollX}");
             }
 
         }

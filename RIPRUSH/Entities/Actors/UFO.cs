@@ -2,7 +2,9 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameLibrary;
 using RIPRUSH.Entities.CollisionShapes;
+using RIPRUSH.Scenes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +17,13 @@ namespace RIPRUSH.Entities.Actors {
 
         // Fields to avoid "magic numbers"
         private const float SPEED = 5f;
-        private const float HORIZONTAL_SPEED = 400f;
         private Vector2 _initialPosition;
         public float move_distance = 75f;
         private float amplitude;
         public Vector2 velocity;
+
+        // Horizontal speed (the one that actualy matters
+        private float _horizontalSpeed = 400f;
 
         private BoundingCircle bounds;
 
@@ -84,8 +88,16 @@ namespace RIPRUSH.Entities.Actors {
         /// <param name="gameTime">the time state of the game</param>
         public override void Move(GameTime gameTime) {
 
+            var scene = Core.GetActiveScene() as GameScene;
+            
+
+            // Dynamically adjust horizontal speed to match world scroll
+            float worldSpeed = (float)scene?.worldManager._scrollSpeed;
+            float scrollFactor = worldSpeed / 400f; // 400f is your old baseline
+            float effectiveSpeed = _horizontalSpeed * scrollFactor;
+
             Position = new Vector2(
-                Position.X - HORIZONTAL_SPEED * (float)(gameTime.ElapsedGameTime.TotalSeconds),
+                Position.X - effectiveSpeed * (float)(gameTime.ElapsedGameTime.TotalSeconds),
                 _initialPosition.Y + (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds * SPEED) * amplitude
             );
 

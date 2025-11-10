@@ -49,11 +49,17 @@ namespace RIPRUSH.Entities.Actors {
         private double deathTimer = 0;
         private bool deathParticlesSpawned = false;
 
-        private bool isInvincible = false;
-        private double invincibleTimer = 0;
-        private const double InvincibleDuration = 1.0; 
+        private bool isHurtInvincible = false;
+        private double hurtInvincibleTimer = 0;
+        private const double HurtInvincibleDuration = 1.0; 
         private double blinkTimer = 0;
-        private const double blinkSecondsInterval = 0.05; 
+        private const double HurtBlinkInterval = 0.05;
+
+        private bool isPowerInvincible = false;
+        private double powerInvincibleTimer = 0;
+        private const double PowerInvincibleDuration = 8.0;
+        private const double PowerBlinkInterval = 0.1;
+        private bool showPowerFlash = false;
 
         public Pumpkin(ContentManager content, bool isAnimated, float scale) {
             animations = new Dictionary<string, Animation>();
@@ -84,7 +90,6 @@ namespace RIPRUSH.Entities.Actors {
             bounds = new BoundingCircle(circleCenter, radius);
 
         }
-
 
         public void CheckPumpkinPlatTouch(List<Platform> _platforms) {
             foreach (var platform in _platforms) {
@@ -135,10 +140,16 @@ namespace RIPRUSH.Entities.Actors {
                             Health = Math.Min(MaxHealth, Health + 1);
                             break;
                         case CandyType.Chocobar:
-                            // The basic type I think, will probably not serve any purpose besides point accumultion at the end
+                            var scene = Core.GetActiveScene() as GameScene;
+                            scene?.worldManager.ApplySpeedBoost();
                             break;
                         case CandyType.ZapCandy:
-                            // It's the mario star; temp invincibility
+                            // Activate special invincibility for a fixed time
+                            isPowerInvincible = true;
+                            powerInvincibleTimer = PowerInvincibleDuration;
+                            blinkTimer = 0;
+                            foreach (var animation in animations.Values)
+                                animation.Color = Color.Yellow;
                             break;
                     }
                 }
@@ -210,7 +221,7 @@ namespace RIPRUSH.Entities.Actors {
         }
 
         public void TakeDamage() {
-            if (isInvincible || isDead)
+            if (isHurtInvincible || isPowerInvincible || isDead)
                 return;
 
             Health--;
@@ -231,8 +242,8 @@ namespace RIPRUSH.Entities.Actors {
             }
             else {
                 // Normal hurt logic
-                isInvincible = true;
-                invincibleTimer = InvincibleDuration;
+                isHurtInvincible = true;
+                hurtInvincibleTimer = HurtInvincibleDuration;
                 blinkTimer = 0;
                 Core.Audio.PlaySoundEffect(_hurtSound);
             }
@@ -251,6 +262,29 @@ namespace RIPRUSH.Entities.Actors {
 
             if (!isDead) {
                 base.Draw(gameTime, spriteBatch);
+
+                // ZapCandy invincibility flash (additive bright yellow)
+                if (isPowerInvincible && showPowerFlash) {
+                    spriteBatch.End(); // End current batch to change blend mode
+                    spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive);
+
+                    var anim = animationManager.animation;
+                    spriteBatch.Draw(
+                        anim.Texture,
+                        animationManager.Position,
+                        new Rectangle(anim.CurrentFrame * anim.FrameWidth, 0, anim.FrameWidth, anim.FrameHeight),
+                        Color.Yellow,
+                        anim.Rotation,
+                        anim.Origin,
+                        anim.Scale,
+                        anim.SpriteEffect,
+                        anim.LayerDepth
+                    );
+
+                    spriteBatch.End();
+                    spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+                }
+
             }
         }
 
@@ -280,25 +314,51 @@ namespace RIPRUSH.Entities.Actors {
                     resultsScene._finalDistance = game._currentScore;
                     resultsScene._wasNewHighScore = game._newHighScore;
 
+                    Core.Instance.Components.Remove(pumpkinParticles);
+                    pumpkinParticles.Dispose();
+
+
                     Core.ChangeScene(resultsScene);
                 }
 
                 return;
             }
 
-            // invincible logic
-            if (isInvincible) {
-                invincibleTimer -= dt;
+            // Damange invincibility logic
+            if (isHurtInvincible) {
+                hurtInvincibleTimer -= dt;
                 blinkTimer -= dt;
 
                 if (blinkTimer <= 0) {
                     foreach (var animation in animations.Values)
                         animation.Color = (animation.Color == Color.White) ? Color.Red * 0.5f : Color.White;
-                    blinkTimer = blinkSecondsInterval;
+                    blinkTimer = HurtBlinkInterval;
                 }
 
-                if (invincibleTimer <= 0) {
-                    isInvincible = false;
+                if (hurtInvincibleTimer <= 0) {
+                    isHurtInvincible = false;
+                    foreach (var animation in animations.Values)
+                        animation.Color = Color.White;
+                }
+            }
+
+            // ZapCandy invincibility
+            if (isPowerInvincible) {
+                powerInvincibleTimer -= dt;
+
+                // Adjust blink interval to speed up near the end
+                double timeFraction = powerInvincibleTimer / PowerInvincibleDuration;
+                double dynamicBlink = MathHelper.Lerp(0.05f, (float)PowerBlinkInterval, (float)timeFraction);
+
+                blinkTimer -= dt;
+                if (blinkTimer <= 0) {
+                    showPowerFlash = !showPowerFlash; // toggle visibility of the bright flash
+                    blinkTimer = dynamicBlink;
+                }
+
+                if (powerInvincibleTimer <= 0) {
+                    isPowerInvincible = false;
+                    showPowerFlash = false;
                     foreach (var animation in animations.Values)
                         animation.Color = Color.White;
                 }

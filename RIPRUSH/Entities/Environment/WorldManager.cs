@@ -13,17 +13,13 @@ namespace RIPRUSH.Entities.Environment {
         private Random _rng = new();
 
         private float _baseY;
-        private const float InitialScale = 2f;
 
-        private const float OverlapFix = 1f;
-
-        private float _scrollSpeed = 400f;
+        public float _scrollSpeed;
+        private float _baseScrollSpeed = 400f;
         public float TotalScrollX { get; private set; } = 0f;
         private float _timeElapsed = 0f;
 
         private float _screenWidth;
-        private float _chunkWidth;
-
         private const float MinGapWidth = 0f;
         private const float MaxGapWidth = 200f;
         private int _maxConsecutiveGaps = 1;
@@ -34,10 +30,14 @@ namespace RIPRUSH.Entities.Environment {
         private Texture2D _tileset;
 
         public PickupManager _pickupManager;
+        private float _speedBoostTimer = 0f;
+        private const float BoostDuration = 3f; // seconds
+        private const float BoostMultiplier = 1.6f; // 60% faster
 
         public WorldManager(float baseY, GraphicsDevice graphics) {
             _baseY = baseY;
             _screenWidth = graphics.Viewport.Width;
+            _scrollSpeed = _baseScrollSpeed;
         }
 
         public List<Platform> GetActivePlatforms() {
@@ -87,11 +87,26 @@ namespace RIPRUSH.Entities.Environment {
             }
         }
 
+        public void ApplySpeedBoost() {
+            _speedBoostTimer = BoostDuration;
+        }
+
         public void Update(GameTime gameTime) {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _timeElapsed += dt;
 
             UpdateGapChance();
+
+            // Handle speed boost logic
+            if (_speedBoostTimer > 0) {
+                _speedBoostTimer -= dt;
+                float t = 1f - (_speedBoostTimer / BoostDuration);
+                _scrollSpeed = MathHelper.Lerp(_baseScrollSpeed * BoostMultiplier, _baseScrollSpeed, t);
+            }
+            else {
+                _scrollSpeed = _baseScrollSpeed;
+            }
+
             TotalScrollX += _scrollSpeed * dt;
 
             foreach (var chunk in _chunks) {
