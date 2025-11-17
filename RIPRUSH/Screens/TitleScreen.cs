@@ -31,11 +31,8 @@ namespace RIPRUSH.Screens
             PlayButton.Click += PlayButton_Click;
             SettingsButton.Click += SettingsButton_Click;
             QuitButton.Click += QuitButton_Click;
-            
-            //MenuSong = Core.Content.Load<Song>("Assets/Audio/Music/MenuMusic");
-            
-            //if (MediaPlayer.State != MediaState.Playing) Core.Audio.PlaySong(MenuSong);
-            
+            HTPButton.Click += HTP_Click;
+                                    
             InitializeButtons();
         }
 
@@ -51,7 +48,7 @@ namespace RIPRUSH.Screens
         }
 
         public void InitializeButtons() {
-            _buttons = [ PlayButton, SettingsButton, QuitButton ];
+            _buttons = [ PlayButton, SettingsButton, QuitButton, HTPButton ];
             _focusedIndex = 0;
             _buttons[_focusedIndex].ButtonCategoryState = MainMenuButton.ButtonCategory.Highlighted;
         }
@@ -71,6 +68,7 @@ namespace RIPRUSH.Screens
                 focusedButton?.PerformClick();
             }
         }
+        
         private void ChangeFocus(int direction) {
             _buttons[_focusedIndex].ButtonCategoryState = MainMenuButton.ButtonCategory.Enabled; ;
             _focusedIndex = (_focusedIndex + direction + _buttons.Length) % _buttons.Length;
@@ -110,6 +108,13 @@ namespace RIPRUSH.Screens
             Core.Audio.PlaySoundEffect(_uiSound);
             Core.Instance.Exit();
         }
+
+        private void HTP_Click(object sender, System.EventArgs e) {
+            Core.Audio.PlaySoundEffect(_uiSound);
+            MainMenuScene mainMenuScene = Core.GetActiveScene() as MainMenuScene;
+            mainMenuScene?.ShowHTPScreen();
+        }
+
         #endregion
     }
 }

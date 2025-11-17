@@ -59,6 +59,54 @@
     </Variable>
     <Variable>
       <Type>string</Type>
+      <Name>HTPButton.buttonText</Name>
+      <Value xsi:type="xsd:string">how to play</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>HTPButton.Height</Name>
+      <Value xsi:type="xsd:float">66</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>int</Type>
+      <Name>HTPButton.MenuButtonTextColorBlue</Name>
+      <Value xsi:type="xsd:int">0</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>int</Type>
+      <Name>HTPButton.MenuButtonTextColorGreen</Name>
+      <Value xsi:type="xsd:int">185</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>int</Type>
+      <Name>HTPButton.MenuButtonTextColorRed</Name>
+      <Value xsi:type="xsd:int">5</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>HTPButton.Width</Name>
+      <Value xsi:type="xsd:float">171</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>HTPButton.X</Name>
+      <Value xsi:type="xsd:float">586</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>HTPButton.Y</Name>
+      <Value xsi:type="xsd:float">410</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>string</Type>
       <Name>PlayButton.buttonText</Name>
       <Value xsi:type="xsd:string">Play</Value>
       <SetsValue>true</SetsValue>
@@ -129,6 +177,11 @@
   </Instance>
   <Instance>
     <Name>QuitButton</Name>
+    <BaseType>Joelements/MainMenuButton</BaseType>
+    <DefinedByBase>false</DefinedByBase>
+  </Instance>
+  <Instance>
+    <Name>HTPButton</Name>
     <BaseType>Joelements/MainMenuButton</BaseType>
     <DefinedByBase>false</DefinedByBase>
   </Instance>

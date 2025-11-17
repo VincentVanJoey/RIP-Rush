@@ -25,6 +25,11 @@
     <LinkType>ReferenceOriginal</LinkType>
   </ScreenReference>
   <ScreenReference>
+    <Name>HTPScreen</Name>
+    <ElementType>Screen</ElementType>
+    <LinkType>ReferenceOriginal</LinkType>
+  </ScreenReference>
+  <ScreenReference>
     <Name>Proj2SettingsScreen</Name>
     <ElementType>Screen</ElementType>
     <LinkType>ReferenceOriginal</LinkType>

@@ -71,9 +71,10 @@ namespace RIPRUSH.Scenes {
 
         private TitleScreen titlescreen;
         private Proj2SettingsScreen settingsScreen;
+        private HTPScreen htpScreen;
 
         public bool titleFrameCheck = false;
-        private enum MenuState { Title, Settings }
+        private enum MenuState { Title, Settings, HTP }
         private MenuState _currentMenuState;
 
         public override void Initialize() {
@@ -94,6 +95,7 @@ namespace RIPRUSH.Scenes {
             };
 
             settingsScreen = new Proj2SettingsScreen();
+            htpScreen = new HTPScreen();
             ShowTitleScreen();
         }
 
@@ -129,6 +131,15 @@ namespace RIPRUSH.Scenes {
             titlescreen.RemoveFromRoot();
 
             _currentMenuState = MenuState.Settings;
+        }
+
+        public void ShowHTPScreen() {
+            GumService.Default.Root.Children.Clear();
+
+            htpScreen.AddToRoot();
+            titlescreen.RemoveFromRoot();
+
+            _currentMenuState = MenuState.HTP;
         }
 
         /// <summary>
@@ -181,6 +192,9 @@ namespace RIPRUSH.Scenes {
                     break;
                 case MenuState.Settings:
                     settingsScreen.UpdateInput();
+                    break;
+                case MenuState.HTP:
+                    htpScreen.UpdateInput();
                     break;
             }
 

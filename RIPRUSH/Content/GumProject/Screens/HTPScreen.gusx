@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ScreenSave xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Name>Proj2SettingsScreen</Name>
+  <Name>HTPScreen</Name>
   <State>
     <Name>Default</Name>
     <Variable>
@@ -19,132 +19,6 @@
       <Type>StyleCategory</Type>
       <Name>Background.StyleCategoryState</Name>
       <Value xsi:type="xsd:string">Panel</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>ButtonCategory</Type>
-      <Name>DetectResolutionsButton.ButtonCategoryState</Name>
-      <Value xsi:type="xsd:string">Enabled</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>DetectResolutionsButton.ButtonDisplayText</Name>
-      <Value xsi:type="xsd:string">Detect Resolutions</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>bool</Type>
-      <Name>DetectResolutionsButton.ClipsChildren</Name>
-      <Value xsi:type="xsd:boolean">false</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>DetectResolutionsButton.Height</Name>
-      <Value xsi:type="xsd:float">24</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>DetectResolutionsButton.Parent</Name>
-      <Value xsi:type="xsd:string">MenuItems</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>bool</Type>
-      <Name>DetectResolutionsButton.Visible</Name>
-      <Value xsi:type="xsd:boolean">true</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>DetectResolutionsButton.Width</Name>
-      <Value xsi:type="xsd:float">156</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>DetectResolutionsButton.X</Name>
-      <Value xsi:type="xsd:float">0</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>HorizontalAlignment</Type>
-      <Name>DetectResolutionsButton.XOrigin</Name>
-      <Value xsi:type="xsd:int">2</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>PositionUnitType</Type>
-      <Name>DetectResolutionsButton.XUnits</Name>
-      <Value xsi:type="xsd:int">4</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>DetectResolutionsButton.Y</Name>
-      <Value xsi:type="xsd:float">9</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>DividerInstance1.Parent</Name>
-      <Value xsi:type="xsd:string">MenuItems</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>DividerInstance1.Width</Name>
-      <Value xsi:type="xsd:float">0</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>DimensionUnitType</Type>
-      <Name>DividerInstance1.WidthUnits</Name>
-      <Value xsi:type="xsd:int">2</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>DividerInstance1.Y</Name>
-      <Value xsi:type="xsd:float">8</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>CheckBoxCategory</Type>
-      <Name>FullScreenCheckbox.CheckBoxCategoryState</Name>
-      <Value xsi:type="xsd:string">EnabledOff</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>FullScreenCheckbox.Parent</Name>
-      <Value xsi:type="xsd:string">MenuItems</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>FullScreenCheckbox.Text</Name>
-      <Value xsi:type="xsd:string">Run Fullscreen</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>bool</Type>
-      <Name>FullScreenCheckbox.Visible</Name>
-      <Value xsi:type="xsd:boolean">true</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>FullScreenCheckbox.X</Name>
-      <Value xsi:type="xsd:float">0</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>FullScreenCheckbox.Y</Name>
-      <Value xsi:type="xsd:float">-26</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -263,108 +137,6 @@
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
-      <Type>string</Type>
-      <Name>MusicLabel.Parent</Name>
-      <Value xsi:type="xsd:string">MenuItems</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>MusicLabel.Text</Name>
-      <Value xsi:type="xsd:string">Music Volume</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>MusicLabel.Y</Name>
-      <Value xsi:type="xsd:float">8</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>MusicSlider.Parent</Name>
-      <Value xsi:type="xsd:string">MenuItems</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>MusicSlider.SliderPercent</Name>
-      <Value xsi:type="xsd:float">100</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>MusicSlider.Width</Name>
-      <Value xsi:type="xsd:float">0</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>DimensionUnitType</Type>
-      <Name>MusicSlider.WidthUnits</Name>
-      <Value xsi:type="xsd:int">2</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>ResolutionBox.Height</Name>
-      <Value xsi:type="xsd:float">116</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>ListBoxCategory</Type>
-      <Name>ResolutionBox.ListBoxCategoryState</Name>
-      <Value xsi:type="xsd:string">Enabled</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>ResolutionBox.Parent</Name>
-      <Value xsi:type="xsd:string">MenuItems</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>bool</Type>
-      <Name>ResolutionBox.Visible</Name>
-      <Value xsi:type="xsd:boolean">true</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>ResolutionBox.Width</Name>
-      <Value xsi:type="xsd:float">0</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>DimensionUnitType</Type>
-      <Name>ResolutionBox.WidthUnits</Name>
-      <Value xsi:type="xsd:int">2</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>ColorCategory</Type>
-      <Name>ResolutionLabel.ColorCategoryState</Name>
-      <Value xsi:type="xsd:string">Success</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>ResolutionLabel.Parent</Name>
-      <Value xsi:type="xsd:string">MenuItems</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>ResolutionLabel.Text</Name>
-      <Value xsi:type="xsd:string">Resolution:</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>bool</Type>
-      <Name>ResolutionLabel.Visible</Name>
-      <Value xsi:type="xsd:boolean">true</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
       <Type>float</Type>
       <Name>SettingsMenuPanel.Height</Name>
       <Value xsi:type="xsd:float">16</Value>
@@ -391,43 +163,7 @@
     <Variable>
       <Type>float</Type>
       <Name>SettingsMenuPanel.Y</Name>
-      <Value xsi:type="xsd:float">12</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>SoundLabel.Parent</Name>
-      <Value xsi:type="xsd:string">MenuItems</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>SoundLabel.Text</Name>
-      <Value xsi:type="xsd:string">Sound Volume</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>string</Type>
-      <Name>SoundSlider.Parent</Name>
-      <Value xsi:type="xsd:string">MenuItems</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>SoundSlider.SliderPercent</Name>
-      <Value xsi:type="xsd:float">100</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>float</Type>
-      <Name>SoundSlider.Width</Name>
-      <Value xsi:type="xsd:float">0</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>DimensionUnitType</Type>
-      <Name>SoundSlider.WidthUnits</Name>
-      <Value xsi:type="xsd:int">2</Value>
+      <Value xsi:type="xsd:float">172</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -457,7 +193,7 @@
     <Variable>
       <Type>string</Type>
       <Name>TitleText.Text</Name>
-      <Value xsi:type="xsd:string">~ Settings ~</Value>
+      <Value xsi:type="xsd:string">~ Controls ~</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -536,12 +272,6 @@
       <Type>VerticalAlignment</Type>
       <Name>TitleText1.VerticalAlignment</Name>
       <Value xsi:type="xsd:int">1</Value>
-      <SetsValue>true</SetsValue>
-    </Variable>
-    <Variable>
-      <Type>bool</Type>
-      <Name>TitleText1.Visible</Name>
-      <Value xsi:type="xsd:boolean">false</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -656,51 +386,6 @@
   <Instance>
     <Name>TitleText1</Name>
     <BaseType>Text</BaseType>
-    <DefinedByBase>false</DefinedByBase>
-  </Instance>
-  <Instance>
-    <Name>ResolutionLabel</Name>
-    <BaseType>Controls/Label</BaseType>
-    <DefinedByBase>false</DefinedByBase>
-  </Instance>
-  <Instance>
-    <Name>ResolutionBox</Name>
-    <BaseType>Controls/ListBox</BaseType>
-    <DefinedByBase>false</DefinedByBase>
-  </Instance>
-  <Instance>
-    <Name>DetectResolutionsButton</Name>
-    <BaseType>Controls/ButtonStandard</BaseType>
-    <DefinedByBase>false</DefinedByBase>
-  </Instance>
-  <Instance>
-    <Name>FullScreenCheckbox</Name>
-    <BaseType>Controls/CheckBox</BaseType>
-    <DefinedByBase>false</DefinedByBase>
-  </Instance>
-  <Instance>
-    <Name>DividerInstance1</Name>
-    <BaseType>Elements/DividerHorizontal</BaseType>
-    <DefinedByBase>false</DefinedByBase>
-  </Instance>
-  <Instance>
-    <Name>MusicLabel</Name>
-    <BaseType>Controls/Label</BaseType>
-    <DefinedByBase>false</DefinedByBase>
-  </Instance>
-  <Instance>
-    <Name>MusicSlider</Name>
-    <BaseType>Controls/Slider</BaseType>
-    <DefinedByBase>false</DefinedByBase>
-  </Instance>
-  <Instance>
-    <Name>SoundLabel</Name>
-    <BaseType>Controls/Label</BaseType>
-    <DefinedByBase>false</DefinedByBase>
-  </Instance>
-  <Instance>
-    <Name>SoundSlider</Name>
-    <BaseType>Controls/Slider</BaseType>
     <DefinedByBase>false</DefinedByBase>
   </Instance>
   <Instance>
