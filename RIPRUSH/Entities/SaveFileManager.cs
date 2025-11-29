@@ -16,6 +16,10 @@ namespace RIPRUSH.Entities {
         public string PlayerName { get; set; } = ""; // will be ideally set when I actually do more save file stuff so they have a distinct profile
         public Dictionary<string, int> Upgrades { get; set; } = new Dictionary<string, int>(); // I'd be able to track tiered upgrades e.g. {"Health Up": 2, "Jump": 1}
         public int TotalCoins { get; set; } = 0; // the eventual "currency" amount I'd want the player to accumulate for upgrades but not coins probably 
+
+        //volume sets, 0.0 - 1.0
+        public float MusicVolume { get; set; } = 1f;
+        public float SoundVolume { get; set; } = 1f;
     }
     public static class SaveFileManager {
 

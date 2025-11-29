@@ -1,11 +1,12 @@
+using System;
+using System.Linq;
 using Gum.Forms.Controls;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
 using RIPRUSH.Components.Joelements;
+using RIPRUSH.Entities;
 using RIPRUSH.Scenes;
-using System;
-using System.Linq;
 
 namespace RIPRUSH.Screens
 {
@@ -19,8 +20,13 @@ namespace RIPRUSH.Screens
         {
             _uiSound = Core.Content.Load<SoundEffect>("Assets/Audio/UI");
 
-            MusicSlider.SliderPercent = Core.Audio.SongVolume * 100;
-            SoundSlider.SliderPercent = Core.Audio.SoundEffectVolume * 100;
+            //MusicSlider.SliderPercent = Core.Audio.SongVolume * 100;
+            //SoundSlider.SliderPercent = Core.Audio.SoundEffectVolume * 100;
+
+            MusicSlider.SliderPercent = SaveFileManager.Data.MusicVolume * 100;
+            SoundSlider.SliderPercent = SaveFileManager.Data.SoundVolume * 100;
+            Core.Audio.SongVolume = SaveFileManager.Data.MusicVolume;
+            Core.Audio.SoundEffectVolume = SaveFileManager.Data.SoundVolume;
 
             MusicSlider.ValueChanged += MusicSliderChanged;
             SoundSlider.ValueChanged += SoundSliderChanged;
@@ -90,11 +96,13 @@ namespace RIPRUSH.Screens
         private void MusicSliderChanged(object sender, EventArgs e) {
             float ratio = MusicSlider.SliderPercent / 100;
             Core.Audio.SongVolume = ratio;
+            SaveFileManager.Set(d => d.MusicVolume = ratio);
         }
 
         private void SoundSliderChanged(object sender, EventArgs e) {
             float ratio = SoundSlider.SliderPercent / 100;
             Core.Audio.SoundEffectVolume = ratio;
+            SaveFileManager.Set(d => d.SoundVolume = ratio);
         }
 
         /// <summary>
