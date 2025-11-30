@@ -45,6 +45,7 @@ namespace RIPRUSH.Screens
             ResolutionBox.SelectionChanged += ResolutionChanged;
             FullScreenCheckbox.Checked += FullScreenChanged;
             FullScreenCheckbox.Unchecked += FullScreenChanged;
+            DefaultsButton.Click += DefaultsButton_Click;
 
             MusicSlider.ValueChanged += MusicSliderChanged;
             SoundSlider.ValueChanged += SoundSliderChanged;
@@ -258,6 +259,41 @@ namespace RIPRUSH.Screens
             });
 
         }
+
+        private void DefaultsButton_Click(object sender, EventArgs e) {
+            //set default res and clear prev
+            int defaultWidth = 800;
+            int defaultHeight = 480;
+            bool fullscreen = false;
+            _previousResolution = new Point(defaultWidth, defaultHeight);
+            ApplyResolution(defaultWidth, defaultHeight, fullscreen);
+
+            _isApplyingResolutionProgrammatically = true;
+            ResolutionBox.SelectedObject = $"{defaultWidth} x {defaultHeight}";
+            _isApplyingResolutionProgrammatically = false;
+
+            FullScreenCheckbox.IsChecked = fullscreen;
+            ResolutionBox.IsEnabled = true;
+
+            // volumes
+            MusicSlider.SliderPercent = 50;
+            SoundSlider.SliderPercent = 50;
+            Core.Audio.SongVolume = 0.5f;
+            Core.Audio.SoundEffectVolume = 0.5f;
+
+            // Save file corrections
+            SaveFileManager.Set(d =>
+            {
+                d.ResolutionWidth = defaultWidth;
+                d.ResolutionHeight = defaultHeight;
+                d.IsFullscreen = fullscreen;
+                d.MusicVolume = 0.5f;
+                d.SoundVolume = 0.5f;
+            });
+
+            Core.Audio.PlaySoundEffect(_uiSound);
+        }
+
 
         private void MusicSliderChanged(object sender, EventArgs e) {
             float ratio = MusicSlider.SliderPercent / 100;
