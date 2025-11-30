@@ -37,7 +37,8 @@ namespace RIPRUSH.Screens
             ApplyResolution(
                 SaveFileManager.Data.ResolutionWidth,
                 SaveFileManager.Data.ResolutionHeight,
-                SaveFileManager.Data.IsFullscreen
+                SaveFileManager.Data.IsFullscreen,
+                false
             );
 
             PopulateResolutions();
@@ -183,7 +184,7 @@ namespace RIPRUSH.Screens
         }
 
 
-        private void ApplyResolution(int width, int height, bool fullscreen) {
+        private void ApplyResolution(int width, int height, bool fullscreen, bool playSound = true) {
             Core.Graphics.PreferredBackBufferWidth = width;
             Core.Graphics.PreferredBackBufferHeight = height;
             Core.Graphics.IsFullScreen = fullscreen;
@@ -207,7 +208,7 @@ namespace RIPRUSH.Screens
                                         0
                                      );
 
-            Core.Audio.PlaySoundEffect(_uiSound);
+             if (playSound)  Core.Audio.PlaySoundEffect(_uiSound);
         }
 
 

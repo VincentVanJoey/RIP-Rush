@@ -125,21 +125,32 @@ namespace RIPRUSH.Scenes {
         }
 
         /// <summary>
-        /// Checks if the pumpkin is out of the viewport and handles it accordingly.
+        /// Checks if the pumpkin is out of the virtual resolution bounds and handles it accordingly.
         /// </summary>
         private void CheckPumpkinOutOfBounds() {
-            // Get the viewport dimensions
-            var viewport = Core.GraphicsDevice.Viewport;
+            // Get virtual
+            float virtualWidth = Core.VirtualResolution.VirtualWidth;
+            float virtualHeight = Core.VirtualResolution.VirtualHeight;
 
-            // Check if the pumpkin is off the left side of the screen
-            if (_player.Position.X < 0 || _player.Position.X > Core.GraphicsDevice.Viewport.Width) {
+            int boundsWidth = _player._isAnimated ? _player.animationManager.animation.FrameWidth : _player._texture.Width;
+            int boundsHeight = _player._isAnimated ? _player.animationManager.animation.FrameHeight : _player._texture.Height;
+
+            // Check horizontal
+            if (_player.Position.X < 0) {
                 _player.Position = new Vector2(0, _player.Position.Y);
                 _player.velocity.X = 0;
             }
+            else if (_player.Position.X + boundsWidth * _player.Scale > virtualWidth) {
+                _player.Position = new Vector2(virtualWidth - boundsWidth * _player.Scale, _player.Position.Y);
+                _player.velocity.X = 0;
+            }
 
-            // Check if the pumpkin is falling below the bottom of the screen
-            if (_player.Position.Y > viewport.Height) {
+            // Check if the pumpkin is falling in a hole
+            if (_player.Position.Y + boundsHeight * _player.Scale > virtualHeight + 50) {
                 _player.TakeDamage();
+                Core.Audio.PlaySoundEffect(_player._fallSound);
+
+                // Reset
                 _player.Position = new Vector2(100, 350);
                 _player.velocity = Vector2.Zero;
                 _player.onGround = false;
