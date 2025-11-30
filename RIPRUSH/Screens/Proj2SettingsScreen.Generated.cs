@@ -48,7 +48,7 @@ partial class Proj2SettingsScreen : MonoGameGum.Forms.Controls.FrameworkElement
     public TextRuntime TitleText1 { get; protected set; }
     public Label ResolutionLabel { get; protected set; }
     public ListBox ResolutionBox { get; protected set; }
-    public ButtonStandard DetectResolutionsButton { get; protected set; }
+    public ButtonStandard DefaultsButton { get; protected set; }
     public CheckBox FullScreenCheckbox { get; protected set; }
     public DividerHorizontal DividerInstance1 { get; protected set; }
     public Label MusicLabel { get; protected set; }
@@ -77,7 +77,7 @@ partial class Proj2SettingsScreen : MonoGameGum.Forms.Controls.FrameworkElement
         TitleText1 = this.Visual?.GetGraphicalUiElementByName("TitleText1") as global::MonoGameGum.GueDeriving.TextRuntime;
         ResolutionLabel = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<Label>(this.Visual,"ResolutionLabel");
         ResolutionBox = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<ListBox>(this.Visual,"ResolutionBox");
-        DetectResolutionsButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<ButtonStandard>(this.Visual,"DetectResolutionsButton");
+        DefaultsButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<ButtonStandard>(this.Visual,"DefaultsButton");
         FullScreenCheckbox = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<CheckBox>(this.Visual,"FullScreenCheckbox");
         DividerInstance1 = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<DividerHorizontal>(this.Visual,"DividerInstance1");
         MusicLabel = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<Label>(this.Visual,"MusicLabel");

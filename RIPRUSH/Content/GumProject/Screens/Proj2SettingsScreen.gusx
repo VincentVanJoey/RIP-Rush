@@ -23,67 +23,67 @@
     </Variable>
     <Variable>
       <Type>ButtonCategory</Type>
-      <Name>DetectResolutionsButton.ButtonCategoryState</Name>
+      <Name>DefaultsButton.ButtonCategoryState</Name>
       <Value xsi:type="xsd:string">Enabled</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>string</Type>
-      <Name>DetectResolutionsButton.ButtonDisplayText</Name>
-      <Value xsi:type="xsd:string">Detect Resolutions</Value>
+      <Name>DefaultsButton.ButtonDisplayText</Name>
+      <Value xsi:type="xsd:string">Set All Defaults</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>bool</Type>
-      <Name>DetectResolutionsButton.ClipsChildren</Name>
+      <Name>DefaultsButton.ClipsChildren</Name>
       <Value xsi:type="xsd:boolean">false</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>float</Type>
-      <Name>DetectResolutionsButton.Height</Name>
+      <Name>DefaultsButton.Height</Name>
       <Value xsi:type="xsd:float">24</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>string</Type>
-      <Name>DetectResolutionsButton.Parent</Name>
+      <Name>DefaultsButton.Parent</Name>
       <Value xsi:type="xsd:string">MenuItems</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>bool</Type>
-      <Name>DetectResolutionsButton.Visible</Name>
+      <Name>DefaultsButton.Visible</Name>
       <Value xsi:type="xsd:boolean">true</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>float</Type>
-      <Name>DetectResolutionsButton.Width</Name>
+      <Name>DefaultsButton.Width</Name>
       <Value xsi:type="xsd:float">156</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>float</Type>
-      <Name>DetectResolutionsButton.X</Name>
-      <Value xsi:type="xsd:float">0</Value>
+      <Name>DefaultsButton.X</Name>
+      <Value xsi:type="xsd:float">-10</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>HorizontalAlignment</Type>
-      <Name>DetectResolutionsButton.XOrigin</Name>
+      <Name>DefaultsButton.XOrigin</Name>
       <Value xsi:type="xsd:int">2</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>PositionUnitType</Type>
-      <Name>DetectResolutionsButton.XUnits</Name>
+      <Name>DefaultsButton.XUnits</Name>
       <Value xsi:type="xsd:int">4</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
       <Type>float</Type>
-      <Name>DetectResolutionsButton.Y</Name>
+      <Name>DefaultsButton.Y</Name>
       <Value xsi:type="xsd:float">9</Value>
       <SetsValue>true</SetsValue>
     </Variable>
@@ -669,7 +669,7 @@
     <DefinedByBase>false</DefinedByBase>
   </Instance>
   <Instance>
-    <Name>DetectResolutionsButton</Name>
+    <Name>DefaultsButton</Name>
     <BaseType>Controls/ButtonStandard</BaseType>
     <DefinedByBase>false</DefinedByBase>
   </Instance>

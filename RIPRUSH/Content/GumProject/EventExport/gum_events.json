@@ -84,6 +84,13 @@
         "ElementType": "Screens",
         "EventType": 7,
         "TimestampUtc": "2025-11-17T06:44:03.9647979Z"
+      },
+      {
+        "NewName": "Proj2SettingsScreen.DefaultsButton",
+        "OldName": "Proj2SettingsScreen.DetectResolutionsButton",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-11-30T03:38:30.8848052Z"
       }
     ]
   }
