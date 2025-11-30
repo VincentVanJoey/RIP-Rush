@@ -1,5 +1,6 @@
 ﻿using Gum.Forms;
 using Gum.Forms.Controls;
+using Gum.Wireframe;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -10,13 +11,11 @@ using RIPRUSH.Entities;
 using RIPRUSH.Scenes;
 using System;
 
-namespace RIPRUSH
-{
+namespace RIPRUSH {
     /// <summary>
     /// The main game class, responsible for initializing and running the game.
     /// </summary>
-    public class Game1 : Core
-    {
+    public class Game1 : Core {
         public Song GameSong;
 
         public Game1() : base("RIP RUSH", 800, 480, false) {
@@ -29,11 +28,25 @@ namespace RIPRUSH
         /// <remarks>This method sets up the initial state of the game, including enabling mouse
         /// visibility. It should be called before the game starts running. Overrides the base implementation to include
         /// additional initialization logic specific to this game.</remarks>
-        protected override void Initialize()
-        {
+        protected override void Initialize() {
             base.Initialize();
             InitializeGum();
             IsMouseVisible = true;
+
+            Window.ClientSizeChanged += (_, _) => {
+                // Recompute your virtual resolution scaling
+                VirtualResolution.ComputeScale(GraphicsDevice);
+                GraphicalUiElement.CanvasWidth = VirtualResolution.VirtualWidth;
+                GraphicalUiElement.CanvasHeight = VirtualResolution.VirtualHeight;
+                GumService.Default.Root?.UpdateLayout();
+
+                // Update cursor transform so clicks map correctly
+                var cursor = GumService.Default.Cursor;
+                float scale = VirtualResolution.Scale;
+                cursor.TransformMatrix = Matrix.CreateScale(1f / scale, 1f / scale, 1f);
+                cursor.TransformMatrix *= Matrix.CreateTranslation(-VirtualResolution.DestinationRect.X / scale, -VirtualResolution.DestinationRect.Y / scale, 0);
+            };
+
             ChangeScene(new MainMenuScene());
             SaveFileManager.Initialize();
         }
@@ -42,8 +55,7 @@ namespace RIPRUSH
         /// The load content method, called once per game
         /// Loads the game's assets
         /// </summary>
-        protected override void LoadContent()
-        {
+        protected override void LoadContent() {
             GameSong = Content.Load<Song>("Assets/Audio/Music/GameMusic");
             base.LoadContent();
         }
@@ -52,8 +64,7 @@ namespace RIPRUSH
         /// The game's update logic
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
-        protected override void Update(GameTime gameTime)
-        {
+        protected override void Update(GameTime gameTime) {
             // If the M key is pressed, toggle mute state for audio.
             if (Input.Keyboard.WasKeyJustPressed(Keys.M)) {
                 Audio.ToggleMute();
@@ -80,11 +91,18 @@ namespace RIPRUSH
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         /// <param name="spriteBatch">The <see cref="SpriteBatch"/> instance used to draw textures and sprites to the screen.</param>
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.Black); //clears back buffer (?)
-            base.Draw(gameTime);
+        protected override void Draw(GameTime gameTime) {
+            VirtualResolution.BeginDraw(GraphicsDevice);
+
+            // Draw scene (through Core)
+            if (Core.GetActiveScene() != null) {
+                Core.GetActiveScene().Draw(gameTime);
+            }
+
+            // Draw UI
             GumService.Default.Draw();
+
+            VirtualResolution.EndDraw(GraphicsDevice, Core.SpriteBatch);
         }
 
         private void InitializeGum() {
@@ -96,21 +114,17 @@ namespace RIPRUSH
             // use the global content manager from our Core.
             GumService.Default.ContentLoader.XnaContentManager = Core.Content;
 
-            // Register keyboard input for UI control.
+            // Register keyboard/gamepad input for UI control.
             FrameworkElement.KeyboardsForUiControl.Add(GumService.Default.Keyboard);
-
-            // Register gamepad input for Ui control.
             FrameworkElement.GamePadsForUiControl.AddRange(GumService.Default.Gamepads);
 
-            // Customize the tab reverse UI navigation to also trigger when the keyboard
-            // Up arrow key is pushed.
+            // Customize the tab UI navigation to also trigger when the keyboard
+            // Up/Down arrow key is pushed.
             FrameworkElement.TabReverseKeyCombos.Add(
                new KeyCombo() { PushedKey = Microsoft.Xna.Framework.Input.Keys.Up });
-
-            // Customize the tab UI navigation to also trigger when the keyboard
-            // Down arrow key is pushed.
             FrameworkElement.TabKeyCombos.Add(
                new KeyCombo() { PushedKey = Microsoft.Xna.Framework.Input.Keys.Down });
+
         }
     }
 }

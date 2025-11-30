@@ -20,6 +20,10 @@ namespace RIPRUSH.Entities {
         //volume sets, 0.0 - 1.0
         public float MusicVolume { get; set; } = 1f;
         public float SoundVolume { get; set; } = 1f;
+
+        public int ResolutionWidth { get; set; } = 800;
+        public int ResolutionHeight { get; set; } = 480;
+        public bool IsFullscreen { get; set; } = false;
     }
     public static class SaveFileManager {
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Diagnostics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace RIPRUSH.Entities.Particles {
@@ -49,8 +51,6 @@ namespace RIPRUSH.Entities.Particles {
         public void Explode(Vector2 where) {
             color = colors[RandomHelper.Next(colors.Length)];
             AddParticles(where);
-
         }
     }
-
 }

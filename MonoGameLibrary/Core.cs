@@ -33,6 +33,11 @@ public class Core : Game {
     /// </summary>
     public static new GraphicsDevice GraphicsDevice { get; private set; }
 
+    ///// <summary>
+    /////  Gets/manages a virtual res to target in order to support consistant presentation of graphics.
+    ///// </summary>
+    public static VirtualResolutionManager VirtualResolution { get; private set; }
+
     /// <summary>
     /// Gets the sprite batch used for all 2D rendering.
     /// </summary>
@@ -117,6 +122,17 @@ public class Core : Game {
 
         // Create a new audio controller.
         Audio = new AudioController();
+
+        VirtualResolution = new VirtualResolutionManager(GraphicsDevice, Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight);
+
+        Window.ClientSizeChanged += (_, _) => {
+            Graphics.PreferredBackBufferWidth = Window.ClientBounds.Width;
+            Graphics.PreferredBackBufferHeight = Window.ClientBounds.Height;
+            Graphics.ApplyChanges();
+
+            VirtualResolution.ComputeScale(GraphicsDevice);
+        };
+
     }
 
     protected override void UnloadContent() {
@@ -152,11 +168,13 @@ public class Core : Game {
     }
 
     protected override void Draw(GameTime gameTime) {
+        VirtualResolution.BeginDraw(GraphicsDevice);
         // If there is an active scene, draw it.
         if (s_activeScene != null) {
             s_activeScene.Draw(gameTime);
         }
 
+        VirtualResolution.EndDraw(GraphicsDevice, SpriteBatch);
         base.Draw(gameTime);
     }
 

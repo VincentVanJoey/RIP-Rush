@@ -286,6 +286,9 @@ namespace RIPRUSH.Entities.Actors {
                 }
 
             }
+            else{
+                pumpkinParticles?.Draw(gameTime);
+            }
         }
 
         /// <summary>

@@ -39,12 +39,12 @@ namespace RIPRUSH.Entities.Particles {
         /// <summary>
         /// A SpriteBatch to share amongst the various particle systems
         /// </summary>
-        protected static SpriteBatch spriteBatch;
+        protected static SpriteBatch spriteBatch => Core.SpriteBatch;
 
         /// <summary>
         /// A ContentManager to share amongst the various particle systems
         /// </summary>
-        protected static ContentManager contentManager;
+        protected static ContentManager contentManager => Core.Content;
 
         #endregion
 
@@ -165,8 +165,6 @@ namespace RIPRUSH.Entities.Particles {
         protected override void LoadContent() {
             // create the shared static ContentManager and SpriteBatch,
             // if this hasn't already been done by another particle engine
-            if (contentManager == null) contentManager = new ContentManager(Game.Services, "Content");
-            if (spriteBatch == null) spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
             // make sure sub classes properly set textureFilename.
             if (string.IsNullOrEmpty(textureFilename)) {
@@ -220,19 +218,17 @@ namespace RIPRUSH.Entities.Particles {
         public override void Draw(GameTime gameTime) {
             // tell sprite batch to begin, using the spriteBlendMode specified in
             // initializeConstants
-                  spriteBatch.Begin(blendState: blendState);
+
+            if (texture == null) return;
 
             foreach (Particle p in particles) {
                 // skip inactive particles
                 if (!p.Active)
                     continue;
 
-                spriteBatch.Draw(texture, p.Position, null, p.Color,
+                   spriteBatch.Draw(texture, p.Position, null, p.Color,
                     p.Rotation, origin, p.Scale, SpriteEffects.None, 0.0f);
             }
-
-            spriteBatch.End();
-
             base.Draw(gameTime);
         }
 
