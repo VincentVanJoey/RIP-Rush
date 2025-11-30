@@ -1,16 +1,17 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
+using MonoGameLibrary.Input;
 using RIPRUSH.Entities.CollisionShapes;
-using RIPRUSH.Entities.Particles;
 using RIPRUSH.Entities.Environment;
+using RIPRUSH.Entities.Particles;
 using RIPRUSH.Scenes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace RIPRUSH.Entities.Actors {
 
@@ -202,7 +203,7 @@ namespace RIPRUSH.Entities.Actors {
             else {
 
                 // Jump logic
-                if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Space) && onGround) {
+                if ((Core.Input.Keyboard.WasKeyJustPressed(Keys.Space) || Core.Input.Mouse.WasButtonJustPressed(MouseButton.Left)) && onGround) {
                     velocity.Y = -JUMP; // Moves the pumpkin "higher" on the level
                     onGround = false;
                     Core.Audio.PlaySoundEffect(_jumpSound);
@@ -210,7 +211,7 @@ namespace RIPRUSH.Entities.Actors {
 
                 // If player releases jump early while still going up, cut the jump short?
                 // should make it variable????
-                if (Core.Input.Keyboard.WasKeyJustReleased(Keys.Space) && velocity.Y < 0) {
+                if ((Core.Input.Keyboard.WasKeyJustReleased(Keys.Space) || Core.Input.Mouse.WasButtonJustReleased(MouseButton.Left)) && velocity.Y < 0) {
                     velocity.Y *= 0.2f; // TODO - play with value to see what feels best
                 }
 

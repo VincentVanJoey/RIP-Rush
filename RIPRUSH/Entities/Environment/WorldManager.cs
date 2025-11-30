@@ -17,9 +17,7 @@ namespace RIPRUSH.Entities.Environment {
         public float _scrollSpeed;
         private float _baseScrollSpeed = 400f;
         public float TotalScrollX { get; private set; } = 0f;
-        private float _timeElapsed = 0f;
 
-        private float _screenWidth;
         private const float MinGapWidth = 0f;
         private const float MaxGapWidth = 200f;
         private int _maxConsecutiveGaps = 1;
@@ -36,7 +34,6 @@ namespace RIPRUSH.Entities.Environment {
 
         public WorldManager(float baseY, GraphicsDevice graphics) {
             _baseY = baseY;
-            _screenWidth = graphics.Viewport.Width;
             _scrollSpeed = _baseScrollSpeed;
         }
 
@@ -93,7 +90,6 @@ namespace RIPRUSH.Entities.Environment {
 
         public void Update(GameTime gameTime) {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _timeElapsed += dt;
 
             UpdateGapChance();
 
