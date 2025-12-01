@@ -47,12 +47,10 @@ namespace RIPRUSH.Scenes {
         private Random _rng = new Random();
         private int _maxActiveEnemies = 5; // starting cap
 
-
         //private SoundEffect WinSound;
         //private WinFlag _winflag;
 
         private List<Component> _components;
-
 
         public override void Initialize() {
 
@@ -77,7 +75,7 @@ namespace RIPRUSH.Scenes {
             worldManager = new WorldManager(baseY: 550f, Core.GraphicsDevice);
             worldManager.Initialize(Content, "Assets/World/TestTiled", chunkCount: 6);
 
-            _player = new Pumpkin(Core.Content, true, 1.75f) { Position = new Vector2(65, 0) };
+            _player = new Pumpkin(Core.Content, true, 1.75f) { Position = new Vector2(65, 200) };
 
             _components = new List<Component>();
             _enemies = new List<Enemy>();
@@ -109,7 +107,13 @@ namespace RIPRUSH.Scenes {
             float yPos = _rng.Next(150, 270);
             float xPos = Core.GraphicsDevice.Viewport.Width + 50;
 
-            Enemy enemy = new UFO(Core.Content, true, 3f, new Vector2(xPos, yPos));
+            Enemy enemy;
+            if (_rng.NextDouble() < 0.5) {
+                enemy = new UFO(Core.Content, true, 3f, new Vector2(xPos, yPos));
+            }
+            else {
+                enemy = new HorizontalEnemy(Core.Content, 3f, _player.Position);
+            }
 
             _enemies.Add(enemy);
             _components.Add(enemy);
@@ -324,9 +328,10 @@ namespace RIPRUSH.Scenes {
                 component.Update(gameTime);
             }
 
-            if (GameActive) {
-                Console.WriteLine($"Enemies: {_enemies.Count}, Components: {_components.Count}, TotalScrollX: {worldManager.TotalScrollX}");
-            }
+            // DEBUG for checking stuff
+            //if (GameActive) {
+            //    System.Diagnostics.Debug.WriteLine($"Enemies: {_enemies.Count}, Components: {_components.Count}, TotalScrollX: {worldManager.TotalScrollX}");
+            //}
 
         }
 
