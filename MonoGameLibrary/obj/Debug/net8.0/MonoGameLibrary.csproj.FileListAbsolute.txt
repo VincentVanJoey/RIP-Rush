@@ -1,16 +1,3 @@
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.deps.json
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.dll
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.pdb
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.AssemblyReference.cache
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfoInputs.cache
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfo.cs
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.CoreCompileInputs.cache
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.sourcelink.json
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.dll
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\refint\MonoGameLibrary.dll
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.pdb
-C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\ref\MonoGameLibrary.dll
 C:\Users\Joey\Desktop\Coding\School\580 game\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.deps.json
 C:\Users\Joey\Desktop\Coding\School\580 game\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.dll
 C:\Users\Joey\Desktop\Coding\School\580 game\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.pdb
@@ -24,3 +11,16 @@ C:\Users\Joey\Desktop\Coding\School\580 game\MonoGameLibrary\obj\Debug\net8.0\Mo
 C:\Users\Joey\Desktop\Coding\School\580 game\MonoGameLibrary\obj\Debug\net8.0\refint\MonoGameLibrary.dll
 C:\Users\Joey\Desktop\Coding\School\580 game\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.pdb
 C:\Users\Joey\Desktop\Coding\School\580 game\MonoGameLibrary\obj\Debug\net8.0\ref\MonoGameLibrary.dll
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.deps.json
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.dll
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.pdb
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.AssemblyReference.cache
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfoInputs.cache
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfo.cs
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.CoreCompileInputs.cache
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.sourcelink.json
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.dll
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\refint\MonoGameLibrary.dll
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.pdb
+C:\Users\samur\Desktop\Coding\School Coding\Year 4\580\Pumpkin Game\RipRush\MonoGameLibrary\obj\Debug\net8.0\ref\MonoGameLibrary.dll

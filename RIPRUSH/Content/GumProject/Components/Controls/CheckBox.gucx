@@ -196,6 +196,12 @@
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
+      <Type>int</Type>
+      <Name>TextInstance.FontSize</Name>
+      <Value xsi:type="xsd:int">10</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
       <Type>float</Type>
       <Name>TextInstance.Height</Name>
       <Value xsi:type="xsd:float">32</Value>
@@ -222,7 +228,7 @@
     <Variable>
       <Type>StyleCategory</Type>
       <Name>TextInstance.StyleCategoryState</Name>
-      <Value xsi:type="xsd:string">Normal</Value>
+      <Value xsi:type="xsd:string">Title</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -277,7 +283,7 @@
     <Variable>
       <Type>float</Type>
       <Name>Width</Name>
-      <Value xsi:type="xsd:float">128</Value>
+      <Value xsi:type="xsd:float">169</Value>
       <SetsValue>true</SetsValue>
     </Variable>
   </State>

@@ -91,6 +91,440 @@
         "ElementType": "Screens",
         "EventType": 7,
         "TimestampUtc": "2025-11-30T03:38:30.8848052Z"
+      },
+      {
+        "NewName": "HTPScreen.SettingsMenuPanel1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T00:52:43.6882548Z"
+      },
+      {
+        "NewName": "HTPScreen.Background1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T00:52:43.7663066Z"
+      },
+      {
+        "NewName": "HTPScreen.MenuTitle1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T00:52:43.8357578Z"
+      },
+      {
+        "NewName": "HTPScreen.MenuItems1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T00:52:43.9143271Z"
+      },
+      {
+        "NewName": "HTPScreen.TitleText2",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T00:52:43.9564434Z"
+      },
+      {
+        "NewName": "HTPScreen.TitleText3",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T00:52:44.0024134Z"
+      },
+      {
+        "NewName": "HTPScreen.ControlsPanel",
+        "OldName": "HTPScreen.SettingsMenuPanel1",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T01:01:22.0075949Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.Container SettingsMenuPanel in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T01:53:01.8773515Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.NineSlice Background in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T01:53:02.0190198Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.Text TitleText in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T01:53:02.0365188Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.Container MenuTitle in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T01:53:02.0548971Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.Text TitleText1 in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T01:53:02.0766193Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.Container MenuItems in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T01:53:02.1574264Z"
+      },
+      {
+        "NewName": "HTPScreen.ControlsPanel",
+        "OldName": "HTPScreen.SettingsMenuPanel1",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T01:53:14.6693475Z"
+      },
+      {
+        "NewName": "HTPScreen.ControlsPanel1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T01:53:22.1582874Z"
+      },
+      {
+        "NewName": "HTPScreen.Background2",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T01:53:22.2516507Z"
+      },
+      {
+        "NewName": "HTPScreen.MenuTitle2",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T01:53:22.3613373Z"
+      },
+      {
+        "NewName": "HTPScreen.MenuItems2",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T01:53:22.4666512Z"
+      },
+      {
+        "NewName": "HTPScreen.TitleText4",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T01:53:22.568859Z"
+      },
+      {
+        "NewName": "HTPScreen.TitleText5",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T01:53:22.6589194Z"
+      },
+      {
+        "NewName": "Joelements/enemy picture",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-12-01T01:57:24.4113461Z"
+      },
+      {
+        "NewName": "Joelements/enemy picture (Container).SpriteInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T01:57:58.1857795Z"
+      },
+      {
+        "NewName": "HTPScreen.enemy pictureInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:03:38.6315145Z"
+      },
+      {
+        "NewName": "HTPScreen.ResultLabel",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:05:36.4509549Z"
+      },
+      {
+        "NewName": "HTPScreen.ResultLabel1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:07:44.3830139Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.Controls/Label ResultLabel1 in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T02:07:53.5548091Z"
+      },
+      {
+        "NewName": "HTPScreen.ObjectivePanel",
+        "OldName": "HTPScreen.ControlsPanel1",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:08:07.3901727Z"
+      },
+      {
+        "NewName": "HTPScreen.AvoidLabel",
+        "OldName": "HTPScreen.ResultLabel",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:08:14.9810448Z"
+      },
+      {
+        "NewName": "HTPScreen.AvoidLabel1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:08:24.0068362Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.Controls/Label AvoidLabel1 in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T02:08:27.9533956Z"
+      },
+      {
+        "NewName": "HTPScreen.ObjectivePanel1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:08:30.9765336Z"
+      },
+      {
+        "NewName": "HTPScreen.Background3",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:08:31.0664572Z"
+      },
+      {
+        "NewName": "HTPScreen.MenuTitle3",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:08:31.1690949Z"
+      },
+      {
+        "NewName": "HTPScreen.MenuItems3",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:08:31.2594294Z"
+      },
+      {
+        "NewName": "HTPScreen.TitleText6",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:08:31.3501616Z"
+      },
+      {
+        "NewName": "HTPScreen.TitleText7",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:08:31.4279996Z"
+      },
+      {
+        "NewName": "HTPScreen.PowerPanel",
+        "OldName": "HTPScreen.ObjectivePanel1",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:10:17.9590817Z"
+      },
+      {
+        "NewName": "HTPScreen.AvoidLabel1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:19:16.7608469Z"
+      },
+      {
+        "NewName": "Joelements/UFOpic",
+        "OldName": "Joelements/enemy picture",
+        "ElementType": "Components",
+        "EventType": 2,
+        "TimestampUtc": "2025-12-01T02:34:06.8017526Z"
+      },
+      {
+        "NewName": "HTPScreen.ufo picture",
+        "OldName": "HTPScreen.enemy pictureInstance",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:34:16.3210982Z"
+      },
+      {
+        "NewName": "HTPScreen.Ufopic",
+        "OldName": "HTPScreen.ufo picture",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:34:21.6770224Z"
+      },
+      {
+        "NewName": "HTPScreen.UFOpic",
+        "OldName": "HTPScreen.Ufopic",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:34:27.9838553Z"
+      },
+      {
+        "NewName": "HTPScreen.CollectLabel",
+        "OldName": "HTPScreen.AvoidLabel1",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:34:41.0771156Z"
+      },
+      {
+        "NewName": "Joelements/CHOCOpic",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-12-01T02:36:10.4158072Z"
+      },
+      {
+        "NewName": "Joelements/LOLIpic",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-12-01T02:36:18.7147811Z"
+      },
+      {
+        "NewName": "Joelements/POPpic",
+        "OldName": "Joelements/LOLIpic",
+        "ElementType": "Components",
+        "EventType": 2,
+        "TimestampUtc": "2025-12-01T02:36:27.9171553Z"
+      },
+      {
+        "NewName": "Joelements/ZAPpic",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-12-01T02:36:34.9223739Z"
+      },
+      {
+        "NewName": "HTPScreen.CHOCOpicInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:44:29.2377152Z"
+      },
+      {
+        "NewName": "HTPScreen.POPpicInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:44:31.6173459Z"
+      },
+      {
+        "NewName": "HTPScreen.ZAPpicInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:44:38.8511336Z"
+      },
+      {
+        "NewName": "HTPScreen.CollectLabel1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:49:40.7727734Z"
+      },
+      {
+        "NewName": "HTPScreen.CollectLabel2",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:50:48.5214796Z"
+      },
+      {
+        "NewName": "HTPScreen.CollectLabel3",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:50:50.0663439Z"
+      },
+      {
+        "NewName": "HTPScreen.Background4",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:54:18.7213303Z"
+      },
+      {
+        "NewName": "HTPScreen.zpowerexBACK",
+        "OldName": "HTPScreen.Background4",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:55:22.2709699Z"
+      },
+      {
+        "NewName": "HTPScreen.zpowerexBACK1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:55:35.9234486Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.NineSlice zpowerexBACK in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T02:55:43.7623003Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "HTPScreen.NineSlice zpowerexBACK1 in HTPScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-01T02:55:51.7870666Z"
+      },
+      {
+        "NewName": "HTPScreen.zpowerexBACK",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:55:53.6145771Z"
+      },
+      {
+        "NewName": "HTPScreen.powerexBack",
+        "OldName": "HTPScreen.zpowerexBACK",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:56:29.3149625Z"
+      },
+      {
+        "NewName": "HTPScreen.powerexBack1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T02:56:31.7848116Z"
+      },
+      {
+        "NewName": "HTPScreen.enemyBack",
+        "OldName": "HTPScreen.powerexBack1",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-01T02:56:40.5846622Z"
       }
     ]
   }
