@@ -69,6 +69,7 @@ partial class HTPScreen : MonoGameGum.Forms.Controls.FrameworkElement
     public CHOCOpic CHOCOpicInstance { get; protected set; }
     public POPpic POPpicInstance { get; protected set; }
     public ZAPpic ZAPpicInstance { get; protected set; }
+    public eyepic eyepicInstance { get; protected set; }
 
     public HTPScreen(InteractiveGue visual) : base(visual)
     {
@@ -112,6 +113,7 @@ partial class HTPScreen : MonoGameGum.Forms.Controls.FrameworkElement
         CHOCOpicInstance = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<CHOCOpic>(this.Visual,"CHOCOpicInstance");
         POPpicInstance = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<POPpic>(this.Visual,"POPpicInstance");
         ZAPpicInstance = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<ZAPpic>(this.Visual,"ZAPpicInstance");
+        eyepicInstance = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<eyepic>(this.Visual,"eyepicInstance");
         CustomInitialize();
     }
     //Not assigning variables because Object Instantiation Type is set to By Name rather than Fully In Code

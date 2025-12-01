@@ -2,90 +2,6 @@
   "UserEvents": {
     "47fa8c23ea5040f2f8363d3515698abea2bfa58b5ae71a6912ff98f2ebcf547c": [
       {
-        "NewName": "TitleScreen.MainMenuButtonInstance",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 5,
-        "TimestampUtc": "2025-11-17T06:21:51.6543427Z"
-      },
-      {
-        "NewName": "HTPScreen",
-        "OldName": null,
-        "ElementType": "Screens",
-        "EventType": 0,
-        "TimestampUtc": "2025-11-17T06:32:35.4523111Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "HTPScreen.Controls/ButtonStandard DetectResolutionsButton in HTPScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-11-17T06:35:15.1663089Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "HTPScreen.Controls/CheckBox FullScreenCheckbox in HTPScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-11-17T06:35:22.2541253Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "HTPScreen.Controls/ListBox ResolutionBox in HTPScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-11-17T06:35:28.0812986Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "HTPScreen.Controls/Label ResolutionLabel in HTPScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-11-17T06:35:30.4487494Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "HTPScreen.Controls/Label SoundLabel in HTPScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-11-17T06:35:45.9294301Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "HTPScreen.Controls/Slider MusicSlider in HTPScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-11-17T06:35:48.3993821Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "HTPScreen.Controls/Label MusicLabel in HTPScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-11-17T06:35:50.4928063Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "HTPScreen.Controls/Slider SoundSlider in HTPScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-11-17T06:35:52.77021Z"
-      },
-      {
-        "NewName": null,
-        "OldName": "HTPScreen.Elements/DividerHorizontal DividerInstance1 in HTPScreen",
-        "ElementType": "Screens",
-        "EventType": 6,
-        "TimestampUtc": "2025-11-17T06:36:24.5248362Z"
-      },
-      {
-        "NewName": "TitleScreen.HTPButton",
-        "OldName": "TitleScreen.MainMenuButtonInstance",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2025-11-17T06:44:03.9647979Z"
-      },
-      {
         "NewName": "Proj2SettingsScreen.DefaultsButton",
         "OldName": "Proj2SettingsScreen.DetectResolutionsButton",
         "ElementType": "Screens",
@@ -525,6 +441,20 @@
         "ElementType": "Screens",
         "EventType": 7,
         "TimestampUtc": "2025-12-01T02:56:40.5846622Z"
+      },
+      {
+        "NewName": "Joelements/eyepic",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-12-01T07:53:24.6161182Z"
+      },
+      {
+        "NewName": "HTPScreen.eyepicInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-01T07:57:12.4040457Z"
       }
     ]
   }

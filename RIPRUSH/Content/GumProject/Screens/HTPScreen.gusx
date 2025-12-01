@@ -274,7 +274,7 @@
     <Variable>
       <Type>int</Type>
       <Name>CollectLabel1.FontSize</Name>
-      <Value xsi:type="xsd:int">15</Value>
+      <Value xsi:type="xsd:int">12</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -297,7 +297,7 @@
     <Variable>
       <Type>string</Type>
       <Name>CollectLabel1.Text</Name>
-      <Value xsi:type="xsd:string">Speeds you up!</Value>
+      <Value xsi:type="xsd:string">Lets you jump again!</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -309,7 +309,7 @@
     <Variable>
       <Type>float</Type>
       <Name>CollectLabel1.Width</Name>
-      <Value xsi:type="xsd:float">-557</Value>
+      <Value xsi:type="xsd:float">-609</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -321,7 +321,7 @@
     <Variable>
       <Type>float</Type>
       <Name>CollectLabel1.X</Name>
-      <Value xsi:type="xsd:float">271</Value>
+      <Value xsi:type="xsd:float">250</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -339,7 +339,7 @@
     <Variable>
       <Type>float</Type>
       <Name>CollectLabel1.Y</Name>
-      <Value xsi:type="xsd:float">308</Value>
+      <Value xsi:type="xsd:float">302</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -607,6 +607,30 @@
       <Type>float</Type>
       <Name>enemyBack.Y</Name>
       <Value xsi:type="xsd:float">-51</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>eyepicInstance.Height</Name>
+      <Value xsi:type="xsd:float">56</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>eyepicInstance.Width</Name>
+      <Value xsi:type="xsd:float">68</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>eyepicInstance.X</Name>
+      <Value xsi:type="xsd:float">649</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>eyepicInstance.Y</Name>
+      <Value xsi:type="xsd:float">177</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -1562,7 +1586,7 @@
     <Variable>
       <Type>float</Type>
       <Name>UFOpic.X</Name>
-      <Value xsi:type="xsd:float">597</Value>
+      <Value xsi:type="xsd:float">554</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -1744,6 +1768,11 @@
   <Instance>
     <Name>ZAPpicInstance</Name>
     <BaseType>Joelements/ZAPpic</BaseType>
+    <DefinedByBase>false</DefinedByBase>
+  </Instance>
+  <Instance>
+    <Name>eyepicInstance</Name>
+    <BaseType>Joelements/eyepic</BaseType>
     <DefinedByBase>false</DefinedByBase>
   </Instance>
   <Behaviors />
