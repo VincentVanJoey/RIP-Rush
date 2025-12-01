@@ -142,7 +142,9 @@ namespace RIPRUSH.Entities.Actors {
                             break;
                         case CandyType.Chocobar:
                             var scene = Core.GetActiveScene() as GameScene;
-                            scene?.worldManager.ApplySpeedBoost();
+                            onGround = true; // gives mid-air jump instead of speed boost? get feedback
+
+                            //scene?.worldManager.ApplySpeedBoost(); -- seems detrimental, not sure
                             break;
                         case CandyType.ZapCandy:
                             // Activate special invincibility for a fixed time

@@ -15,7 +15,9 @@ If you are feeling magnanimous, send me a copy of the book, DVD, video game or w
 
 All Sprites/Visual Components utilized created by me using Aseprite (https://www.aseprite.org/) and are not for commercial use.
 3D Candy Voxels made/textured by me using Blender & Aseprite and are not for commercial use.
-Exception: Tilemap standin by Rotting Pixels on itchio (https://rottingpixels.itch.io/nature-platformer-tileset) -- good for free usage
+Exceptions:
+ - Tilemap standin by Rotting Pixels on itchio (https://rottingpixels.itch.io/nature-platformer-tileset) -- good for free usage
+ - fire eyball sprite made Pixel Zone on itchio (https://pixel-zone.itch.io/flaming-eye) -- good for free use
 
 -- Sounds/Music --
 

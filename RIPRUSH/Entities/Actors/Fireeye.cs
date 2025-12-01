@@ -1,18 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
 using RIPRUSH.Entities.CollisionShapes;
 using RIPRUSH.Entities.Particles;
 using RIPRUSH.Scenes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace RIPRUSH.Entities.Actors {
 
-    public class HorizontalEnemy : Enemy, IParticleEmitter {
+    public class Fireeye : Enemy, IParticleEmitter {
 
         private float _speed = 700f;  // horizontal speed
         private Vector2 _spawnPosition;
@@ -25,7 +23,7 @@ namespace RIPRUSH.Entities.Actors {
 
         private SparkParticleSystem sparkSystem;
 
-        public HorizontalEnemy(ContentManager content, float scale, Vector2 playerPosition, bool isAnimated = true) {
+        public Fireeye(ContentManager content, float scale, Vector2 playerPosition, bool isAnimated = true) {
             Scale = scale;
             _spawnPosition = new Vector2(
                 Core.GraphicsDevice.Viewport.Width + 20 ,
@@ -56,16 +54,12 @@ namespace RIPRUSH.Entities.Actors {
             Core.Instance.Components.Add(sparkSystem);
         }
 
-        /// <summary>
-        /// Load the missile's animation
-        /// </summary>
         private void LoadAnimations(ContentManager content) {
-            // Example: Load missile spritesheet with multiple frames
             Animation flyAnimation = new Animation(
-                content.Load<Texture2D>("Assets/Enemy/UFO"), // replace with your sprite sheet
-                frameCount: 19,   // number of frames in sprite sheet
+                content.Load<Texture2D>("Assets/Enemy/eye_fire"),
+                frameCount: 7,
                 isLooping: true,
-                Color.Red,
+                Color.White,
                 Origin,
                 Rotation,
                 Scale

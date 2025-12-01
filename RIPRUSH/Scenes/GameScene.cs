@@ -35,6 +35,7 @@ namespace RIPRUSH.Scenes {
         private Texture2D _midground;
         private Texture2D _background;
         private Color worldColor;
+        private int _scrollLevel = 0;
 
         private bool _shaking;
         private float _shakeTime;
@@ -112,7 +113,7 @@ namespace RIPRUSH.Scenes {
                 enemy = new UFO(Core.Content, true, 3f, new Vector2(xPos, yPos));
             }
             else {
-                enemy = new HorizontalEnemy(Core.Content, 3f, _player.Position);
+                enemy = new Fireeye(Core.Content, 3f, _player.Position);
             }
 
             _enemies.Add(enemy);
@@ -314,6 +315,18 @@ namespace RIPRUSH.Scenes {
                     _newHighScore = true;
                     SaveFileManager.SetHighScore(_highScore);
                 }
+
+
+                //Update/scale the speed based on score 
+
+                // check how many point increments have we passed
+                int newLevel = (int)(_currentScore / 500);
+
+                if (newLevel > _scrollLevel) {
+                    _scrollLevel = newLevel; // update level
+                }
+
+                worldManager.TargetScrollSpeed = 400f + 20f * _scrollLevel;
 
                 //if (_winflag.Bounds.CollidesWith(_player.Bounds)) {
                 //    timerActive = false;

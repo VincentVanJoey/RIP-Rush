@@ -16,6 +16,7 @@ namespace RIPRUSH.Entities.Environment {
 
         public float _scrollSpeed;
         private float _baseScrollSpeed = 400f;
+        public float TargetScrollSpeed { get; set; }
         public float TotalScrollX { get; private set; } = 0f;
 
         private const float MinGapWidth = 0f;
@@ -35,6 +36,7 @@ namespace RIPRUSH.Entities.Environment {
         public WorldManager(float baseY, GraphicsDevice graphics) {
             _baseY = baseY;
             _scrollSpeed = _baseScrollSpeed;
+            TargetScrollSpeed = _baseScrollSpeed;
         }
 
         public List<Platform> GetActivePlatforms() {
@@ -97,10 +99,10 @@ namespace RIPRUSH.Entities.Environment {
             if (_speedBoostTimer > 0) {
                 _speedBoostTimer -= dt;
                 float t = 1f - (_speedBoostTimer / BoostDuration);
-                _scrollSpeed = MathHelper.Lerp(_baseScrollSpeed * BoostMultiplier, _baseScrollSpeed, t);
+                _scrollSpeed = MathHelper.Lerp(_baseScrollSpeed * BoostMultiplier, TargetScrollSpeed, t);
             }
             else {
-                _scrollSpeed = _baseScrollSpeed;
+                _scrollSpeed = MathHelper.Lerp(_scrollSpeed, TargetScrollSpeed, 0.1f); // smooth lerp
             }
 
             TotalScrollX += _scrollSpeed * dt;
@@ -123,6 +125,7 @@ namespace RIPRUSH.Entities.Environment {
 
             _pickupManager.Update(gameTime);
         }
+
 
 
     }
