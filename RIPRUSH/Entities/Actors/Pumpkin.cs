@@ -44,7 +44,7 @@ namespace RIPRUSH.Entities.Actors {
         private PumpkinParticleSystem pumpkinParticles;
 
         public int Health { get; private set; } = 3;
-        public const int MaxHealth = 3;
+        public int extraJumps = 0;
 
         private bool isDead = false;
         private double deathTimer = 0;
@@ -133,18 +133,16 @@ namespace RIPRUSH.Entities.Actors {
                 if (!pickup.Collected && Bounds.Intersects(pickup.Bounds)) {
                     pickup.Collected = true;
 
-                    Core.Audio.PlaySoundEffect(pickup.PickupSound);
+                    //RETOOL TODO - ADD A UNIQUE ONE FORE EACH?
+                    Core.Audio.PlaySoundEffect(pickup.PickupSound); 
 
                     switch (pickup.Type) {
                         case CandyType.Lollipop: 
                             // heal 1 health
-                            Health = Math.Min(MaxHealth, Health + 1);
+                            Health += 1;
                             break;
                         case CandyType.Chocobar:
-                            var scene = Core.GetActiveScene() as GameScene;
-                            onGround = true; // gives mid-air jump instead of speed boost? get feedback
-
-                            //scene?.worldManager.ApplySpeedBoost(); -- seems detrimental, not sure
+                            extraJumps += 1;
                             break;
                         case CandyType.ZapCandy:
                             // Activate special invincibility for a fixed time
@@ -202,25 +200,36 @@ namespace RIPRUSH.Entities.Actors {
             if (!_isAnimated) {
                 return; // No movement if not animated 
             }
-            else {
 
-                // Jump logic
-                if ((Core.Input.Keyboard.WasKeyJustPressed(Keys.Space) || Core.Input.Mouse.WasButtonJustPressed(MouseButton.Left)) && onGround) {
+            bool pressjump = Core.Input.Keyboard.WasKeyJustPressed(Keys.Space) || Core.Input.Mouse.WasButtonJustPressed(MouseButton.Left);
+            bool releasejump = Core.Input.Keyboard.WasKeyJustReleased(Keys.Space) || Core.Input.Mouse.WasButtonJustReleased(MouseButton.Left);
+
+            // Jump logic
+            if (pressjump) {
+
+                //check if the pumpkin is grounded to accound for double/multi-jump
+                if (onGround) {
                     velocity.Y = -JUMP; // Moves the pumpkin "higher" on the level
                     onGround = false;
                     Core.Audio.PlaySoundEffect(_jumpSound);
                 }
-
-                // If player releases jump early while still going up, cut the jump short?
-                // should make it variable????
-                if ((Core.Input.Keyboard.WasKeyJustReleased(Keys.Space) || Core.Input.Mouse.WasButtonJustReleased(MouseButton.Left)) && velocity.Y < 0) {
-                    velocity.Y *= 0.2f; // TODO - play with value to see what feels best
+                else if (extraJumps > 0) {
+                    extraJumps--;
+                    velocity.Y = -JUMP; // TODO tweak to maybe be weaker?
+                    Core.Audio.PlaySoundEffect(_jumpSound);
                 }
 
-                // Apply gravity
-                velocity.Y += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
             }
+
+            // If player releases jump early while still going up, cut the jump short?
+            // should make it variable????
+            if (releasejump && velocity.Y < 0) {
+                velocity.Y *= 0.2f; // TODO - play with value to see what feels best
+            }
+
+            // Apply gravity
+            velocity.Y += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
         }
 
         public void TakeDamage() {

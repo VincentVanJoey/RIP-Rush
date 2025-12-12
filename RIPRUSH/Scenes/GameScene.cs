@@ -216,7 +216,8 @@ namespace RIPRUSH.Scenes {
 
             worldManager.Draw(gameTime, Core.SpriteBatch);
 
-            Core.SpriteBatch.DrawString(timerfont, $"HP: {_player.Health}/{3}", new Vector2(650, 20), Color.Gold);
+            Core.SpriteBatch.DrawString(timerfont, $"HP: {_player.Health}", new Vector2(670, 20), Color.Gold);
+            Core.SpriteBatch.DrawString(timerfont, $"J UMPS: {_player.extraJumps}", new Vector2(630, 60), Color.Gold);
 
             foreach (var component in _components) {
                 component.Draw(gameTime, Core.SpriteBatch);
@@ -340,11 +341,6 @@ namespace RIPRUSH.Scenes {
             foreach (var component in _components) {
                 component.Update(gameTime);
             }
-
-            // DEBUG for checking stuff
-            //if (GameActive) {
-            //    System.Diagnostics.Debug.WriteLine($"Enemies: {_enemies.Count}, Components: {_components.Count}, TotalScrollX: {worldManager.TotalScrollX}");
-            //}
 
         }
 

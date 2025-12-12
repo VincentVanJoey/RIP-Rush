@@ -15,14 +15,15 @@ If you are feeling magnanimous, send me a copy of the book, DVD, video game or w
 
 All Sprites/Visual Components utilized created by me using Aseprite (https://www.aseprite.org/) and are not for commercial use.
 3D Candy Voxels made/textured by me using Blender & Aseprite and are not for commercial use.
+
 Exceptions:
- - Tilemap standin by Rotting Pixels on itchio (https://rottingpixels.itch.io/nature-platformer-tileset) -- good for free usage
+ - Tilemap by Rotting Pixels on itchio (https://rottingpixels.itch.io/nature-platformer-tileset) -- good for free usage
  - fire eyball sprite made Pixel Zone on itchio (https://pixel-zone.itch.io/flaming-eye) -- good for free use
 
 -- Sounds/Music --
 
 All SFX created by me made using BFXR (https://www.bfxr.net/) and are not for commercial use.
-Win sound - Made by me in BandLab web and are not for commercial use. (UNUSED AS OF NOW)
+Win sound - Made by me in BandLab web and not for commercial use. (UNUSED AS OF NOW)
 
 Menu Music -  Tragedy Waiting To Happen by HoliznaCC0 on the FreeMusicArchive website (https://freemusicarchive.org/music/holiznacc0/horseless-headman-halloween-beats/tragedy-waiting-to-happen/) 
 Game Music -  Ghost Surf Rock by Loyalty Freak Music on the FreeMusicArchive website (https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Ghost_Surf_Rock/) 
