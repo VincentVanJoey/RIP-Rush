@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 MonoGameLibrary/bin/
 MonoGameLibrary/obj/
+MonoGameLibrary/obj/Debug
