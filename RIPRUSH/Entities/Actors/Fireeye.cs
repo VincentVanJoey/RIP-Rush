@@ -12,21 +12,22 @@ namespace RIPRUSH.Entities.Actors {
 
     public class Fireeye : Enemy, IParticleEmitter {
 
-        private float _speed = 700f;  // horizontal speed
+        private float _speed = 700f;
         private Vector2 _spawnPosition;
-        private BoundingCircle bounds;
-        public BoundingCircle Bounds => bounds;
 
-        private float _launchDelay = 0.5f; // seconds before moving
+        private BoundingRectangle bounds;
+        public BoundingRectangle Bounds => bounds;
+
+        private float _launchDelay = 0.5f;
         private float _timeSinceSpawn = 0f;
-        public Vector2 Velocity => new Vector2(-_speed, 0f); // always moving left
+        public Vector2 Velocity => new Vector2(-_speed, 0f);
 
         private SparkParticleSystem sparkSystem;
 
         public Fireeye(ContentManager content, float scale, Vector2 playerPosition, bool isAnimated = true) {
             Scale = scale;
             _spawnPosition = new Vector2(
-                Core.GraphicsDevice.Viewport.Width + 20 ,
+                Core.GraphicsDevice.Viewport.Width + 20,
                 playerPosition.Y
             );
             Position = _spawnPosition;
@@ -36,7 +37,6 @@ namespace RIPRUSH.Entities.Actors {
 
             LoadAnimations(content);
 
-            // Initialize AnimationManager
             if (animations.Count != 0) {
                 animationManager = new AnimationManager(animations.First().Value);
             }
@@ -46,8 +46,7 @@ namespace RIPRUSH.Entities.Actors {
 
             Origin = new Vector2(width / 2f, height / 2f);
 
-            // Initialize bounding circle at the visual center
-            bounds = new BoundingCircle(Position + new Vector2(width * Scale / 2f, height * Scale / 2f),0.5f * (width / 2f * Scale));
+            bounds = new BoundingRectangle(Position, width * Scale, height * Scale);
             IsActive = true;
 
             sparkSystem = new SparkParticleSystem(Core.Instance, this);
@@ -81,7 +80,7 @@ namespace RIPRUSH.Entities.Actors {
         public override void Move(GameTime gameTime) {
             var scene = Core.GetActiveScene() as GameScene;
             float worldSpeed = (float)scene?.worldManager._scrollSpeed;
-            float scrollFactor = worldSpeed / 400f; // baseline
+            float scrollFactor = worldSpeed / 400f;
             float effectiveSpeed = _speed * scrollFactor;
 
             _timeSinceSpawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -94,14 +93,7 @@ namespace RIPRUSH.Entities.Actors {
             // Update animation position AFTER moving
             if (animationManager != null) {
                 animationManager.Position = _position;
-
-                int boundWidth = animationManager.animation.FrameWidth;
-                int boundHeight = animationManager.animation.FrameHeight;
-                Origin = new Vector2(boundWidth / 2f, boundHeight / 2f);
-
-                // Update bounding circle
-                bounds.Center = Position;
-                bounds.Radius = 0.8f * (boundWidth / 2f * Scale);
+                UpdateBounds();
             }
 
             // Deactivate if offscreen
@@ -111,7 +103,6 @@ namespace RIPRUSH.Entities.Actors {
                 Core.Instance.Components.Remove(sparkSystem);
             }
         }
-
 
         public override void CheckCollision(Pumpkin player) {
             if (bounds.CollidesWith(player.Bounds)) {
@@ -124,13 +115,8 @@ namespace RIPRUSH.Entities.Actors {
 
             if (_isAnimated && animationManager != null) {
                 animationManager.Update(gameTime);
-
-                // Update bounds each frame like UFO
-                int boundWidth = animationManager.animation.FrameWidth;
-                int boundHeight = animationManager.animation.FrameHeight;
-                Origin = new Vector2(boundWidth / 2f, boundHeight / 2f);
-                bounds.Center = Position;
-                bounds.Radius = 0.8f * (boundWidth / 2f * Scale);
+                Origin = new Vector2(animationManager.animation.FrameWidth / 2f, animationManager.animation.FrameHeight / 2f);
+                UpdateBounds();
             }
 
             SetAnimations();
@@ -147,7 +133,23 @@ namespace RIPRUSH.Entities.Actors {
                 base.Draw(gameTime, spriteBatch);
                 //sparkSystem?.Draw(gameTime);
             }
-            
+        }
+
+        private void UpdateBounds() {
+            if (animationManager == null) return;
+
+            int bw = animationManager.animation.FrameWidth;
+            int bh = animationManager.animation.FrameHeight;
+
+            // Shrink slightly
+            float paddingFactor = 0.8f;
+
+            bounds.Width = bw * Scale * paddingFactor;
+            bounds.Height = bh * Scale * paddingFactor;
+
+            // center
+            bounds.X = Position.X - bounds.Width / 2f;
+            bounds.Y = Position.Y - bounds.Height / 2f;
         }
     }
 }
