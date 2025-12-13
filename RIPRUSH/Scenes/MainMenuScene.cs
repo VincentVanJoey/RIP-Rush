@@ -1,16 +1,15 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input;
+﻿using Gum.Forms.Controls;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGameGum;
 using MonoGameLibrary;
+using MonoGameLibrary.Input;
 using MonoGameLibrary.Scenes;
 using RIPRUSH.Entities;
 using RIPRUSH.Entities.Actors;
 using RIPRUSH.Screens;
-using System;
 using System.Collections.Generic;
-using Gum.Forms.Controls;
 
 
 namespace RIPRUSH.Scenes {
@@ -73,6 +72,10 @@ namespace RIPRUSH.Scenes {
         private Proj2SettingsScreen settingsScreen;
         private HTPScreen htpScreen;
 
+        private Rectangle _moonRectangle;
+        private bool _isMouseOverMoon = false;
+        private SoundEffect _moonClickSound;
+
         public bool titleFrameCheck = false;
         private enum MenuState { Title, Settings, HTP }
         private MenuState _currentMenuState;
@@ -109,10 +112,28 @@ namespace RIPRUSH.Scenes {
             _grave1_texture = Core.Content.Load<Texture2D>("Assets/headstone");
             _grave2_texture = Core.Content.Load<Texture2D>("Assets/woodstone");
 
+            _moonRectangle = new Rectangle(350, 50, 32 * 6, 32 * 6);
+            _moonClickSound = Core.Content.Load<SoundEffect>("Assets/Audio/secret");
+
             // recreate titlescreen
             titlescreen = new TitleScreen();
             titlescreen.LoadContentSongs(); // now this will play immediately
         }
+
+        private void MoonSecretCheck() {
+            Point mousePos = Core.Input.Mouse.Position;
+
+            // Hover detection
+            _isMouseOverMoon = _moonRectangle.Contains(mousePos);
+            _pumpkinFaceColor = _isMouseOverMoon ? Color.DarkRed : Color.Black;
+
+            // Click detection using your MouseInfo helper
+            if (_isMouseOverMoon && Core.Input.Mouse.WasButtonJustPressed(MouseButton.Left)) {
+                Core.Audio.PlaySoundEffect(_moonClickSound);
+            }
+        }
+
+
 
         public void ShowTitleScreen() {
             GumService.Default.Root.Children.Clear();
@@ -178,6 +199,7 @@ namespace RIPRUSH.Scenes {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         public override void Update(GameTime gameTime) {
+            MoonSecretCheck();
 
             // if returning to the title screen, skip the rest of this frame's update, or else we'll double press on a button 
             if (titleFrameCheck) {

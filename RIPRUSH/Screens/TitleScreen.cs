@@ -20,14 +20,18 @@ namespace RIPRUSH.Screens
     partial class TitleScreen
     {
         private SoundEffect _uiSound;
+        private SoundEffect _exitSound;
+        private SoundEffectInstance _exitSoundInstance;
         public Song MenuSong;
         private MainMenuButton[] _buttons;
         private int _focusedIndex = 0;
+        private bool _isExiting = false;
 
         partial void CustomInitialize()
         {
 
             _uiSound = Core.Content.Load<SoundEffect>("Assets/Audio/UI");
+            _exitSound = Core.Content.Load<SoundEffect>("Assets/Audio/Quit");
             PlayButton.Click += PlayButton_Click;
             SettingsButton.Click += SettingsButton_Click;
             QuitButton.Click += QuitButton_Click;
@@ -54,6 +58,13 @@ namespace RIPRUSH.Screens
         }
 
         public void UpdateInput() {
+            if (_isExiting) {
+                // If the exit sound has finished, actually quit
+                if (_exitSoundInstance.State == SoundState.Stopped) {
+                    Core.Instance.Exit();
+                }
+                return; // skip other input while exiting
+            }
 
             if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Down)) {
                 ChangeFocus(1);
@@ -70,7 +81,7 @@ namespace RIPRUSH.Screens
         }
         
         private void ChangeFocus(int direction) {
-            _buttons[_focusedIndex].ButtonCategoryState = MainMenuButton.ButtonCategory.Enabled; ;
+            _buttons[_focusedIndex].ButtonCategoryState = MainMenuButton.ButtonCategory.Enabled;
             _focusedIndex = (_focusedIndex + direction + _buttons.Length) % _buttons.Length;
             _buttons[_focusedIndex].ButtonCategoryState = MainMenuButton.ButtonCategory.Highlighted;
         }
@@ -99,14 +110,13 @@ namespace RIPRUSH.Screens
             mainMenuScene?.ShowSettingsScreen();
         }
 
-        /// <summary>
-        /// The event handler for when the quit button is clicked
-        /// </summary>
-        /// <param name="sender">The object signaling the event</param>
-        /// <param name="e">Information about the event</param>
         private void QuitButton_Click(object sender, System.EventArgs e) {
-            Core.Audio.PlaySoundEffect(_uiSound);
-            Core.Instance.Exit();
+            if (_isExiting) return; // prevent multiple triggers
+
+            _isExiting = true;
+
+            // Play the exit sound as an instance
+            _exitSoundInstance = Core.Audio.PlaySoundEffect(_exitSound);
         }
 
         private void HTP_Click(object sender, System.EventArgs e) {

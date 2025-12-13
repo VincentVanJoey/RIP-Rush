@@ -47,7 +47,7 @@ namespace RIPRUSH {
                 cursor.TransformMatrix *= Matrix.CreateTranslation(-VirtualResolution.DestinationRect.X / scale, -VirtualResolution.DestinationRect.Y / scale, 0);
             };
 
-            ChangeScene(new MainMenuScene());
+            ChangeScene(new SplashScene());
             SaveFileManager.Initialize();
         }
 

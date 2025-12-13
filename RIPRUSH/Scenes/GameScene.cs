@@ -225,6 +225,9 @@ namespace RIPRUSH.Scenes {
             Core.SpriteBatch.DrawString(timerfont, $"Distance: {_currentScore:F0}m", new Vector2(20, 20), Color.Gold);
             Core.SpriteBatch.DrawString(timerfont, $"High Score: {_highScore:F0}m", new Vector2(20, 50), Color.Gold);
 
+
+            Core.SpriteBatch.DrawString(timerfont, $"Speed: {worldManager._scrollSpeed:F0}m", new Vector2(20, 400), Color.Gold);
+
             Core.SpriteBatch.End();
 
             // Draw candy pickups

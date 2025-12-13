@@ -62,6 +62,18 @@
 /processorParam:Quality=Best
 /build:Assets/Audio/Music/MenuMusic.mp3
 
+#begin Assets/Audio/Quit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/Quit.wav
+
+#begin Assets/Audio/secret.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/secret.wav
+
 #begin Assets/Audio/UI.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -340,6 +352,24 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Assets/Player/Roll.png
+
+#begin Assets/Splash/Intrjoe.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Assets/Splash/Intrjoe.png
+
+#begin Assets/Splash/IntrjoeAudio.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Assets/Splash/IntrjoeAudio.mp3;Assets/Splash/IntrjoeAudio
 
 #begin Assets/test_shape.png
 /importer:TextureImporter

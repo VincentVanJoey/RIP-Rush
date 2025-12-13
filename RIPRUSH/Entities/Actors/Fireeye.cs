@@ -18,7 +18,7 @@ namespace RIPRUSH.Entities.Actors {
         private BoundingRectangle bounds;
         public BoundingRectangle Bounds => bounds;
 
-        private float _launchDelay = 0.5f;
+        private float _launchDelay = 0.75f;
         private float _timeSinceSpawn = 0f;
         public Vector2 Velocity => new Vector2(-_speed, 0f);
 
