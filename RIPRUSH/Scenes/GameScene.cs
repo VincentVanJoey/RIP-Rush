@@ -302,6 +302,11 @@ namespace RIPRUSH.Scenes {
             }
 
             foreach (var enemy in _enemies.ToList()) {
+
+                if (enemy is UFO ufo) {
+                    ufo.isFrozen = !GameActive;  // freeze if game is paused
+                }
+
                 if (!enemy.IsActive) {
                     _enemies.Remove(enemy);
                     _components.Remove(enemy);
