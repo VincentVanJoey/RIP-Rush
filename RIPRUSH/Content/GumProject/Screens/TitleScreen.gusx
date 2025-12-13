@@ -58,6 +58,54 @@
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
+      <Type>float</Type>
+      <Name>CredButton.BackgroundHeight</Name>
+      <Value xsi:type="xsd:float">45</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>CredButton.BackgroundWidth</Name>
+      <Value xsi:type="xsd:float">125</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>string</Type>
+      <Name>CredButton.buttonText</Name>
+      <Value xsi:type="xsd:string">Credits</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>CredButton.Height</Name>
+      <Value xsi:type="xsd:float">49</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>int</Type>
+      <Name>CredButton.MenuButtonFontSize</Name>
+      <Value xsi:type="xsd:int">12</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>CredButton.Width</Name>
+      <Value xsi:type="xsd:float">123</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>CredButton.X</Name>
+      <Value xsi:type="xsd:float">671</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>CredButton.Y</Name>
+      <Value xsi:type="xsd:float">4</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
       <Type>string</Type>
       <Name>HTPButton.buttonText</Name>
       <Value xsi:type="xsd:string">how to play</Value>
@@ -182,6 +230,11 @@
   </Instance>
   <Instance>
     <Name>HTPButton</Name>
+    <BaseType>Joelements/MainMenuButton</BaseType>
+    <DefinedByBase>false</DefinedByBase>
+  </Instance>
+  <Instance>
+    <Name>CredButton</Name>
     <BaseType>Joelements/MainMenuButton</BaseType>
     <DefinedByBase>false</DefinedByBase>
   </Instance>

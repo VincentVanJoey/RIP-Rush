@@ -455,6 +455,419 @@
         "ElementType": "Screens",
         "EventType": 5,
         "TimestampUtc": "2025-12-01T07:57:12.4040457Z"
+      },
+      {
+        "NewName": "TitleScreen.ButtonIconInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-13T06:50:16.107225Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "TitleScreen.Controls/ButtonIcon ButtonIconInstance in TitleScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T06:55:10.4645279Z"
+      },
+      {
+        "NewName": "TitleScreen.ButtonStandardIconInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-13T06:55:30.2926253Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "TitleScreen.Controls/ButtonStandardIcon ButtonStandardIconInstance in TitleScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T06:59:48.1848939Z"
+      },
+      {
+        "NewName": "TitleScreen.ButtonStandardIconInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-13T06:59:56.0997253Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "TitleScreen.Controls/ButtonStandardIcon ButtonStandardIconInstance in TitleScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:00:02.118461Z"
+      },
+      {
+        "NewName": "TitleScreen.MainMenuButtonInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-13T07:00:39.4437397Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "TitleScreen.Joelements/MainMenuButton MainMenuButtonInstance in TitleScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:01:56.8494777Z"
+      },
+      {
+        "NewName": "Joelements/smallbutton",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2025-12-13T07:02:10.1411112Z"
+      },
+      {
+        "NewName": "TitleScreen.smallbuttonInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-13T07:03:10.553691Z"
+      },
+      {
+        "NewName": "CreditScreen",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 0,
+        "TimestampUtc": "2025-12-13T07:30:30.8691966Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.NineSlice powerexBack in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:30:47.9838432Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.NineSlice enemyBack in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.699114Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container ControlsPanel in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.7016145Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container ObjectivePanel in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.7250652Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.NineSlice Background2 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.7470825Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container MenuItems2 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.768026Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container MenuTitle2 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.7879017Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Text TitleText4 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.8145782Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Text TitleText5 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.8328026Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container PowerPanel in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.8517042Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Controls/Label CollectLabel in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.8751128Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Controls/Label CollectLabel1 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.8951894Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Controls/Label CollectLabel2 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.9170734Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Controls/Label CollectLabel3 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:07.9365074Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Joelements/eyepic eyepicInstance in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:20.62304Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Joelements/ZAPpic ZAPpicInstance in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:20.6254839Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Joelements/POPpic POPpicInstance in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:20.642644Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Joelements/CHOCOpic CHOCOpicInstance in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:20.6586119Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Controls/Label AvoidLabel in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:20.6795416Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Joelements/UFOpic UFOpic in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:20.6970375Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Controls/Label CollectLabel3 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:29.5886159Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Controls/Label CollectLabel2 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:29.5967701Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Controls/Label CollectLabel1 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:29.6149705Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Controls/Label CollectLabel in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:29.6311705Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.NineSlice enemyBack in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:35.0075563Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container ObjectivePanel in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:38.8617912Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container MenuItems2 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:48.5373516Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Text TitleText4 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:48.7449461Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container MenuTitle2 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:48.790077Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Text TitleText5 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:48.8110664Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container ObjectivePanel in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:52.0534421Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.NineSlice Background2 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:52.2470366Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container PowerPanel in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:55.1983609Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.NineSlice Background3 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:55.4257242Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Text TitleText6 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:55.4466895Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container MenuTitle3 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:55.4811585Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Text TitleText7 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:55.5385395Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Container MenuItems3 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:31:55.5570278Z"
+      },
+      {
+        "NewName": "CreditScreen.ScrollViewerInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-13T07:32:11.9705422Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CreditScreen.Text TitleText3 in CreditScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:33:10.49868Z"
+      },
+      {
+        "NewName": "TitleScreen.CredButton",
+        "OldName": "TitleScreen.smallbuttonInstance",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-13T07:38:07.9099869Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "TitleScreen.Joelements/smallbutton CredButton in TitleScreen",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2025-12-13T07:39:35.3584777Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "Joelements/smallbutton",
+        "ElementType": "Components",
+        "EventType": 1,
+        "TimestampUtc": "2025-12-13T07:39:45.1384412Z"
+      },
+      {
+        "NewName": "TitleScreen.MainMenuButtonInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-13T07:39:53.0594205Z"
+      },
+      {
+        "NewName": "TitleScreen.CredButton",
+        "OldName": "TitleScreen.MainMenuButtonInstance",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-13T07:40:23.3178383Z"
+      },
+      {
+        "NewName": "CreditScreen.CreditScroll",
+        "OldName": "CreditScreen.ScrollViewerInstance",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-13T21:50:37.831461Z"
+      },
+      {
+        "NewName": "CreditScreen.TitleText3",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2025-12-13T21:57:51.4696165Z"
+      },
+      {
+        "NewName": "CreditScreen.CreditsText",
+        "OldName": "CreditScreen.TitleText3",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2025-12-13T22:15:47.488253Z"
       }
     ]
   }

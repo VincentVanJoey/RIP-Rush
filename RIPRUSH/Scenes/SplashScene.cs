@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -26,21 +27,21 @@ namespace RIPRUSH.Scenes {
 
         private const float FadeDuration = 1.0f;
 
-        private Song _introAudio;
+        private SoundEffect _introAudio;
 
         public override void LoadContent() {
             _splashImage = Content.Load<Texture2D>("Assets/Splash/Intrjoe");
-            _introAudio = Content.Load<Song>("Assets/Splash/IntrjoeAudio");
+            _introAudio = Content.Load<SoundEffect>("Assets/Splash/IntrjoeAudio");
 
             // volume from saved if available
             if (SaveFileManager.Data != null) {
-                Core.Audio.SongVolume = SaveFileManager.Data.MusicVolume;
+                Core.Audio.SoundEffectVolume = SaveFileManager.Data.SoundVolume;
             }
             else {
-                Core.Audio.SongVolume = 1f;
+                Core.Audio.SoundEffectVolume = 1f;
             }
 
-            Core.Audio.PlaySong(_introAudio, isRepeating: false);
+            Core.Audio.PlaySoundEffect(_introAudio);
 
             _audioDuration = (float)_introAudio.Duration.TotalSeconds;
         }
@@ -82,7 +83,6 @@ namespace RIPRUSH.Scenes {
             if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Escape)
                 || Core.Input.Keyboard.WasKeyJustPressed(Keys.Space)
                 || Core.Input.Mouse.WasButtonJustPressed(MouseButton.Left)) {
-                MediaPlayer.Stop(); // not sure of a good way to handle this otherwise
                 Core.ChangeScene(new MainMenuScene());
             }
         }

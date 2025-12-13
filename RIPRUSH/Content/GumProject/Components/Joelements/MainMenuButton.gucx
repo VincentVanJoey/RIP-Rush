@@ -20,6 +20,7 @@
       <Type>float</Type>
       <Name>Background.Height</Name>
       <Value xsi:type="xsd:float">66</Value>
+      <ExposedAsName>BackgroundHeight</ExposedAsName>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -45,6 +46,7 @@
       <Type>float</Type>
       <Name>Background.Width</Name>
       <Value xsi:type="xsd:float">248</Value>
+      <ExposedAsName>BackgroundWidth</ExposedAsName>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>

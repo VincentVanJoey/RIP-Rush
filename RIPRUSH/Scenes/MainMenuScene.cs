@@ -71,13 +71,14 @@ namespace RIPRUSH.Scenes {
         private TitleScreen titlescreen;
         private Proj2SettingsScreen settingsScreen;
         private HTPScreen htpScreen;
+        private CreditScreen creditScreen;
 
         private Rectangle _moonRectangle;
         private bool _isMouseOverMoon = false;
         private SoundEffect _moonClickSound;
 
         public bool titleFrameCheck = false;
-        private enum MenuState { Title, Settings, HTP }
+        private enum MenuState { Title, Settings, HTP, Cred }
         private MenuState _currentMenuState;
 
         public override void Initialize() {
@@ -99,6 +100,7 @@ namespace RIPRUSH.Scenes {
 
             settingsScreen = new Proj2SettingsScreen();
             htpScreen = new HTPScreen();
+            creditScreen = new CreditScreen();
             ShowTitleScreen();
         }
 
@@ -163,6 +165,15 @@ namespace RIPRUSH.Scenes {
             _currentMenuState = MenuState.HTP;
         }
 
+        public void ShowCredScreen() {
+            GumService.Default.Root.Children.Clear();
+
+            creditScreen.AddToRoot();
+            titlescreen.RemoveFromRoot();
+
+            _currentMenuState = MenuState.Cred;
+        }
+
         /// <summary>
         /// Draws the main menu 
         /// </summary>
@@ -217,6 +228,9 @@ namespace RIPRUSH.Scenes {
                     break;
                 case MenuState.HTP:
                     htpScreen.UpdateInput();
+                    break;
+                case MenuState.Cred:
+                    creditScreen.UpdateInput();
                     break;
             }
 

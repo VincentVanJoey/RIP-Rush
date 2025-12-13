@@ -5,6 +5,12 @@
   <State>
     <Name>Default</Name>
     <Variable>
+      <Type>int</Type>
+      <Name>Background.Alpha</Name>
+      <Value xsi:type="xsd:int">255</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
       <Type>ColorCategory</Type>
       <Name>Background.ColorCategoryState</Name>
       <Value xsi:type="xsd:string">Primary</Value>
@@ -160,7 +166,7 @@
     <Variable>
       <Type>ColorCategory</Type>
       <Name>Icon.IconColor</Name>
-      <Value xsi:type="xsd:string">PrimaryDark</Value>
+      <Value xsi:type="xsd:string">White</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>

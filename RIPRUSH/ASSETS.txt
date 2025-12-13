@@ -1,18 +1,15 @@
 ﻿-- Code --
-
 MonoGameLibrary / all relevant tutorial code from Monogame Documentation (https://docs.monogame.net/articles/tutorials/building_2d_games/)
+All other code written by VincenVanJoey (Joey Monaco)
 
 -- Fonts --
-
 Content/fonts/coraline-cat.spritefont - created by Sinister Fonts of 1001fonts.com (https://www.1001fonts.com/coralines-cat-font.html)
 Content/fonts/october-crow.spritefont - created by Sinister Fonts of 1001fonts.com (https://www.1001fonts.com/october-crow-font.html)
 Content/fonts/raven-scream.spritefont - created by Sinister Fonts of 1001fonts.com (https://www.1001fonts.com/raven-song-font.html)
 
-"Until I decide otherwise, the fonts I create are 100% freeware for commercial and private use alike. Have fun.
-If you are feeling magnanimous, send me a copy of the book, DVD, video game or whatever else you use my FREE font on. ;)" - Sinister Fonts via https://www.1001fonts.com/users/savage/
+"Until I decide otherwise, the fonts I create are 100% freeware for commercial and private use alike. Have fun." - Sinister Fonts via https://www.1001fonts.com/users/savage/
 
 -- Art/ Textures --
-
 All Sprites/Visual Components utilized created by me using Aseprite (https://www.aseprite.org/) and are not for commercial use.
 3D Candy Voxels made/textured by me using Blender & Aseprite and are not for commercial use.
 
@@ -21,7 +18,6 @@ Exceptions:
  - fire eyball sprite made Pixel Zone on itchio (https://pixel-zone.itch.io/flaming-eye) -- good for free use
 
 -- Sounds/Music --
-
 All SFX created by me made using BFXR (https://www.bfxr.net/) and are not for commercial use.
 Win sound - Made by me in BandLab web and not for commercial use. (UNUSED AS OF NOW)
 

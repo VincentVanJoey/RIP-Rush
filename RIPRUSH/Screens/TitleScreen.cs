@@ -36,6 +36,7 @@ namespace RIPRUSH.Screens
             SettingsButton.Click += SettingsButton_Click;
             QuitButton.Click += QuitButton_Click;
             HTPButton.Click += HTP_Click;
+            CredButton.Click += Cred_Click;
                                     
             InitializeButtons();
         }
@@ -52,7 +53,7 @@ namespace RIPRUSH.Screens
         }
 
         public void InitializeButtons() {
-            _buttons = [ PlayButton, SettingsButton, QuitButton, HTPButton ];
+            _buttons = [ PlayButton, SettingsButton, QuitButton, HTPButton, CredButton];
             _focusedIndex = 0;
             _buttons[_focusedIndex].ButtonCategoryState = MainMenuButton.ButtonCategory.Highlighted;
         }
@@ -123,6 +124,12 @@ namespace RIPRUSH.Screens
             Core.Audio.PlaySoundEffect(_uiSound);
             MainMenuScene mainMenuScene = Core.GetActiveScene() as MainMenuScene;
             mainMenuScene?.ShowHTPScreen();
+        }
+
+        private void Cred_Click(object sender, System.EventArgs e) {
+            Core.Audio.PlaySoundEffect(_uiSound);
+            MainMenuScene mainMenuScene = Core.GetActiveScene() as MainMenuScene;
+            mainMenuScene?.ShowCredScreen();
         }
 
         #endregion

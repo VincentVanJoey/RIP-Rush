@@ -45,6 +45,7 @@ partial class TitleScreen : MonoGameGum.Forms.Controls.FrameworkElement
     public MainMenuButton SettingsButton { get; protected set; }
     public MainMenuButton QuitButton { get; protected set; }
     public MainMenuButton HTPButton { get; protected set; }
+    public MainMenuButton CredButton { get; protected set; }
 
     public TitleScreen(InteractiveGue visual) : base(visual)
     {
@@ -64,6 +65,7 @@ partial class TitleScreen : MonoGameGum.Forms.Controls.FrameworkElement
         SettingsButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<MainMenuButton>(this.Visual,"SettingsButton");
         QuitButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<MainMenuButton>(this.Visual,"QuitButton");
         HTPButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<MainMenuButton>(this.Visual,"HTPButton");
+        CredButton = global::MonoGameGum.Forms.GraphicalUiElementFormsExtensions.TryGetFrameworkElementByName<MainMenuButton>(this.Visual,"CredButton");
         CustomInitialize();
     }
     //Not assigning variables because Object Instantiation Type is set to By Name rather than Fully In Code

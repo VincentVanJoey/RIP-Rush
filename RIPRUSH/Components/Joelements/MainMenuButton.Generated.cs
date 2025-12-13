@@ -71,6 +71,18 @@ partial class MainMenuButton : global::MonoGameGum.Forms.Controls.Button
     public SpriteRuntime Background { get; protected set; }
     public TextRuntime ButtonWords { get; protected set; }
 
+    public float BackgroundHeight
+    {
+        get => Background.Height;
+        set => Background.Height = value;
+    }
+
+    public float BackgroundWidth
+    {
+        get => Background.Width;
+        set => Background.Width = value;
+    }
+
     public int MenuButtonTextColorBlue
     {
         get => ButtonWords.Blue;

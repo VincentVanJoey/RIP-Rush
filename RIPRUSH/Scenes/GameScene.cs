@@ -76,7 +76,7 @@ namespace RIPRUSH.Scenes {
             worldManager = new WorldManager(baseY: 550f, Core.GraphicsDevice);
             worldManager.Initialize(Content, "Assets/World/TestTiled", chunkCount: 6);
 
-            _player = new Pumpkin(Core.Content, true, 1.75f) { Position = new Vector2(65, 200) };
+            _player = new Pumpkin(Core.Content, true, 1.75f) { Position = new Vector2(65, 400) };
 
             _components = new List<Component>();
             _enemies = new List<Enemy>();
