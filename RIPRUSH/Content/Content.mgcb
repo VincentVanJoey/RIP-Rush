@@ -32,6 +32,12 @@
 /processorParam:Quality=Best
 /build:Assets/Audio/Death.wav
 
+#begin Assets/Audio/EnemyExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Assets/Audio/EnemyExplode.wav
+
 #begin Assets/Audio/Fall.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

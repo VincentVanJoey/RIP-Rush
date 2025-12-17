@@ -38,10 +38,12 @@ namespace RIPRUSH.Scenes {
         public WorldManager worldManager;
         private Texture2D _midground;
         private Texture2D _background;
-        private Color worldColor;
         private int _scrollLevel = 0;
 
         private WorldColorChanger _worldColor;
+
+        private GUILabel _statLabel;
+        private GUILabel _scoreLabel;
 
         private bool _shaking;
         private float _shakeTime;
@@ -73,8 +75,6 @@ namespace RIPRUSH.Scenes {
             // the escape key will be used to return back to the title screen
             Core.ExitOnEscape = false;
             #endregion
-
-            worldColor = Color.OrangeRed;
 
             worldManager = new WorldManager(baseY: 550f, Core.GraphicsDevice);
             worldManager.Initialize(Content, "Assets/World/TestTiled", chunkCount: 6);
@@ -111,6 +111,19 @@ namespace RIPRUSH.Scenes {
             timerfont = Core.Content.Load<SpriteFont>("Fonts/timer");
             _background = Content.Load<Texture2D>("Assets/background");
             _midground = Content.Load<Texture2D>("Assets/midground");
+
+            // 1x1 white pixel for box drawings in hud elements
+            Texture2D _pixel = new Texture2D(Core.GraphicsDevice, 1, 1);
+            _pixel.SetData(new[] { Color.White });
+
+            //the hud elements in question
+            _statLabel = new GUILabel(timerfont, _pixel) {
+                Position = new Vector2(660, 20)
+            };
+            _scoreLabel = new GUILabel(timerfont, _pixel) {
+                Position = new Vector2(20, 20)
+            };
+
         }
 
         private void StartCountdown(float seconds = 3f) {
@@ -275,17 +288,14 @@ namespace RIPRUSH.Scenes {
 
             worldManager.Draw(gameTime, Core.SpriteBatch);
 
-            Core.SpriteBatch.DrawString(timerfont, $"HP: {_player.Health}", new Vector2(670, 20), Color.Gold);
-            Core.SpriteBatch.DrawString(timerfont, $"J UMPS: {_player.extraJumps}", new Vector2(630, 60), Color.Gold);
-
             foreach (var component in _components) {
                 component.Draw(gameTime, Core.SpriteBatch);
             }
 
-            Core.SpriteBatch.DrawString(timerfont, $"Distance: {_currentScore:F0}m", new Vector2(20, 20), Color.Gold);
-            Core.SpriteBatch.DrawString(timerfont, $"High Score: {_highScore:F0}m", new Vector2(20, 50), Color.Gold);
-            Core.SpriteBatch.DrawString(timerfont, $"Speed: {worldManager._scrollSpeed:F0}m", new Vector2(20, 400), Color.Gold);
-            
+            Color outline = _worldColor.Current;
+
+            _statLabel.Draw(Core.SpriteBatch, outline);
+            _scoreLabel.Draw(Core.SpriteBatch, outline);
             DrawCountdown(Core.SpriteBatch);
 
             Core.SpriteBatch.End();
@@ -375,10 +385,6 @@ namespace RIPRUSH.Scenes {
 
             foreach (var enemy in _enemies.ToList()) {
 
-                //if (enemy is UFO ufo) {
-                //    ufo.isFrozen = !GameActive;  // freeze if game is paused
-                //}
-
                 if (!enemy.IsActive) {
                     _enemies.Remove(enemy);
                     _components.Remove(enemy);
@@ -399,13 +405,12 @@ namespace RIPRUSH.Scenes {
 
 
                 //Update/scale the speed based on score 
-
                 // check how many point increments have we passed
                 int newLevel = (int)(_currentScore / 500);
 
                 if (newLevel > _scrollLevel) {
                     _scrollLevel = newLevel; // update level
-                    SetWorldColorForLevel(_scrollLevel); // NEW method
+                    SetWorldColorForLevel(_scrollLevel); 
                 }
 
                 worldManager.TargetScrollSpeed = 400f + 20f * _scrollLevel;
@@ -416,6 +421,10 @@ namespace RIPRUSH.Scenes {
                 component.Update(gameTime);
             }
 
+            _statLabel.Text = $"HP: {_player.Health}" +
+                              $"\nJ UMPS: {_player.extraJumps}";
+            _scoreLabel.Text = $"Distance: {_currentScore:F0}m\n" +
+                               $"High Score: {_highScore:F0}m";
         }
 
     }

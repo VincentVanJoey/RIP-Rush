@@ -106,8 +106,25 @@ namespace RIPRUSH.Entities.Actors {
 
         public override void CheckCollision(Pumpkin player) {
             if (bounds.CollidesWith(player.Bounds)) {
-                player.TakeDamage();
+                    player.TakeDamage();
             }
+        }
+
+        private void UpdateBounds() {
+            if (animationManager == null) return;
+
+            int bw = animationManager.animation.FrameWidth;
+            int bh = animationManager.animation.FrameHeight;
+
+            // Shrink slightly
+            float paddingFactor = 0.8f;
+
+            bounds.Width = bw * Scale * paddingFactor;
+            bounds.Height = bh * Scale * paddingFactor;
+
+            // center
+            bounds.X = Position.X - bounds.Width / 2f;
+            bounds.Y = Position.Y - bounds.Height / 2f;
         }
 
         public override void Update(GameTime gameTime) {
@@ -135,21 +152,6 @@ namespace RIPRUSH.Entities.Actors {
             }
         }
 
-        private void UpdateBounds() {
-            if (animationManager == null) return;
 
-            int bw = animationManager.animation.FrameWidth;
-            int bh = animationManager.animation.FrameHeight;
-
-            // Shrink slightly
-            float paddingFactor = 0.8f;
-
-            bounds.Width = bw * Scale * paddingFactor;
-            bounds.Height = bh * Scale * paddingFactor;
-
-            // center
-            bounds.X = Position.X - bounds.Width / 2f;
-            bounds.Y = Position.Y - bounds.Height / 2f;
-        }
     }
 }
