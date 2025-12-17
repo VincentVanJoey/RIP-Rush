@@ -297,7 +297,7 @@
     <Variable>
       <Type>string</Type>
       <Name>CollectLabel1.Text</Name>
-      <Value xsi:type="xsd:string">Lets you jump again!</Value>
+      <Value xsi:type="xsd:string">GIVES EXTRA JUMPS</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>

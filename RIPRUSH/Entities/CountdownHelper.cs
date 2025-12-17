@@ -45,7 +45,7 @@ namespace RIPRUSH.Entities {
 
             if (_timer <= 0f) {
                 IsActive = false;
-                return true; // ✅ finished THIS frame
+                return true; // finished THIS frame
             }
 
             return false;
