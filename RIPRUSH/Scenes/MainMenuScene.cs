@@ -135,8 +135,6 @@ namespace RIPRUSH.Scenes {
             }
         }
 
-
-
         public void ShowTitleScreen() {
             GumService.Default.Root.Children.Clear();
 
@@ -210,8 +208,6 @@ namespace RIPRUSH.Scenes {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         public override void Update(GameTime gameTime) {
-            MoonSecretCheck();
-
             // if returning to the title screen, skip the rest of this frame's update, or else we'll double press on a button 
             if (titleFrameCheck) {
                 titleFrameCheck = false;
@@ -221,6 +217,7 @@ namespace RIPRUSH.Scenes {
 
             switch (_currentMenuState) {
                 case MenuState.Title:
+                    MoonSecretCheck();
                     titlescreen.UpdateInput();
                     break;
                 case MenuState.Settings:

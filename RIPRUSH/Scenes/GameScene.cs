@@ -27,7 +27,11 @@ namespace RIPRUSH.Scenes {
         public float _currentScore;
         public float _highScore;
         public bool _newHighScore;
-        public bool GameActive = true;
+        public bool GameActive = false;
+
+        private SoundEffect _countSound;
+        private CountdownHelper _countdown;
+        private SpriteFont _countdownFont;
 
         private PauseMenu _pauseMenu;
 
@@ -36,6 +40,8 @@ namespace RIPRUSH.Scenes {
         private Texture2D _background;
         private Color worldColor;
         private int _scrollLevel = 0;
+
+        private WorldColorChanger _worldColor;
 
         private bool _shaking;
         private float _shakeTime;
@@ -47,9 +53,6 @@ namespace RIPRUSH.Scenes {
         private float _enemySpawnInterval = 5f; // initial interval
         private Random _rng = new Random();
         private int _maxActiveEnemies = 5; // starting cap
-
-        //private SoundEffect WinSound;
-        //private WinFlag _winflag;
 
         private List<Component> _components;
 
@@ -78,6 +81,9 @@ namespace RIPRUSH.Scenes {
 
             _player = new Pumpkin(Core.Content, true, 1.75f) { Position = new Vector2(65, 400) };
 
+            // Start 3 second countdown so the player isn't immediatedely dropped in
+            StartCountdown(3f);
+
             _components = new List<Component>();
             _enemies = new List<Enemy>();
             
@@ -95,10 +101,63 @@ namespace RIPRUSH.Scenes {
 
         public override void LoadContent() {
             GameSong = Core.Content.Load<Song>("Assets/Audio/Music/GameMusic");
-            //WinSound = Core.Content.Load<SoundEffect>("Assets/Audio/Win");
+
+            _countSound = Core.Content.Load<SoundEffect>("Assets/Audio/countdown");
+            _countdownFont = Core.Content.Load<SpriteFont>("Fonts/countdown");
+            _countdown = new CountdownHelper(_countSound);
+            _worldColor = new WorldColorChanger(Color.OrangeRed, speed: 5f);
+
+
             timerfont = Core.Content.Load<SpriteFont>("Fonts/timer");
             _background = Content.Load<Texture2D>("Assets/background");
             _midground = Content.Load<Texture2D>("Assets/midground");
+        }
+
+        private void StartCountdown(float seconds = 3f) {
+            _countdown.Start(seconds);
+
+            GameActive = false;
+            _player.velocity = Vector2.Zero;
+            _player.onGround = false;
+        }
+
+        private void DrawCountdown(SpriteBatch spriteBatch) {
+            if (!_countdown.IsActive)
+                return;
+
+            string text = _countdown.CurrentNumber.ToString();
+
+            Vector2 size = _countdownFont.MeasureString(text);
+            Vector2 center = new(
+                Core.VirtualResolution.VirtualWidth / 2,
+                Core.VirtualResolution.VirtualHeight / 2
+            );
+
+            spriteBatch.DrawString(
+                _countdownFont,
+                text,
+                center,
+                Color.Gold,
+                0f,
+                size / 2,
+                _countdown.Scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
+
+        private void SetWorldColorForLevel(int level) {
+            const int MaxColorScrollLevel = 20;
+            float t = MathHelper.Clamp(level / (float)MaxColorScrollLevel, 0f, 1f);
+
+            // Shift from orange to blue
+            Color target = Color.Lerp(
+                Color.OrangeRed,           // starting color
+                new Color(0, 0, 255),    // deep blue target
+                t
+            );
+
+            _worldColor.SetTarget(target);
         }
 
         private void SpawnRandomEnemy() {
@@ -196,7 +255,7 @@ namespace RIPRUSH.Scenes {
 
             #region -- Parallax Scrolling Background --
             // === 1. Background (does not move) ===
-            Core.SpriteBatch.Draw(_background, Vector2.Zero, worldColor);
+            Core.SpriteBatch.Draw(_background, Vector2.Zero, _worldColor.Current);
 
             // === 2. Midground (repeats) ===
             float scrollSpeed = 0.5f; // slower than player movement
@@ -209,8 +268,8 @@ namespace RIPRUSH.Scenes {
                 modX -= textureWidth; // ensure seamless leftward wrapping
 
             // Draw two copies side-by-side to cover screen width
-            Core.SpriteBatch.Draw(_midground, new Vector2(modX, 50), worldColor);
-            Core.SpriteBatch.Draw(_midground, new Vector2(modX + textureWidth, 50), worldColor);
+            Core.SpriteBatch.Draw(_midground, new Vector2(modX, 50), _worldColor.Current);
+            Core.SpriteBatch.Draw(_midground, new Vector2(modX + textureWidth, 50), _worldColor.Current);
             #endregion
 
 
@@ -222,11 +281,12 @@ namespace RIPRUSH.Scenes {
             foreach (var component in _components) {
                 component.Draw(gameTime, Core.SpriteBatch);
             }
+
             Core.SpriteBatch.DrawString(timerfont, $"Distance: {_currentScore:F0}m", new Vector2(20, 20), Color.Gold);
             Core.SpriteBatch.DrawString(timerfont, $"High Score: {_highScore:F0}m", new Vector2(20, 50), Color.Gold);
-
-
             Core.SpriteBatch.DrawString(timerfont, $"Speed: {worldManager._scrollSpeed:F0}m", new Vector2(20, 400), Color.Gold);
+            
+            DrawCountdown(Core.SpriteBatch);
 
             Core.SpriteBatch.End();
 
@@ -250,6 +310,17 @@ namespace RIPRUSH.Scenes {
         /// <param name="gameTime">Provides a snapshot of the game's timing state, used to synchronize rendering with the game's update loop.</param>
         public override void Update(GameTime gameTime) {
 
+            if (_countdown.IsActive) {
+
+                bool finished = _countdown.Update(gameTime);
+                _player.velocity = Vector2.Zero;
+
+                if (finished) {
+                    GameActive = true;
+                }
+                return;
+            }
+
             #region -- Pausing logic --
 
             if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Escape)) {
@@ -269,7 +340,11 @@ namespace RIPRUSH.Scenes {
             }
             #endregion
 
-            worldManager.Update(gameTime);
+            if (GameActive) {
+                worldManager.Update(gameTime);
+                UpdateEnemySpawnInterval();
+                _worldColor.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            }
 
             if (_player.Health <= 0 && !_shaking) {
                 _shakeTime = 0f;
@@ -290,9 +365,6 @@ namespace RIPRUSH.Scenes {
             //another basic collision check here but for the powerup candies
             _player.CheckPickupCollision(worldManager._pickupManager.GetPickups());
 
-            // Update difficulty scaling
-            UpdateEnemySpawnInterval();
-
             // Countdown timer
             _enemySpawnTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             
@@ -303,9 +375,9 @@ namespace RIPRUSH.Scenes {
 
             foreach (var enemy in _enemies.ToList()) {
 
-                if (enemy is UFO ufo) {
-                    ufo.isFrozen = !GameActive;  // freeze if game is paused
-                }
+                //if (enemy is UFO ufo) {
+                //    ufo.isFrozen = !GameActive;  // freeze if game is paused
+                //}
 
                 if (!enemy.IsActive) {
                     _enemies.Remove(enemy);
@@ -333,17 +405,11 @@ namespace RIPRUSH.Scenes {
 
                 if (newLevel > _scrollLevel) {
                     _scrollLevel = newLevel; // update level
+                    SetWorldColorForLevel(_scrollLevel); // NEW method
                 }
 
                 worldManager.TargetScrollSpeed = 400f + 20f * _scrollLevel;
 
-                //if (_winflag.Bounds.CollidesWith(_player.Bounds)) {
-                //    timerActive = false;
-                //    Core.Audio.PauseAudio();
-                //    Core.Audio.PlaySoundEffect(WinSound);
-                //    timerText = "You Win!\nTime: ";
-                //    quitdirections = "\nPress ESC to Pause & Quit\n (or close game window)";
-                //}
             }
 
             foreach (var component in _components) {
